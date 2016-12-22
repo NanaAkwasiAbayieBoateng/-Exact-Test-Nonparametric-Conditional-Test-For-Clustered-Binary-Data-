@@ -1,0 +1,326 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{alltt}
+\usepackage{setspace,relsize} % for latex(describe()) (Hmisc package) and latex.table
+\usepackage{moreverb}
+\usepackage[pdftex]{lscape}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{tabularx,ragged2e,booktabs,caption}%table package
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
+\usepackage{graphicx}
+
+\usepackage{wrapfig}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fullpage}
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+
+%===========================================================================================
+% Numbering Equations
+%\numberwithin{equation}{section} %sets equation numbers <chapter>.<section>.<index>
+\numberwithin{equation}{subsection} %sets equation numbers <chapter>.<section>.<subsection>.<index>
+%\numberwithin{equation}{subsubsection} %sets equation numbers <chapter>.<section>.<subsection>.<subsubsection>.<index>
+
+
+
+ %===================================================================================================================
+
+%===================================================================================================================
+% Basic Commands for Theorem, Lemma,Proposition,etc.....
+
+\renewcommand{\baselinestretch}{2}
+\renewcommand{\arraystretch}{.5}
+\newcommand{\qed}{\hfill$\Box$}
+\newtheorem{fact}{Theorem}[section]
+\newtheorem{claim}{Claim}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{word}[fact]{Definition}
+\newtheorem{prop}[fact]{Proposition}
+\newtheorem{ob}[fact]{Observation}
+\newtheorem{Corollary}[fact]{Corollary}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{Guess}[fact]{Conjecture}
+\newtheorem{conj}[fact]{Conjecture}
+\def\theotheorem{A\arabic{theorem}}
+\newtheorem{mydef}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}[thm]
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+
+
+%================================================================================
+%%%%%%%%%%%commands for problem
+%================================================================================
+\makeatletter
+\newenvironment{problem}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{Problem }
+       }
+       }
+       {%\vspace{1ex}\begin{center} \rule{0.3\linewidth}{.3pt}\end{center}}
+       \begin{center}\large\bf \ldots\ldots\ldots\end{center}}
+\makeatother
+
+
+
+
+
+
+
+
+\setlength{\oddsidemargin}{0.truein}
+\setlength{\evensidemargin}{0.truein}
+\setlength{\textwidth}{6.5truein} \setlength{\topmargin}{-.55truein}
+\setlength{\textheight}{9.0truein}
+
+%%%%%%%%%%%%%%%%%%%bibliography%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thebiblio#1{\list
+{[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+\advance\leftmargin\labelsep
+\usecounter{enumi}}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\sloppy\clubpenalty4000\widowpenalty4000
+\sfcode`\.=1000\relax}
+\let\endthebiblio=\endlist
+\def\eqalign#1{\null\,\vcenter{\openup\jot\ialign
+{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil\crcr#1\crcr}}\,}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\bLambda{\mbox{\boldmath $\Lambda$}}
+\def\bDelta{\mbox{\boldmath $\Delta$}}
+\def\btheta{\mbox{\boldmath $\theta$}}
+\def\bSigma{\mbox{\boldmath $\Sigma$}}
+\def\bbeta{\mbox{\boldmath $\beta$}}
+\def\bphi{\mbox{\boldmath $\phi$}}
+\def\balpha{\mbox{\boldmath $\alpha$}}
+\def\bJ{{\bf J}}
+\def\bgamma{\mbox{\boldmath $\gamma$}}
+\def\bmu{\mbox{\boldmath $\mu$}}
+\def\bY{{\bf Y}}
+\def\bU{{\bf U}}
+\def\bx{{\bf x}}
+\def\bX{{\bf X}}
+\def\bW{{\bf W}}
+\def\bZ{{\bf Z}}
+\def\bz{{\bf z}}
+\def\logit{\rm logit}
+\def\bgn{\begin{eqnarray*}}
+\def\edn{\end{eqnarray*}}
+\def\bg{\begin{eqnarray}}
+
+
+
+%===========================================================================
+% commands for displaying codes in appendix
+%============================================================================
+\usepackage{listings}
+%===========================================================================
+% commands for displaying codes in appendix
+%============================================================================
+\lstloadlanguages{r}%
+\lstset{language=r }
+
+% Includes an r script.
+% The first parameter is the label, which also is the name of the script
+%   without the .m.
+% The second parameter is the optional caption.
+\newcommand{\matlabscript}[2]
+  {\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1]{#1.r}\end{itemize}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\begin{center}
+{\Large {\bf Nana Boateng}} \\
+\vspace{5mm}
+{\Large Department of Mathematics} \\
+\vspace{5mm}
+%{\Large } \\
+\vspace{5mm}
+\end{center}
+\textbf{Power Divergence Statistics}
+
+Let the random variables $\textbf{Y}=(Y_{1},Y_{2},\cdots,Y_{k})$ form a multinomial distribution with parameters      $\Pi=(\pi_{1},\cdots,\pi_{k})$\\
+\begin{equation*}
+P_{r}(Y=y)=\frac{n!}{\pi_{1}!,\cdots,\pi_{k}}\pi_{1}^{y_{1}}\pi_{2}^{y_{}}\cdots \pi_{k}^{y_{k}}
+\end{equation*}
+
+To test the null hypothesis $H_{0}$ :  $ \Pi=\Pi_{0}$ \hspace{5mm}where\hspace{2mm} $\Pi_{0}=(\pi_{01},\pi_{02},\cdots,\pi_{0k})$\\
+Cressie and Read \cite{cressie1984} suggest the power divegence theorem which simplifies to commonly used chi-squared test statistic for testing multinomial distributions  for some $\lambda \in \mathbb{R}$
+
+
+
+
+\begin{equation*}
+2nI^{\lambda}\left(\frac{x}{n}:\pi_{0} \right)=\frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}y_{ij}\left[\left(\frac{y_{ij}}{E_{ij}}\right)^{\lambda}-1\right]\hspace{3mm}\lambda \in \mathbb{R}
+\end{equation*}
+
+Where $\lambda=1,0,-2,-1,-0.5$ and $\frac{2}{3}$ corresponds to the Pearson-Chi-squared statistic, log likelihood ratio statistic,Neyman statistics,Kullback and Leibler,Freeman-Tukey and Cresie -Read respectively.\\
+
+
+
+\textbf{The Power Divergence  $2nI^{\lambda}\left(\frac{x}{n}:\Pi_{0} \right) \stackrel{\text{asyp}}{\sim} X^{2}_{k-1}$ under $H_{0}$}
+\begin{proof}
+For $\lambda \neq 0,-1$\\
+
+\begin{equation*}
+2nI^{\lambda}\left(\frac{x}{n}:\Pi_{0} \right)=\frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}y_{ij}\left[\left(\frac{y_{ij}}{E_{ij}}\right)^{\lambda}-1\right]\hspace{3mm}\lambda \in \mathbb{R}
+\end{equation*}
+
+
+
+
+
+
+\begin{equation*}
+=\frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}n\pi_{0i}\left[\left(\frac{y_{ij}}{n\pi_{0i}}\right)^{\lambda+1}-1\right]
+\end{equation*}
+
+\begin{equation*}
+=\frac{2n}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}\pi_{0i}\left[\left(\frac{n\pi_{0i}+y_{ij}-n\pi_{0i}}{n\pi_{0i}}\right)^{\lambda+1}-1\right]
+\end{equation*}
+
+\begin{equation*}
+=\frac{2n}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}\pi_{0i}\left[\left(1+\frac{y_{ij}-n\pi_{0i}}{n\pi_{0i}}\right)^{\lambda+1}-1\right]
+\end{equation*}
+
+
+
+
+
+%\begin{equation*}
+%\longrightarrow \frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}n\pi_{0i}\left[\left(\frac{y_{ij}}{n\pi_{0i}}\right)^{\lambda+1}  -1\right]
+%\end{equation*}
+
+%\begin{equation*}
+%\longrightarrow \frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}y_{ij}\left[\left(\frac{y_{ij}}{n\pi_{0i}}\right)^{\lambda}  -1\right]
+%\end{equation*}
+
+
+%\begin{equation*}
+%\longrightarrow \frac{2}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}y_{ij}\left[\frac{y_{ij}^{\lambda}}{(n\pi_{0i})^{\lambda}}  -1\right]
+%\end{equation*}
+
+\begin{equation*}
+\longrightarrow \frac{2n}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}\pi_{0i}\left[(1+v_{i})^{\lambda+1}  -1\right]  \hspace{3mm}\text{where}\hspace{3mm} v_{i}= \frac{y_{ij}-n\pi_{0i}}{n\pi_{0i}}
+\end{equation*}
+
+Expandig by Taylor series.
+
+\begin{equation*}
+\longrightarrow \frac{2n}{\lambda(\lambda+1)}\sum\limits_{i=1}^{K}\pi_{0i}\left[(\lambda+1)v_{i}+\frac{\lambda(\lambda+1)}{2}v_{i}^{2}+O_{p}(v_{i}^{3})\right]  
+\end{equation*}
+
+\begin{equation*}
+\longrightarrow 2n\sum\limits_{i=1}^{K}\left[\frac{\pi_{0i}v_{i}}{\lambda}+\frac{\pi_{0i}v_{i}^{2}}{2}+O_{p}(v_{i}^{3})\right]  
+\end{equation*}
+
+\begin{equation*}
+\longrightarrow 2n\left[\sum\limits_{i=1}^{K}\frac{\pi_{0i}v_{i}^{2}}{2}+O_{p}(\frac{1}{n})\right]  
+\end{equation*}
+
+
+\begin{equation*}
+2nI^{\lambda}\left(\frac{y}{n}:\Pi_{0} \right)=2nI^{1}\left(\frac{y}{n}:\Pi_{0} \right) +O_{p}(1),\lambda \in \mathbb{R}
+\end{equation*}
+
+Thus the power divergence has the same asymptotic distribution as the Pearson-Chi squared which is known to be $X^{2}_{k-1}$ under $H_{0}$
+
+\end{proof}
+
+
+
+\cleardoublepage
+
+%=================================================BIBLIOGRAPHY==============================================================
+\newpage
+\begin{center}
+{\bf REFERENCES}
+\end{center}
+\addcontentsline{toc}{section}{\rm REFERENCES \dotfill}
+\begin{thebiblio}{99}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\bibitem{cressie1984}
+Cressie Noel,Read R.C Timothy,\emph{Multinomial Goodness of Fit},Journal of the Royal Statistical Society. Series B (Methodological), Vol. 46, No. 3(1984), pp. 440-464
+
+
+
+\end{thebiblio}
+
+\end{document}
+
+
+
+
