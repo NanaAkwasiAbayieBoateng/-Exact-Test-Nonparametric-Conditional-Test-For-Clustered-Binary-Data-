@@ -1,0 +1,3260 @@
+\documentclass[12pt,oneside]{report}
+%\documentclass[12pt,a4paper, oneside, bold]{thesis}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{undertilde}
+\usepackage{rotating}	% Necessary for Landscape Figure
+\usepackage{color}
+\usepackage{longtable}
+\usepackage[toc,page]{appendix}
+\usepackage{array}
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\abovetopsep}{4pt}
+% Adds extra colours like Dark Green, useful for pictures
+\usepackage{fmtcount}
+% Allows you to suspend and restart footnote counting - useful if you want a footnote in a table
+\usepackage{tikz}
+%\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{caption}
+\usepackage{latexsym}
+\usepackage{subcaption}
+\usepackage{accents}
+\usepackage{pdfpages}
+\usepackage{bm}
+\usepackage{float}% forces caption to stay at the top of tables
+\floatstyle{plaintop} % forces caption to stay at the top of tables
+\restylefloat{table}% forces caption to stay at the top of tables
+\floatstyle{plaintop}
+\restylefloat{table}
+%\floatsetup[table]{capposition=top}
+\usepackage{float}
+\usepackage{lscape}         % Landscape page setup for large tables
+\usepackage{pdflscape} % or {lscape}
+\restylefloat{table}
+\usepackage{indentfirst}	% Necessary for indenting 1st paragraph.
+\usetikzlibrary{shapes, decorations.pathreplacing}% All hail the almighty Tikz
+\usetikzlibrary{shapes}% Lets you have different shaped vertices
+\usetikzlibrary{decorations.pathreplacing}
+% .markings lets you put markings like arrows on your lines in pictures
+% .pathreplacing lets you replace paths by e.g. braces
+\include{longdiv}% Automatically prints long divisions. Useful for tests
+\usepackage{multirow}% Allows cells in arrays to span across multiple rows or columns
+\usepackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}%  Fixes page margins.
+\usepackage{titlesec}%  Needed to run the \titlespacing commands
+\usepackage{tocloft}%  Needed to run the \cfttoctitlefont commands
+\usepackage{setspace}%  Needed for \doublespacing command
+\usepackage{tocloft}%  Used to suppress chapter numbering using \cftpagenumbersoff and \cftpagenumberson commands
+\usepackage{chngcntr}
+\usepackage{epstopdf}
+\usepackage[section]{placeins}
+
+%\usepackage[american,ngerman]{babel}
+%\usepackage[style=apa,sortcites=true,sorting=ynt]{biblatex}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}    % Umlaute (my title page needs to be in German)
+\usepackage{upgreek}        % Upright greek sympbols
+%\usepackage{paralist}       % Inline lists
+%\usepackage{csquotes}        % Landscape page setup for large tables
+%\usepackage[doublespacing]{setspace}
+
+\counterwithin*{chapter}{part}
+%\usepackage{chngcntr}
+\counterwithout{table}{chapter}
+%  This resets chapter numbers with different parts, which Memphis seems to require. The asterisk ensures that chapters are displayed normally in the Table of Contents i.e. 1, 2, 3. Remove it to get them to look like I.1, I.2, I.3, II.1 etc.
+%\counterwithout{table}{chapter}
+%===================================================================================================================
+% Basic Commands for Theorem, Lemma,Proposition,etc.....
+
+\renewcommand{\baselinestretch}{2}
+\renewcommand{\arraystretch}{.5}
+%\newcommand{\qed}{\hfill$\Box$}
+\newtheorem{fact}{Theorem}[section]
+\newtheorem{claim}{Claim}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{word}[fact]{Definition}
+\newtheorem{prop}[fact]{Proposition}
+\newtheorem{ob}[fact]{Observation}
+\newtheorem{Corollary}[fact]{Corollary}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{Guess}[fact]{Conjecture}
+\newtheorem{conj}[fact]{Conjecture}
+\def\theotheorem{A\arabic{theorem}}
+\newtheorem{mydef}{Definition}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}[thm]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{cor}[theorem]{Corollary}
+%\newenvironment{proof}[1][Proof]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black}
+\counterwithout{figure}{chapter}
+
+\theoremstyle{definition}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Lemma}[Theorem]{Lemma}
+%\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Observation}[Theorem]{Observation}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+%\newtheorem{Proposition}[Theorem]{Proposition}
+%\newtheorem{Remark}[Theorem]{Remark}
+\newtheorem{Definition}[Theorem]{Definition}
+%\newtheorem{Open}[Theorem]{Open Problem}
+%\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Claim}[Theorem]{Claim}
+
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{nullhypothesis}{Null Hypothesis}
+
+
+\newtheoremstyle{mystyle}
+  {3pt}{3pt}{}{}{\bfseries}{.}{.5em}
+  {\thmname{#1}\ \theapple.\thmnumber{#2}\thmnote{. #3}}
+\theoremstyle{mystyle}
+
+\newcommand{\triplespacing}{\setstretch {2}}
+\newcommand{\ind}{\hspace{4ex}}
+% This indents paragraphs.
+
+\setlength{\parindent}{15em}
+
+\titlespacing*{\chapter}{0pt}{-34pt}{10pt}
+\titleformat{\chapter}[display]{\normalfont\center}{ \bfseries\MakeUppercase{\chaptertitlename} \thechapter}{6pt}{\normalsize\bfseries\MakeUppercase}
+
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing{\section}{0pt}{\parskip}{-\parskip}
+
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{2pt}
+    \setlength\belowdisplayskip{2pt}
+    \setlength\abovedisplayshortskip{2pt}
+    \setlength\belowdisplayshortskip{2pt}
+}
+
+\titleformat{\section}[hang]{\normalfont\bfseries}{ \thesection}{1.5ex}{\normalsize}
+
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{ \thesubsection}{1.5ex}{\normalsize}
+
+\renewcommand\contentsname{TABLE OF CONTENTS}
+\renewcommand\listtablename{LIST OF TABLES}%display list of tables
+\renewcommand\listfigurename{\normalsize{LIST OF FIGURES}} %display list of figures
+\renewcommand{\bibname}{References}
+
+\renewcommand{\cfttoctitlefont}{\vspace{-.875in}\hfill\bfseries}
+\renewcommand{\cftaftertoctitle}{\hspace{2.05in} \linebreak\linebreak \normalfont Chapter\hfill{\normalfont Page}\vspace{-.5in}}
+
+\renewcommand{\cftlottitlefont}{\vspace{-.94in}\hfill\bfseries\centering\textsc}
+\renewcommand{\cftafterlottitle}{\hspace{2.25in} \linebreak\linebreak \normalfont Table\hfill{\normalfont Page}\vspace{-.35in}}
+
+
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftsecdotsep}{\cftnodots}
+\renewcommand{\cftsubsecdotsep}{\cftnodots}
+\renewcommand{\cftfigdotsep}{\cftnodots}
+
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+\makeatletter
+\renewcommand{\cftsubsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsubsecaftersnum}{\end{lrbox}}
+\makeatother
+
+\newcommand\ex{\textup{ex}}
+\newcommand\Ex{\textup{Ex}}
+\newcommand\sat{\textup{sat}}
+\newcommand\Sat{\textup{Sat}}
+\newcommand\SAT{\textup{SAT}}
+\newcommand\bG{\,\overline{\!G}}
+\newcommand\bK{\,\overline{\!K}}
+\newcommand\eps{\varepsilon}
+\newcommand\declare[1]{\medskip\noindent\textbf{#1}}
+\linespread{1.1}
+
+
+
+
+	\usepackage{listings}
+
+	%\lstloadlanguages{r}%
+	%\lstset{language=r }
+	
+	%===========================================================================
+	% commands for displaying codes in appendix
+	%============================================================================
+	\lstloadlanguages{r}%
+	\lstset{language=r }
+	
+	% Includes an r script.
+	% The first parameter is the label, which also is the name of the script
+	%   without the .m.
+	% The second parameter is the optional caption.
+	\definecolor{codegreen}{rgb}{0,0.6,0}
+	\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+	\definecolor{codepurple}{rgb}{0.58,0,0.82}
+	\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+	
+	\lstdefinestyle{mystyle}{
+		backgroundcolor=\color{white},   
+		commentstyle=\color{codegreen},
+		keywordstyle=\color{magenta},
+		numberstyle=\tiny\color{codegray},
+		stringstyle=\color{codepurple},
+		basicstyle=\footnotesize,
+		breakatwhitespace=false,         
+		breaklines=true,                 
+		captionpos=b,                    
+		keepspaces=true,                 
+		numbers=left,                    
+		numbersep=5pt,                  
+		showspaces=false,                
+		showstringspaces=false,
+		showtabs=false,                  
+		tabsize=2
+	}
+	
+	\lstset{style=mystyle}
+	
+	
+	
+	
+	
+	
+	
+\pagenumbering{roman}
+
+
+\begin{document}
+
+\raggedright
+\doublespacing
+\setlength{\parindent}{1.5em} % defines the size of the indentation NEEDS TO BE HERE TO NOT BE COUNTERED BY \RAGGEDRIGHT
+%Cover_page
+\begin{center}
+\vspace*{.625in}ON SOME EXACT   NONPARAMETRIC CONDITIONAL TESTS FOR CLUSTERED BINARY DATA\bigskip
+
+by\\
+Nana Akwasi Abayie Boateng\\
+
+\vspace{1.4in}A Dissertation\\
+Submitted in Partial Fulfillment of the\\
+Requirements for the Degree of\\
+Doctor of Philosophy\\
+
+\vspace{.5in}Major: Mathematical Sciences\\
+
+\vspace{1in}The University of Memphis\\
+December 2016\\ \thispagestyle{empty}
+\end{center}
+
+\pagenumbering{roman}
+\pagebreak
+\newpage
+
+\setcounter{page}{2}
+\vspace*{3in}
+\begin{center}
+\vspace{.5in}
+Copyright \copyright\ 2016 Nana Akwasi Abayie Boateng\\
+All rights reserved
+\end{center}
+\newpage
+
+%Acknowledgements
+\singlespacing
+\begin{center}\textbf{ACKNOWLEDGMENTS}\end{center}
+\doublespacing
+
+\addcontentsline{toc}{chapter}{Acknowledgments}
+%\addcontentsline{toc}{chapter}{List of Tables}
+
+I am thankful to my Lord Jesus Christ for granting me the strength
+to  make this work a possibility. I cannot forget about the enormous
+help I  have received from my advisor Dr. E. O. George throughout the
+period of writing this thesis. I thank him so much for all his
+advice, suggestions and directions.
+I am particularly grateful to  Dr. Dale Bowman for her 
+tremendous support, guidance and incisive  suggestions   through out the period of writing  this dissertation   and   all of the time that I have spent here as a student in
+the Mathematics Department at the University of Memphis.
+I also would like to say a special thank you to my dissertation 
+committee members Dr. Albert Okunade  and Dr. Su Chen for their role in
+making this whole work a success.
+ \\
+
+
+%================================================ Dedication Page =================================================
+%\newpage
+%
+%\begin{center}
+%	
+%	{ \bf Dedication } \\ [.15in]
+%\end{center}
+%
+%This thesis is dedicated to my parents. I am forever grateful to
+%them for their unconditional love,prayer,material and emotional
+%support throughout   my whole life. I pray the good Lord reward them
+%for all their sacrifices in my life.
+
+\newpage
+%\pagenumbering{gobble}
+\singlespacing
+
+\begin{center}\textbf{ABSTRACT}\end{center}
+
+\ind Boateng, Nana Akwasi Abayie . Ph.D. The University of Memphis. December, 2016. On Some Exact Nonparametric Conditional Test for Clustered Binary Data. Co-Major Professors: E. O. George, Ph.D. and D. Bowman Ph.D.\\
+\doublespacing
+
+%The problem of analyzing association between response and treatment using exchangeable correlated binary data has been addressed with a variety of models.
+%It is important to make  minimal  assumptions  on the distribution of the data space, such as coming from a normal or chi-squared distribution  in the computation of the $p-value$ for a test of no association.  A widely used  test of association between the rows and columns of a contingency table is the test of independence. Classical statistical tests such as likelihood ratio  test rely on large sample approximation of the  distribution  of the test statistic to make inferences about a contingency table. These asymptotic distributions are known  to be  inaccurate when sample size is very small, sparse or when data are  unbalanced or sparse \cite{mehta1992}.
+%The goal of this dissertation is to develop and implement exact conditional  nonparametric testing procedures for sparse, unbalanced correlated clustered binary data.
+%
+%The increasing availability of computational power and the  development of table enumeration methods  such as the network algorithm\cite{Mehta1983} and Patefield's algorithm \cite{patefield} have made   exact p-value computation possible in many cases. For fixed cluster sizes, the distribution of  responses can be modeled as a multinomial  distribution. The marginal sums of these multinomial distributions  by the factorization theorem are joint  sufficient statistics \cite{bg}. We  construct an exact conditional test by conditioning on the sufficient statistics of the multinomial distribution , thereby eliminating all nuisance parameters. By conditioning on the cluster sizes, we construct an exact nonparametric test for linear trend using a linear trend test as our test statistic. The performance  of some of the tests  proposed is measured against unconditional and asymptotic methods by running a simulation. 
+%
+%
+%The results of our implementation of these procedures indicate that the exact p-value can be significantly different from the large sample theory approximation when data is sparse or unbalanced.
+
+
+
+
+
+
+ 
+The development of exact, non-asymptotic, procedures for analyzing clustered discrete data has remained a challenging problem for research statisticians due to the dearth of tractable probability models for describing complex dependence structures of discrete data points within clusters.  Under an assumption of de Finetti's \cite{Diaconis1} definition of infinite exchangeability, several models have been developed.  However, these procedures are not valid when data come from intrinsically finite exchangeable population. Moreover, the procedures invariably conduct inference based on asymptotic distribution of estimators or test statistics.   For example, for testing association between the rows and columns of a contingency table   the asymptotic distribution of the likelihood ratio statistic under null hypothesis of independence is widely used in many applications. Such asymptotic distributions are known to be inaccurate when sample size is moderate or when data are unbalanced or sparse\cite{mehta1992}. The goal of this dissertation is to develop and implement exact conditional nonparametric testing procedures for sparse, unbalanced correlated clustered binary data under an assumption of finite exchangeability.  The methods proposed in this dissertation takes advantage of the increasing availability of computational power and the development of efficient procedures for enumerating tables, such as the network algorithm \cite{Mehta1983} and Patefield's algorithm \cite{patefield}. These methods have facilitated the computation of exact p-value in many cases.  We show that for fixed cluster sizes, the distribution of marginal sums of responses can be modeled as a multinomial distribution and that these marginal sums are jointly sufficient statistics  \cite{bg}. We construct an exact test by conditioning on the sufficient statistics of the multinomial distribution, thereby eliminating all nuisance parameters. By conditioning on the cluster sizes, we develop an exact nonparametric test for linear a trend.  We illustrate the performance of the tests proposed in comparison to those based on unconditional and asymptotic methods by using Monte-Carlo and other stochastic simulations. Our research demonstrates that   the exact tests that we have developed can have significantly different p-values, and in  many cases superior power, when compared to those using large sample theory approximation when data are  sparse or cluster sizes are unbalanced.
+\addcontentsline{toc}{chapter}{Abstract}
+\pagebreak
+
+\newpage
+
+\singlespacing
+
+%\doublespacing
+\tableofcontents
+
+\clearpage
+
+
+\newpage
+\doublespacing
+\begin{center}
+	\listoftables
+	\addcontentsline{toc}{section}{\rm List of Tables}
+\end{center}
+
+
+
+
+
+%================================================ List of Figures ====================================================
+%\newpage
+%\begin{center}
+%	\addcontentsline{toc}{section}{\rm List of Figures}
+%	\listoffigures
+%\end{center}
+
+
+
+
+
+\clearpage
+\newpage
+\pagenumbering{arabic}
+\doublespacing
+
+\chapter{Introduction}
+The validity of statistical inference based on large sample theory is often questionable  whenever data are clustered (correlated), sparse and unbalanced or the sample size is small.
+One of the common mistakes made by practitioners of data science in this era of big data is to assume that big data correspond to a large sample. This assumption often leads to the use of software with algorithms constructed for large sample for inference with multidimensional sparse big data sets that have intrinsically small samples. In dealing with data (big or small) in which data points are discrete and categorical, parametric distributional assumptions are usually difficult to formulate or verify. Exact Nonparametric procedures have long been known to be suitable for inference involving such data.
+%Statistical inference on hypothesis testing typically  relies on the $p-value$ to make decisions to accept or reject a null hypothesis. A small $p-value$ provides evidence against the null hypothesis.
+%%Since data is often collected from a variety of backgrounds,
+%It is important to make as few assumptions as possible about the distribution of the data, such as coming from a normal or chi-squared distribution when obtaining the  $p-value$. There is  wide class of nonparametric statistical procedures available for comparing one or more populations that  do not rely on distributional assumptions. These methods   allow $p-values$ to be computed easily  without any distributional assumptions. Often computation of p-values using nonparametric methods do not rely  on   large sample theory. The validity of  statistical inference  based on large sample theory is questionable whenever data is sparse, unbalanced or the sample size is small \cite{mehta1992}. Nonparametric methods are particularly important when dealing with categorical response data.\\
+
+Significant progress has been made in the  development and implementation of exact hypothesis testing  in the field of uncorrelated categorical data. Agresti \cite{Agresti2001} gives an overview of   both exact conditional and exact unconditional inference. The same cannot be said  for correlated binary data. Very few alternatives exist for making valid statistical inference on clustered binary data with  a small sparse or unbalanced samples. Exact methods guarantee that the size of a hypothesis test does not exceed the nominal level and also that the coverage probability for a confidence interval is at least  the nominal confidence coefficient \cite{Agresti2001}. Exact methods have often been criticized  for their conservativeness, especially  when  relevant conditional distribution is highly discrete leading to the conservativeness \cite{Agresti2001}. One way to address the discreteness is to use the mid-p-value which can smooth out  the $P-value$ and consequently  reduce the discreteness.\\
+
+Correlated clustered data occur frequently in  biomedical research settings such as  teratological experiments, opthalmologic, otolaryngic  and developmental studies. 
+%In developmental toxicity studies for example, pregnant mice may be  exposed to ordered  dose levels  of a potentially toxic chemical and the developing fetuses  of each animal  examined for adverse outcomes.
+ What constitutes a cluster  depends on the set up of the experiment. A cluster in a developmental toxicity study consists of the fetuses of a single dam, while in familial studies a cluster could be a set of family members. The sampling units in a developmental study are the pregnant dams and the observational units are the fetuses of each dam. Since fetuses in a cluster share similar genetic traits and environmental exposure, they tend to exhibit similar individual responses. Failure to account for these intra-litter correlations among fetuses could potentially lead to erroneous inferences.
+Several approaches for dealing with this problem of intra-cluster correlation have been proposed. Some of the early approaches include the use of quasi-likelihood methods such as generalized estimating equations methods    \cite{prentice}, \cite{gee}, a saturated model \cite{bg}, Beta-Binomial,Compound-Beta Binomial and Corrected Binomial models \cite{williams}, \cite{Rosner}. Marginal models such as the GEE were popularized for clustered binary data due to the availability of software and relative computational ease \cite{molenberghs}. Expectation maximization(EM) algorithms have also been used to analyze clustered binary data with unequal cluster sizes\cite{Stefanescu}. Kuk and Pang \cite{kuk} proposed smoothing methods for unequal cluster sizes under marginal compatibility assumption. Their model accounts for the variability of the  estimated null expectation under marginal compatibility. The assumption of marginal compatibility allows estimation to be done over different cluster sizes. When data are sparse, the probability function estimated using a saturated model can be very jagged and some kind of smoothing is needed \cite{kuk}. Kuk \emph{et al} extended the penalized kernel method to obtain parameter estimates for  unequal cluster sizes using an EM-type algorithm.\\
+Luta \textit{et al} \cite{Luta} proposed an exact conditional logistic regression  for correlated binary data that  conditions on nuisance parameters and treats the clusters as fixed effects. Their approach however, results in  over conditioning as the number of clusters increases \cite{cocoran}. Log-linear models have also been used in analyzing clustered data. Log-linear models may estimate parameters with different standard errors and different covariances making interpretation of the analysis difficult  \cite{djbest}.
+%Sparse data may suffer from numerical convergence problems making p-value computation time difficult.\cite{djbest}
+Corcoran \textit{et al} \cite{cocoran} proposed an exact linear trend test for correlated binary data based on an exponential model proposed by Molenberghs and Ryan \cite{molenberghs}. By conditioning on  sufficient statistics, they eliminate  the nuisance parameters under the null hypothesis of no treatment effect, leading to a conditional test analogous to  Fisher's Exact test. The exponential model from which the conditional test is obtained   however, only accounts for pairwise interactions and assumes a linear logistic model for the marginal response probability using the Cochran-Armitage trend statistic \cite{aniko}. Higher order interactions in the clusters are set to zero.\\
+Difficulty with using many  procedures arise when data are sparse, unbalanced or when sample size is small. For example when  data  are sparse, statistical procedures that involve maximization of the likelihood may suffer convergence problems \cite{Agresti2001}. Valid statistical inference can be conducted whenever one is presented with a small sample, sparse or unbalanced data  by conducting exact inference. The justification for exact conditional inference lies in three main principles \cite{mehta1}:the sufficiency, ancillary and randomization principles. An   exact conditional test  can be  obtained by   conditioning on  sufficient statistic   to  eliminate   nuisance parameters in the model under the null hypothesis of  no association between response and treatment. The data can be represented in a contingency table format with treatment groups as rows (or columns) and response types as columns (or rows). To test for treatment effect using exact methods, a reference set is specified. The reference set contains all tables with marginal sums equal to that of the observed table. The   exact $P-value$  can consequently be computed by comparing the observed table with tables in the reference set. If the observed table is unlikely under the null hypothesis when compared to the reference set, the null hypothesis is rejected.\\
+%summing the probability distributions of each table or test statistic  over the reference %set which is greater than or equal to the value of the observed table.
+Exact inference has gained increased popularity  in recent times due to the availability of computational power and efficient  table generation algorithms. Some of the various table enumeration methods include the network algorithm \cite{Mehta1983}, Fourier transform and Algorithm AS 159 \cite{patefield}.
+Mehta and Patel \cite{Mehta1983}, with their introduction of the network algorithm, greatly extended the bounds of computational feasibility for exact inference. The network algorithm implicitly lists all tables in the reference set through a series of nodes and arcs. Each table in the reference set is represented by the sum of lengths of a distinct path in the network. The network representation is used in computing the exact distribution by a stage-wise recursion process through the network path. The speed of computation of $P-values$ is increased by computing at each node, lower and upper bounds on the test statistic  value for each table that passes through that node \cite{Agresti1992}.
+
+
+Explicit enumeration of all tables becomes impractical as the sample size increases. For example, tables with sample sizes 20 and 100, have about 40000 and $7\times 10^9$ tables respectively \cite{Agresti2001}. For large sample sizes, an alternative is to use  Monte-Carlo methods to sample a large number of tables from the reference set and make inference on the sample of tables. This reduces the computational time significantly for large sample sizes. 
+
+%\textcolor{blue}{ I WILL NEED TO WRITE SOME  EXTRA STUFF TO WHAT IS BELOW %HERE IN  THE INTRODUCTION}
+
+The remainder of this dissertation is organized  as follows.
+In chapter 2,  we provide a review of various  nonparametric approaches to modeling categorical data.
+% Nonparametric models do not require distribution assumptions on the underlying data.
+  The Fisher's exact test is among the most popular conditional exact test \cite{Fisher}. Its popularity has being easily spurred on  by  accessible computer software.
+% The multinomial distribution is the most common distribution in sampling  categorical data. 
+In chapter 3, we formally introduce  the problem of modeling exchangeable clustered binary data by conditioning on complete sufficient statistics. We discuss  the formulation  of the problem,  computation of the $P-values$  and various algorithms that allow  sampling from the reference set to be computationally feasible. The Monte Carlo approach provides a convenient way to overcome the computational challenge of explicitly listing  every single  table in the reference set. Two simulation studies are performed to examine the performance of the test under several hypothetical cluster sizes, intra-litter correlations and sample sizes. We also implement the test using real data obtained from the EDGE toxicology experiment. 
+
+In chapter 4, we introduce the exact stratified linear rank test for clustered data. We assign non decreasing monotone Weights to the ranked  row and column sums  for each stratum. By conditioning on the cluster sizes, we order each stratum by a linear trend statistic. The overall test statistic is obtained by summing the individual linear trend test statistics over all the available  strata.
+
+In chapter 5, we extend the exact test to the field  of multiple testing. Simultaneous testing of multiple hypothesis introduces  type-I error probability  which approaches one  as the number of test increase. The adjusted $P-value$  is  used to make inference in multiple testing to control for both the Familywise Error Rate and  False Discovery rate. Various approaches to compute the adjusted p-values are discussed including resampling methods to estimate  the exact adjusted $P-value$ .
+\newpage
+
+%-------------------------------------------------------------------------------------------------------------------------
+\chapter{Literature Review}
+\section{Overview of Nonparametric Models for Categorical Data}
+ 
+
+\subsection{Unconditional Distributions for Categorical Data}
+The exact probability of any categorical data $\textbf{X}$, depends on the sampling scheme that is used to generate $\textbf{X}$. Three key distributions for modeling categorical responses are  the full multinomial, product multinomial and Poisson distributions.
+%Unlike conditional distributions,these three schemes contain unknown parameters such as probabilities of success in each cell in a $g\times K$ Table.
+\subsection{Multinomial Distribution}	
+Suppose that each of $n$ independent, identical trials has  an outcome one of  $K$ possible categories. Let $X_{i}$ be the number of times an outcome of category $i$ is observed in $n$ independent trials,then  the vector $\underline{\textbf{X}}=(X_{1},X_{2}\cdots,X_{K})$ has multinomial distribution. Let $\pi_{i}$ denote the probability of outcome in category $i$ for each trial. The probability mass function of the multinomial distribution is given as:\\
+
+
+ \[ P(X_{1}=x_{1},X_{2}=x_{2}\cdots,X_{K}=x_{K})=\begin{cases}
+\frac{n !}{x_{1}!x_{2}!\cdots x_{k}!} \displaystyle \prod\limits_{i=1}^{K}\pi^{x_{i}}_{i} & ,\mbox{if} \hspace{3mm}\sum\limits_{i=1}^{K}x_{i} =n, \hspace{3mm}\sum\limits_{i=1}^{K}\pi_{i}=1\\
+0 & \mbox{otherwise} \\
+\end{cases}
+\]
+The binomial distribution is a special case where $K=2$. The expected value, covariance and variance for the multinomial distribution is given as:
+$E(X_{i})=n\pi_{i}$ ,$cov(X_{i},X_{j})	=-n\pi_{i}\pi_{j}$ and $var(X_{i})=n\pi_{i}(1-\pi_{i})$ respectively.
+
+\subsection{Full Multinomial Sampling}
+Consider two factors  with $g$ and $K$ categories respectively. Suppose $n$ items are sampled independently from  the population, classify each $X_{ij}$ as the cell count in the $ith$ row of the $jth$ column, $i=1,\cdots,g$ and $j=1,\cdots K$. Let  the  probability of an outcome in the $ith$ category of factor 1 and the $jth$ category of factor 2 be denoted as  $\pi_{ij}$ for $i=1,\cdots,g$ and $j=1,\cdots K$. In this approach the sample size $n$ is assumed to be fixed, and the cell counts $X_{ij}$ are random.\\
+$(X_{11},\cdots,X_{gK}) \sim Mult(n,\pi_{11},\cdots,\pi_{gK})$.
+%where the probability of response in cell $(i,j)$, $\pi_{ij}=p(factor \hspace{1mm} %1=i,factor \hspace{1mm}2=j)$\\ 
+The hypothesis of interest is independence of factor 1 and factor 2, $H_{0}:\pi_{ij}=\pi_{i.}\pi_{.j}$. Where $\pi_{i.}$ is the marginal probability of being in the $ith$ category of factor 1 and $\pi_{.j}$ is the marginal probability of being in the $jth$ category of factor 2. Binomial sampling is a special case when each of the factors has only two categories.
+\subsection{Product Multinomial Sampling}
+Product multinomial sampling is generated if for any table $\textbf{X}$ either the marginal sums  of factor 1 are fixed and the margins sums of factor 2 are allowed to vary or vice versa, for $i=1,\cdots,g$ and $j=1,\cdots K$. Let  $m_{i}$ be the fixed marginal sum of the $ith$ category of factor 1  which is independently sampled. Each  cell count  $X_{ij}$ is classified into  $j$ category of factor 2. Each row of the table with $m_{i}$ observations, $i=1,\cdots,g$ has a multinomial distribution with parameters, $(X_{i1},\cdots,X_{iK}) \sim Mult(m_{i},\pi_{i1},\cdots,\pi_{iK})$. The distribution of any table $\textbf{X}$ is therefore the product of independent multinomial distributions from the rows.\\
+
+\begin{equation}
+P(\underline{X}=\underline{x})=P(\underline{\textbf{x}})=\displaystyle \prod\limits _{i=1}^{g}\frac{m_{i}!\prod\limits _{j=1}^{K}\pi_{ij}^{x_{ij}}}{\prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}x_{ij}!}
+\end{equation}
+
+
+\vspace{5mm}
+Independent binomial sampling is a special case of product multinomial sampling where the row and column variables, factors 1 and 2 have two levels.  An example of a product multinomial sampling is if  each of  $g$ different treatments is administered to $m_{i}$ patients,$i=1,\cdots,g$ and the responses to each treatment level $i$ is recorded in $K$ categories. The hypothesis of interest would be whether the different treatments are equivalent thus whether the probability $\pi_{ij}$ of treatment $i$ with response $j$ is the same across all treatment levels $i$, specifically $H_{0}:\pi_{ij}=\pi_{j}$, for $j=1,2,\cdots,K$.
+\subsection{Poisson Sampling}
+In Poisson sampling the number trials/sample size is not fixed but random. Each cell count $X_{ij}$ is considered as an independent Poisson random variable, $X_{ij}\sim Poisson(\lambda_{ij})$, where $\lambda_{ij}$ is the rate of an occurrence of an event in  cell $(i,j)$. The sampling scheme is under the assumption that the data  generation process follows the Poisson distribution. Poisson sampling scheme is useful in modeling counts where the probability of  success of an event is very small in a very large number of trials. It is usually used in modeling counts over a fixed period of time or space. The distribution of a table $\textbf{X}$  with  independent cell counts $X_{ij}$,  $i=1,\cdots,g$ and $j=1,\cdots K$ is
+
+\begin{equation}
+P(\textbf{x})=\displaystyle \prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\frac{(\lambda_{ij})^{x_{ij}}e^{-\lambda_{ij}}}{x_{ij}!}
+%\frac{m_{i}!\prod\limits _{j=1}^{K}\pi_{ij}^{x_{ij}}}{\prod\limits _{i=0}^{g}\prod\limits %_{j=1}^{K}x_{ij}!}
+\end{equation}
+
+\vspace{5mm}
+The hypothesis of interest is independence of each cell,$H_{0}:\pi_{ij}=\pi_{i.}\pi_{.j}$. An example of Poisson sampling is a situation in which there are  $g\times K$ groups of people, one group  for each cell of the $g\times K$ table. The members of each group arrive randomly at a hospital for a medical check up over a period of time. There exists a connection between the  Poisson and multinomial distributions. Suppose $X_{ij}\sim Poisson(\lambda_{ij})$,$i=1,\cdots,g$ and $j=1,\cdots K$. Let 
+
+\begin{equation*}
+ n=\sum\limits_{i}\sum\limits_{j}X_{ij} \hspace{4mm}\text{then}\hspace{4mm} \sum\limits_{i}\sum\limits_{j}X_{ij} \sim Poisson(\lambda) \hspace{4mm} \text{where}\hspace{4mm} \lambda=\sum\limits_{i}\sum\limits_{j}\lambda_{ij}
+\end{equation*}
+
+%\begin{equation*}
+%\sum\limits_{i}\sum\limits_{j}X_{ij} \sim poisson(\lambda)   \hspace{4mm} \text{then}  \hspace{4mm} \lambda=\sum\limits_{i}\sum\limits_{j}\lambda_{ij}
+%\end{equation*}
+
+
+
+\begin{equation*}
+P(X_{11}=x_{11},\cdots,X_{gK}=x_{gK}|\sum\limits_{i}\sum\limits_{j}x_{ij}=n)=\displaystyle\frac{P(X_{11}=x_{11},\cdots,X_{gK}=x_{gK})}{P(\sum\limits_{i}\sum\limits_{j}x_{ij}=n)}
+\end{equation*}
+\begin{equation*}
+=\displaystyle\frac{ \prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\frac{\lambda_{ij}^{x_{ij}}exp^{-\lambda_{ij}}}{x_{ij}!}}{\frac{\lambda^{n}exp^{-\lambda}}{n!}}=\displaystyle\frac{ exp\left(^{-\sum\limits _{i=1}^{g}\sum\limits _{j=1}^{k}\lambda_{ij} }\right)\displaystyle  \prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\frac{-\lambda_{ij}^{x_{ij}}}{x_{ij}!} }{\frac{\lambda^{n}exp^{-\lambda}}{n!}}=\displaystyle \frac{exp(-\lambda)\displaystyle  \prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\frac{\lambda_{ij}^{x_{ij}}}{x_{ij}!} }{\frac{\lambda^{n}exp^{-\lambda}}{n!}}
+\end{equation*}
+
+\begin{equation*}
+=n!\displaystyle\prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\frac{1}{x_{ij}!}\left(\frac{\lambda_{ij}}{\lambda}\right)^{x_{ij}}
+\end{equation*}
+
+Hence the distribution of Poisson counts conditional on their sum is a multinomial distribution.
+%$=\frac{n!}{\prod\limits_{i=1}^{g}\prod\limits_{j=1}^{k}x_{ij}}\displaystyle\prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\pi_{ij}^{x_{ij}} \hspace{2mm}where \hspace{2mm} \pi_{ij}=\frac{\lambda_{ij}}{\lambda} $\\
+
+\begin{equation*}
+=\frac{n!}{\prod\limits_{i=1}^{g}\prod\limits_{j=1}^{k}x_{ij}}\displaystyle\prod\limits _{i=1}^{g}\prod\limits _{j=1}^{K}\pi_{ij}^{x_{ij}} \hspace{2mm}\text{where} \hspace{2mm} \pi_{ij}=\frac{\lambda_{ij}}{\lambda}
+\end{equation*}
+
+
+\section{Conditional Distributions for Unordered $g \times K$ Contingency  Tables}	
+
+\subsection{Fishers Exact Test}
+Consider $N$ observations of two dichotomous factors, factor 1 and factor 2 with possible combinations given in a $2\times 2$ contingency table \ref{table:fisher} below.
+%\FloatBarrier
+\begin{table}[h!]
+	\begin{center}
+		\caption{Fisher's Exact Test for $2 \times 2$ Tables}
+		\begin{tabular}{c c |c  c |c}
+			\hline
+			& &Factor 1   &  &  \\ 
+			&&&&\\
+			& & 1& 2 &RowTotal \\ \hline
+			
+			\hline
+			&&&&\\
+			
+			Factor 2	&1&$ A_{11}$& $A_{12}$ &$m_{1}$ \\ \cline{3-5}
+			&&&&\\
+			&2&$ A_{21}$& $A_{22}$ &$m_{2}$ \\ \hline
+			&&&&\\
+			&Column Total & $A_{1}$ & $A_{2}$ & $N$ \\\hline
+			%&Column Weights & $w_{0,k}$ & $w_{1,k}$ & & \\\hline
+			
+			
+		\end{tabular}
+		%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+		\label{table:fisher}
+	\end{center}
+\end{table}
+%\FloatBarrier
+
+For each fixed row, the counts $ A_{11}$ and $ A_{21}$ are distributed as two  independent binomial distributions  with parameters,  $ (m_{1},\pi_{1}) $ and $ (m_{2},\pi_{2}) $ respectively. Where $\pi_{1}$ and  $\pi_{2}$ are the probability of success in row 1 and 2 respectively. Under the null hypothesis of row independence, $H_{0}:\pi_{1}=\pi_{2}=\pi$, the distribution of  $A_{ij}$ conditioned on  the row and column marginals is the hypergeometric distribution. Let $X=(m_{1},m_{2},A_{1},A_{2})$.Then \\
+
+
+\begin{equation}
+p_{X}= \frac{\binom{m_{1}}{A_{11}}\binom{m_{2}}{A_{21}}}{\binom{N}{A_{1}}}
+\end{equation}
+
+\vspace{5mm}
+
+Two common sampling schemes for $2\times2$ tables are the Binomial and Multinomial. Binomial sampling is obtained by fixing the row sums. %such as in medical experiments where patients are assigned to either treatment 1 or treatment 2 and response to treatment is recorded as success or failure.
+The hypothesis of interest is 
+$H_{0}:\pi_{1}=\pi_{2}$ versus $H_{a}:\pi_{1}\neq \pi_{2}$. In the multinomial case the cell counts $(A_{11},A_{12},A_{21},A_{22})$ are multinomial distributed with a fixed sample size $N$ and probability of  cell  count in cell$(i,j)$ is $\pi_{ij}$,$i=1,2$ and $j=1,2$. The hypothesis of interest in the test of independence of the cells    is  $H_{0}:\pi_{ij}=\pi_{i.}\pi_{.j}$ versus $H_{a}:\pi_{ij}\neq \pi_{i.}\pi_{.j}$,$i=1,2$ and $j=1,2$.\\
+The hypothesis may equivalently be expressed in terms of the odds ratio.$H_{0}:OR=1$ and $H_{a}:OR\neq 1$. where,
+\begin{equation*}
+\frac{\pi_{11}\pi_{22}}{\pi_{12}\pi_{21}}
+\end{equation*}
+ An odds ratio equal to one indicates independence of the cells.\\
+Let the observed table be $x$ with marginals $(A_{1},A_{2},m_{1},m_{2})$.
+Define the reference set
+\begin{equation*}
+\Gamma=(Y:Y\hspace{3mm} \mbox{is}\hspace{3mm} 2\times2 ;A_{1},A_{2},m_{1},m_{2})
+\end{equation*}
+% $\Gamma=(Y:Y\hspace{3mm} \mbox{is}\hspace{3mm} 2\times2 ;A_{1},A_{2},m_{1},m_{2})$
+  is defined as the set of all tables with marginal sums  equal to the observed. The exact two sided p-value $P$ is defined as :
+\begin{equation*}
+\sum\limits_{Y \in \Gamma^{*}}P_{Y}  \hspace{5mm} \text{where}\hspace{5mm}
+\Gamma^{*}=\left(Y:Y\hspace{3mm} \in \Gamma \hspace{3mm} \text{is}\hspace{3mm} 2\times2 ;P_{Y})\geq P_{X}\right)
+\end{equation*}
+%$\sum\limits_{Y \in \Gamma^{*}}P(Y) $ \hspace{5mm} where
+%$\Gamma^{*}=\left(Y:Y\hspace{3mm} \in \Gamma \hspace{3mm} \text{is}\hspace{3mm} 2\times2 ;P(Y))\geq P(X)\right)$\\
+%$P=\sum\limits_{Y\in \Gamma}P(Y)$ where $p(Y)$ and $p(X)$ are the probability distributions of the tables in the reference set and the observed table respectively computed under the null hypothesis  and   $\mathbb{I}$ is the indicator function defined below:\\
+%%$\[   \sum\limits_{\substack{\mathllap y \in }{\mathllap \Gamma }\\
+%%	{\mathllap P(y) \geq P(x)}}\]$
+%\[ \mathbb{I}=\begin{cases}
+%1 & \mbox{if} \hspace{2mm} p(Y)\geq p(X)  \\
+%0 & \mbox{otherwise}\\
+%\end{cases}
+%\]
+%{y\in \Gamma}P(y)[p(y)\geq p(x)]$\\
+\vspace{3mm}
+
+The exact p-value $P$ is then obtained as the sum of distributions $P_{Y}$ of all tables in  the reference set at least as extreme as the observed table $P_{X}$.\\
+The $2 \times 2$ Fishers exact test can be easily extended to tables of size $g\times K$. Suppose patients are now assigned to $g$ treatments and response to treatment is recorded in $K$ categories as shown in Table  \ref{table:fisherg}.
+%\FloatBarrier
+\begin{table}[h!]
+	\caption{Fisher's Exact Test for $g \times k$ Tables}
+	\begin{center}
+		
+		\begin{tabular}{c c |c  c c c|c}
+			\hline
+			& &Factor 1   &  & && \\ 
+			&&&&&&\\
+			& & 1& 2 &$\cdots$&K&RowTotal \\ \hline
+			
+			\hline
+			&&&&&&\\
+			
+			&1&$ A_{11}$& $A_{12}$ &&$A_{1K}$&$m_{1}$ \\ \cline{2-7}
+			&&&&&&\\
+			&2&$ A_{21}$& $A_{22}$ &$\cdots$&$A_{2K}$&$m_{2}$ \\ \cline{2-7}
+			&&&&&&\\
+			&3&$ A_{31}$& $A_{32}$ &$\cdots$&$A_{3K}$&$m_{3}$ \\ \cline{2-7}
+			Factor 2	&&&&&&\\
+			&$\vdots$&$\vdots$&$\vdots$&&$\vdots$&$\vdots$\\
+			&&&&&&\\\cline{2-7}
+			&&&&&&\\
+			&g&$ A_{g1}$& $A_{g2}$ &$\cdots$&$A_{gK}$&$m_{g}$ \\ \cline{2-7}
+			&&&&&&\\
+			&Column Total & $A_{1}$ & $A_{2}$ &$\cdots$&$A_{g}$& $N$ \\\hline 
+			%&Column Weights & $w_{0,k}$ & $w_{1,k}$ & & \\\hline
+			
+			
+		\end{tabular}
+		%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+		\label{table:fisherg}
+	\end{center}
+\end{table}
+%\FloatBarrier
+For each fixed row, $(A_{i1},\cdots,A_{iK}),$ is distributed as a multinomial distribution with parameters $(m_{i},\pi_{i1},\cdots \pi_{iK})$ for $i=1,\cdots,g$. The null hypothesis can be expressed as \\
+
+$H_{0}:\pi_{1j}=\pi_{2j}=\cdots=\pi_{gj}=\pi_{j} \hspace{3mm} \hspace{2mm}j=1,\cdots,K $ 
+%where $\pi_{i.}$ is the marginal probability of the $ith$ level of factor 2\\
+
+Under the null hypothesis of independence of rows, the row sums $(A_{1},\cdots,A_{g}|H_{0})$ are also multinomial distributed with parameters $(N,\pi_{1},\cdots,\pi_{k}|H_{0})$\\
+
+
+\begin{equation*}
+\displaystyle P(A_{i1}=a_{i1},\cdots,A_{gK}=a_{gK},i=1,\cdots g|H_{0};A_{1},\cdots,A_{g})=
+\end{equation*}
+
+%$\displaystyle P(A_{i1}=a_{i1},\cdots,A_{gK}=a_{gK},i=1,\cdots g|H_{0};A_{1},\cdots,A_{g})=$\\
+\begin{equation*}
+\displaystyle\frac{P(A_{i1}=a_{i1},\cdots,A_{gK}=a_{gK};i=1,\cdots g|H_{0})}{P(A_{1}=a_{1},A_{2}=a_{2},\cdots,A_{K}=a_{K})}
+\end{equation*}
+%$\displaystyle\frac{P(A_{i1}=a_{i1},\cdots,A_{gK}=a_{gK};i=1,\cdots %g|H_{0})}{P(A_{1}=a_{1},A_{2}=a_{2},\cdots,A_{K}=a_{K})}$\\
+
+
+\begin{equation*}
+=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}\prod \limits_{j=1}^{K}\pi_{ij}^{a_{ij}}}{\binom{N}{a_{1},\cdots,a_{K}}\prod \limits_{j=1}^{K}\pi_{j}^{a_{j}}}
+\end{equation*}
+
+%$=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}\prod \limits_{j=1}^{K}\pi_{ij}^{a_{ij}}}{\binom{N}{a_{1},\cdots,a_{K}}\prod \limits_{j=1}^{K}\pi_{j}^{a_{j}}}$\\
+
+\begin{equation*}
+=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}\prod \limits_{j=1}^{K}\pi_{j}^{\sum\limits_{i}a_{ij}}}{\binom{N}{a_{1},\cdots,a_{K}}\prod \limits_{j=1}^{K}\pi_{j}^{a_{j}}}
+=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}}{\binom{N}{a_{1},\cdots,a_{K}}}
+\end{equation*}
+%$=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}\prod \limits_{j=1}^{K}\pi_{j}^{\sum\limits_{i}a_{ij}}}{\binom{N}{a_{1},\cdots,a_{K}}\prod \limits_{j=1}^{K}\pi_{j}^{a_{j}}}$
+%$=\displaystyle\frac{\prod \limits_{i=1}^{g}\binom{m_{i}}{a_{i1},\cdots,a_{iK}}}{\binom{N}{a_{1},\cdots,a_{K}}}$\\
+\begin{equation*}
+=\displaystyle\frac{\prod \limits_{i=1}^{g}\prod \limits_{j=1}^{K}m_{i}!a_{j}}{N!\prod \limits_{i=1}^{g}\prod \limits_{j=1}^{K}a_{ij}}
+\end{equation*}
+%$=\displaystyle\frac{\prod \limits_{i=1}^{g}\prod \limits_{j=1}^{K}m_{i}!a_{j}}{N!\prod \limits_{i=1}^{g}\prod \limits_{j=1}^{K}a_{ij}}$\\	
+
+Conditioning on the row and column marginals is a convenient way to eliminate  parameters which in this case are the probabilities $\pi_{ij}$ from the distribution of $P_{X}$ of the $g\times K$ table.\\
+The reference set $\Gamma$ of the $g\times K$ table is defined by restricting the sample space of the observed table $X$ to the set of tables with fixed row and column marginal sums. Specifically the reference set is defined as:
+\begin{equation*}
+\Gamma=\left\{Y:Y  \hspace{3mm} \text{is}\hspace{3mm} g\times K\hspace{3mm}\sum\limits_{i=0}^{g}A_{ij}=A_{j};\sum\limits_{j=1}^{K}A_{ij}=m_{i};\text{for all }i,j\right \}
+\end{equation*}
+%$\Gamma=\left\{Y:Y  \hspace{3mm} \text{is}\hspace{3mm} g\times K\hspace{3mm}\sum\limits_{i=0}^{g}A_{ij}=A_{j};\sum\limits_{j=1}^{K}A_{ij}=m_{i};\text{for all }i,j\right \}	$\\
+
+Fisher's exact test orders the tables in $\Gamma$ according to it's hypergeometric distribution $P_{Y}$. The test statistic for each  $Y \in \Gamma$ is defined as  \cite{mehta1992}:
+\begin{equation*}
+T_{Y}=-2\log( \gamma P_{Y} )
+\end{equation*}
+%$T(Y)=-2\log( \gamma P(Y) )$\\
+
+where
+
+\begin{equation*}
+\gamma=(2\pi)^{\frac{(g-1)(K-1)}{2}}N^{-\frac{(gK-1)}{2}}\prod\limits_{i=1}^{g}m_{i}
+^{\frac{K-1}{2}}\prod\limits_{j=1}^{K}A_{j}
+^{\frac{g-1}{2}}
+\end{equation*}
+
+% $\gamma=(2\pi)^{\frac{(g-1)(K-1)}{2}}N^{-\frac{(gK-1)}{2}}\prod\limits_{i=1}^{g}m_{i}
+%^{\frac{K-1}{2}}\prod\limits_{j=1}^{K}A_{j}
+%^{\frac{g-1}{2}}$\\
+Freeman and Halton(1951) extended the  asymptotic distribution of a $2\times2$  table  by Fisher(1925) to $g\times K$. Under the null hypothesis of independence of row and columns, $T_{Y}$ has a  chi-square distribution with $(g-1)(K-1)$ degrees of freedom.
+
+
+
+
+The exact p-value is found as the sum of probabilities all tables in the reference set that are at least as extreme as the observed table. Specifically the exact p-value is defined below :\\
+$\sum\limits_{Y \in \Gamma^{*}}P_{Y} $ \hspace{5mm} where
+$\Gamma^{*}=\left(Y:Y\hspace{3mm} \in \Gamma ;P_{Y}\geq P_{X}\right)$\\
+where $P_{Y}$ and $P_{X}$ are the probability distributions of the tables in the reference set and the observed table respectively computed under the null hypothesis. 
+% and   $\mathbb{I}$ is the indicator function defined below:\\
+%%$\[   \sum\limits_{\substack{\mathllap y \in }{\mathllap \Gamma }\\
+%%	{\mathllap P(y) \geq P(x)}}\]$
+%\[ \mathbb{I}=\begin{cases}
+%1 & \mbox{if} \hspace{2mm} P_{Y}\geq P_{X}  \\
+%0 & \mbox{otherwise}\\
+%\end{cases}
+%\]
+%%$\sum\limits_{y \in \Gamma;P(y)\geq P(x)}P(y) $	
+%	\subsection{Likelihood Ratio Test}
+
+%	\subsection{Pearson-Chi-Squared Test}
+\subsection{Choosing a Test Statistic}
+Several tests are available for $g \times k$ contingency tables with row  and column marginals $m_{i}$ and $n_{j}$ respectively,  $i=1\cdots,g$ and $j=1,\cdots,k$. If there is no  ordering of either the columns or rows, then Fishers exact test, Likelihood Ratio and the Pearson chi-squared test are appropriate and are the most powerful against any other alternative test of the null hypothesis of no row and column interaction. For discrepancy measure $D(Y)$, large absolute values of $D(Y)$ provide greater evidence against the null hypothesis, while small absolute values are consistent with it.
+Fishers test orders each table $Y \in \Gamma$ by a hypergeometric distribution $P(Y)$. Discrepancy measures of various tests are given below, where $y_{ij}$ is the count in the $ith$ row and the $jth$ column:\\
+For the Pearson Chi-square test:\\
+\begin{equation}
+D(y)=\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}\frac{(y_{ij}-\frac{m_{i}n_{j}}{N})^2}{\frac{m_{i}n_{j}}{N}} \sim X^{2}_{(g-1)(K-1)}
+\end{equation}
+The likelihood ratio test orders every table $ y \in \Gamma$ according to the likelihood ratio statistic:\\
+\begin{equation}
+D(y)=2 \sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K} y_{ij}log \left(\frac{y_{ij}}{\frac{m_{i}n_{j}}{N}}  \right)
+\end{equation}
+
+\vspace{5mm}
+
+The Kullback and Leibler  modified log-likelihood ratio statistic
+\begin{equation}
+D(y)=2 \sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K} \frac{m_{i}n_{j}}{N}log \left(\frac{\frac{m_{i}n_{j}}{N}}{y_{ij}}  \right)
+\end{equation}
+
+\vspace{5mm}
+
+The $N$ statistics of Neyman
+\begin{equation}
+D(y)=\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}\frac{(y_{ij}-\frac{m_{i}n_{j}}{N})^2}{y_{ij}} 
+\end{equation}
+
+\vspace{5mm}
+
+The Freeman-Tukey statistic
+\begin{equation}
+D(y)=4\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}\left(\sqrt{y_{ij}}-\sqrt{\frac{m_{i}n_{j}}{N}}  \right)^{2} 
+\end{equation}
+
+\vspace{5mm}
+
+The modified Freeman-Tukey statistic
+\begin{equation}
+D(y)=\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}\left(\sqrt{y_{ij}}+\sqrt{y_{ij}+1}-\sqrt{4\left(\frac{m_{i}n_{j}}{N}\right)+1}  \right)^{2} 
+\end{equation}
+
+\vspace{5mm}
+
+The Cresie and Read statistic
+
+\begin{equation}
+D(y)=\frac{9}{5}\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}y_{ij}\left[ \left(\frac{y_{ij}}{\frac{m_{i}n_{j}}{N}} \right)^{\frac{2}{3}}-1 \right] 
+\end{equation}
+
+\vspace{5mm}
+
+A general representation of most of the test statistics above is given below:
+
+\begin{equation}
+D(y)^{\delta}=\frac{2}{\delta(1+\delta)}\sum\limits_{i=1}^{g}\sum\limits_{j=1}^{K}y_{ij}\left[ \left(\frac{y_{ij}}{\frac{m_{i}n_{j}}{N}} \right)^{\delta}-1 \right]
+\end{equation}
+
+\vspace{5mm}
+
+Where $\delta=1,0,-2,-1,-0.5$ and $\frac{2}{3}$ corresponds to the Pearson-Chi-squared statistic, log likelihood ratio statistic, Neyman statistics, Kullback and Leibler, Freeman-Tukey and Cresie -Read respectively.\\
+
+
+%	\subsection{Cochran's Q Test}
+%	Cochran's Q test is used to test for homogeneity of treatment effects for observations  arranged in blocks
+
+
+
+\section{Singly Ordered $R \times C$ Contingency Tables : Kruskal-Wallis Test}
+
+
+
+
+%\subsubsection{Kruskal-Wallis Test}
+The Kruskal-Walli (KW) test is a rank based method to compare $K$ independent samples. Kruskal and Wallis(1952) list several advantages of rank based methods. Specifically, they simplify calculations and only general assumptions are made  about the distribution of observations (independence). The null hypothesis that the $K$ independent samples originate from the same distribution is tested against the alternate that at least one sample is stochastically larger than another. It's the nonparametric analogue of the  parametric one-way analysis of variance (ANOVA) test. In KW test, the population mean of ranks is compared instead of comparing population means in ANOVA.  The Mann-Whitney test is a special case of Kruskal-Wallis test for two samples.
+$H_{0}:F_{1}=F_{2}=\cdots=F_{k}$ \textrm{vs}
+$H_{1}:F_{i}<F_{j}$ for some $i\neq j$\\
+Where $F_{i}$ is the distribution of sample $i$. Under the null hypothesis, the observations are a  combined sample of size $N$ from the common population. The combined sample  is ranked from $1,\cdots,N$. The  total sum of ranks is $\sum\limits_{i}^{N}i=\frac{N(N+1)}{2}$. The expected proportion of the $ith$ sample $i,\cdots,K$ in the combined sample is $\frac{n_{i}}{N}\frac{N(N+1)}{2}=\frac{n_{i}(N+1)}{2}$ under the null hypothesis.\\
+A test statistic $\textbf{t}$ based on a function of deviations  between the observed and expected rank sum is given as $\textbf{t}=\sum\limits_{i=1}^{	K}\left[r_{i}-\frac{n_{i}(N+1)}{2}\right]^{2}$,where $r_{i}$ is the sum of ranks assigned to the elements of the $ith$ sample. The null hypothesis of equal distribution of the $K$ samples is rejected for large values of $\textbf{t}$. The number of ways to assign $N$ observations into $K$ columns of size $n_{i}$, $i=1,\cdots,k$ is $\frac{N!}{\prod\limits_{i=1}^{k}n_{i}!}$. Each $\frac{N!}{\prod\limits_{i=1}^{K}n_{i}!}$ possible table  assignment is evaluated and $\textbf{t}$ is calculated for each table. The distribution of the test statistic is then obtained as  $f_{\textbf{t}}(\textbf{t})=\displaystyle \textbf{t}\frac{N!}{\prod\limits_{i=1}^{K}n_{i}!}$\\
+\vspace{5mm}
+Kruskal and Wallis (1952) proposed a modified test statistic $H$  that is weighted sum of square deviations that uses the the reciprocals of the sample sizes $n_{i}$ as weights.\\
+\begin{equation}
+H=\frac{12}{N(N+1)}\sum\limits_{i=1}^{K}\frac{1}{n_{i}}\left[r_{i}-\frac{n_{i}(N+1)}{2}\right]^{2}
+\end{equation}
+
+\vspace{5mm}
+An equivalent   computationally preferred  version of $H$ can be expressed as:
+\begin{equation}
+H=\frac{12}{N(N+1)}\sum\limits_{i=1}^{K}\frac{r_{i}^{2}}{n_{i}}-3(N+1)
+\end{equation}
+
+\vspace{5mm}
+When the sample sizes $n_{i}$ are the same, the statistic $\textbf{t}$ is equivalent to $H$ \cite{npsi}. Tables exist for exact probabilities of $\textbf{t}$ and $H$ for small sample sizes and the number of columns $K$. Due to the large number of computations to carry out to obtain these exact probabilities, large sample approximations have been developed for relatively large samples.
+\begin{equation}
+H^{*}=\displaystyle\sum\limits_{i=1}^{K}\frac{12n{i\left[r_{i}-\frac{(N+1)}{2}\right]^2}}{N(N+1)}
+\end{equation}
+
+\vspace{5mm}
+The statistic $H^{*}$ is  approximately distributed  chi squared with $(K-1)$ degrees of freedom (Detailed proof can be found in \cite{npsi}).The null hypothesis $H_{0}$  is rejected in favor of the alternative if  $H^{*}\geq X^{2}_{(\alpha,K-1)}$. A correction for  ties  $i$ uses the midrank method. A modified test statistic for correcting for  the number of ties present in the population, $t$  is: 
+\begin{equation}
+H^{\prime}=\frac{H}{1-\frac{\sum t(t^{2}-1)}{N(N^{2}-1)}}
+\end{equation}
+
+\vspace{5mm}
+The correction statistic for ties $H^{\prime}$,  does not significantly alter $H$ for relatively small number of ties. When the null hypothesis is rejected, multiple pairwise comparisons could be made for any two groups say $i$ and $j$ $(1\leq i\le j \leq K)$ by the statistic:
+\begin{equation}
+Z_{ij}=\displaystyle  \frac{|\bar{r_{i}}-\bar{r_{j}}|}{\sqrt{\frac{N(N+1)}{2}}\left[\frac{1}{n_{i}}+\frac{1}{n_{j}}\right]}
+\end{equation}
+
+\vspace{5mm}
+The critical region is $Z_{ij} \leq Z_{\frac{\alpha}{K(K-1)}}$, where $z$ is the standard normal quantile. The Type 1 error rate  $\alpha$ is corrected by  dividing $\alpha$ by  the number of pairwise comparisons $\binom{K}{2}$. This kind of Type-I correction is the conservative  Bonferroni method. The null hypothesis that the two populations are the same is rejected if $P(Z_{ij} \leq Z_{\frac{\alpha}{K(K-1)}}) \leq \frac{\alpha}{k(k-1)}$.
+The Wilcoxon test is a special case of the Kruskal-Wallis test for the location parameter of two independent samples.
+
+\section{Doubly  Ordered $R \times C$ Contingency Tables : Jonckheere-Terpstra Test}
+
+%\subsubsection{Jonckheere-Terpstra Test}
+The Jonckheere-Terpstra test is a nonparametric test for ordered alternative within independent samples. The null hypothesis tests for homogeneity among independent samples. It exhibits greater statistical power over comparable tests like the Kruskal-Wallis test if the samples are ordered from the population from which they are drawn. The Jonckheere-Terpstra Test hypothesis can be states as:
+$H_{0}:\theta_{1}=\theta_{2}=\cdots=\theta_{k}$\\
+$H_{a}:\theta_{1} \leq \theta_{2} \leq \cdots \leq \theta_{k}$ ,$i=1,\cdots,K$,(at least one strict inequality)\\
+Where $\theta_{i}$ is the median of the $ith$ population. An alternative expression of the alternate hypothesis is $\binom{K}{2}$ multiple comparisons of $\theta_{i}\leq \theta_{i+1}$ with at least one $\theta_{i}\le \theta_{i+1}$. This then reduces the problem of  multiple comparison to a  two sample comparison problem. The statistic for combining these multiple two sample comparisons into a single final statistic is the Mann-Whitney statistic $U_{ij}$, $i,j=1,2,\cdots,K$ with $i\le j$. The addition of all $U_{ij}$ results in the statistic $B$. The  Mann-Whitney statistic $U_{ij}$  is defined  for any two samples $X_{i}$ and $X_{j}$ with sample sizes $n_{i}$ and $n_{j}$ respectively as:\\
+\[ U_{ij}=\begin{cases}
+1 & \mbox{if} \hspace{2mm} x_{js}< x_{ir} \mbox{for}\hspace{2mm}  s=1,\cdots,G \hspace{2mm}r=1,\cdots,K\\
+%\frac{1}{2} & \mbox{if}\hspace{2mm} x_{ir}=x_{js} \\
+0 & \mbox{if}\hspace{2mm} x_{js}>x_{ir}\\
+\end{cases}
+\]
+
+\begin{equation*}
+B=U_{12}+U_{13}+\cdots+U_{1k}+U_{23}+\cdots+U_{2k}+\cdots+U_{(k-1)k}
+\end{equation*}
+%$B=U_{12}+U_{13}+\cdots+U_{1k}+U_{23}+\cdots+U_{2k}+\cdots+U_{(k-1)k}$\\ 
+\begin{equation*}
+=\sum\limits_{1<}\sum\limits_{i<j\leq K}U_{ij}=\sum\limits_{i=1}^{K-1}\sum\limits_{j=i+1}^{K}\sum\limits_{r=1}^{n_{j}}\mathrm{I}(x_{ir}<x_{js}),\hspace{3mm}\text{where}\hspace{2mm} \mathrm{I}\hspace{2mm} \text{is the indicator function.}
+\end{equation*}
+%$=\sum\limits_{1<}\sum\limits_{i<j\leq K}U_{ij}=\sum\limits_{i=1}^{K-1}\sum\limits_{j=i+1}^{K}\sum\limits_{r=1}^{n_{j}}\mathrm{I}(x_{ir}<x_{js})$\\
+
+\vspace{5mm}
+where $x_{ir}$ is the $rth$  observation in the $ith$ sample and $x_{js}$ is the $sth$  observation in the $jth$ sample. The rejection region is $B\geq B(\alpha,K,n_{1},n_{2},\cdots,n_{k})$, where $\alpha$ is the nominal significance level. The null hypothesis is rejected if $P[B\geq B(\alpha,K,n_{1},n_{2},\cdots,n_{k})] \leq \alpha $. Tables of exact probabilities for small sample sizes and small populations is available. For   sufficiently large sample sizes  and large    populations, the computation of exact probabilities becomes computationally challenging. An approximate  large sample  distribution for $B$ is the  chi-square distribution with one degree of freedom.\\
+\begin{equation}
+\frac{\left[B-E(B)\right]^{2}}{var(B)}\sim \mbox{\Large$\chi$}^{2}_{(1)}
+\end{equation}
+where 
+\begin{equation*}
+E(B)=\sum\limits_{1<i}^{k-1}\sum\limits_{<j<k}\frac{n_{i}n_{j}}{2}=\displaystyle\frac{N^{2}-\sum\limits_{r=1}^{k}}{2} \hspace{5mm} and \hspace{5mm} \text{Var}(B)=\frac{N^{2}(2N+3)-\sum\limits_{i=1}^{k}n_{i}(2n_{i}+3)}{72}
+\end{equation*}
+
+
+%$\displaystyle E(B)=\sum\limits_{1<i}^{k-1}\sum\limits_{<j<k}\frac{n_{i}n_{j}}{2}=\displaystyle\frac{N^{2}-\sum\limits_{r=1}^{k}}{2}$ \hspace{5mm} and \hspace{5mm} $var(B)=\frac{N^{2}(2N+3)-\sum\limits_{i=1}^{k}n_{i}(2n_{i}+3)}{72}$.\\ 
+The asymptotic approximation test rejects the null hypothesis if
+
+\begin{equation*}
+P(\mbox{\Large$\chi$}^{2}_{(1)}\geq \mbox{\Large$\chi$}^{2}_{(\alpha,1)}) \leq \alpha
+\end{equation*}
+
+
+% $P(X^{2}_{(1)}\geq X^{2}_{(\alpha,1)}) \leq \alpha$.\\
+The Mann-Whitney statistic $U_{ij}$ used in computation of the Jonckheere-Terpstra test is modified for tied observations as $U^{*}_{ij}=\sum\limits_{r=1}^{n_{i}}\sum\limits_{s=1}^{n_{j}}D_{rs}$ where \\
+
+%\[ $$=\begin{cases}
+%1 & if $ x_{ir}<x_{js}$ \\
+%$\frac{1}{2}$ & if  $x_{ir}=x_{js}$ \\
+%0} & if  x_{ir}>x_{js}$ \\
+%\end{cases}
+%\]
+\[ D_{rs}=\begin{cases}
+1 & \mbox{if} \hspace{2mm} x_{ir}<x_{js}  \\
+\frac{1}{2} & \mbox{if}\hspace{2mm} x_{ir}=x_{js} \\
+0 & \mbox{if}\hspace{2mm} x_{ir}>x_{js}\\
+\end{cases}
+\]
+
+The modified Jonckheere-Terpstra test statistic $B^{*}=\sum\limits_{i=1}^{K-1}\sum\limits_{j=1}^{K}U_{ij}^{*}$
+%\subsection{Linear by Linear Test}
+
+
+
+
+
+\section{Analysis of  $2\times K$ Tables}
+\subsection{Cochran-Armitage Trend Test for $2\times K$ Tables}
+Consider $N$ subjects who are each exposed to some treatment  levels 0 and 1. Assume the responses to treatment is progressively increasing from $1$ to $K$. Let $p_{j}$ be the probability of response of a subject exposed to treatment level 1 with response level $j$, $j=1,2,\cdots,K$.
+%\FloatBarrier
+\begin{table}[h!]
+	\begin{center}
+		\caption{Cochran- Armitage Trend Test For $2\times K$ Tables}
+		\begin{tabular}{c c c|c c c c c c}
+			\hline
+		&	&Treatment &Response   &  & &&& \\
+			[0.5ex]
+			\hline
+		&	&Row score & 1& 2 &3&$\cdots$&K&RowTotal \\
+			[0.5ex]
+			\hline
+		&	&&&&&&&\\
+		&	&&&&&&&\\
+		&	Row	1&1&$ x_{11}$& $x_{12}$ &$x_{13}$& $\cdots$ &$n_{1k}$&$m_{1}$ \\
+			%\hline
+		&	&&&&&&&\\
+	Treatment	&	Row 2	&0 &$x_{21}$ & $ x_{22}$ & $ x_{23}$  & $\cdots$  &$x_{2k}$& $m_{2}$ \\
+			
+			%	& g &$ 0$ & $ 0$ & $ 0$  & $\cdots$  &$0$&$m_{1}^{(g)}$ \\
+		&	&&&&&&&\\
+		&	Column Total	& & $n_{1}$ & $n_{2}$ &$n_{3}$& $\cdots$  & $n_{k}$&$N$ \\ [1ex]
+		&	Column Score	& & $w_{1}$ & $w_{2}$ &$w_{3}$& $\cdots$  & $w_{K}$& \\ [1ex]
+			\hline
+		\end{tabular}
+		%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+		\label{table:ca}
+	\end{center}
+\end{table}
+%\FloatBarrier
+In table \ref{table:ca}, $X_{ij}$ is an observation in the $ith$ row of the $jth$ category, $i=1,2$ and $j=1,\cdots,K$, $w_{1}<w_{2}<\cdots<w_{k}$ are column scores assigned to response  categories $1,\cdots,K$ and $0,1$ are the row scores of row 1 and 2 respectively. For $2 \times K$ tables with ordered columns and $K$ independent $bin(n_{i},p_{i})$ variates, Armitage \cite{armitage} proposed a linear trend test for testing association between  variable 1 (Treatment) with $2$ categories and variable 2 (Response) with $K$ categories. The proportion of observations in any category $j$ is given by $p_{j}=\frac{x_{1j}}{n_{j}}$, whereas the overall proportion in row 1 is given as $p=\frac{m_{1}}{N}$. Each observation on  row one  is assigned a row score of 1 and each observation on row 2 is assigned a row score of 0.\\
+The  null hypothesis of the  Cochran-Armitage trend test is that all  of $K$ independent binomial proportions are equal with response probability $p$ :\\
+$H_{0}:p_{1}=p_{2}=\cdots=p_{k}=p$ where $p_{j}=\frac{x_{1j}}{n_{j}}$ \\against an ordered alternative of the form\\
+$H_{a}:p_{1} \leq p_{2}\leq\cdots \leq p_{k}$\\
+The test is equivalent to    the null hypothesis  $H_{0}:\beta=0$ for the linear probability  regression model $p_{i}=\alpha+\beta w_{i} +\epsilon_{i}$.\\
+
+%$\bar{w}=\frac{w_{i}n_{i}}{N}$,the linear prediction model is given by $\hat{p_{i}}=p+b( w_{i}-\bar{w}) $ where $b=\frac{\sum\limits_{i}^{K}n_{i}(p_{i}-p)(w_{i}-\bar{w})}{\sum\limits_{i}^{K}(w_{i}-\bar{w})^2}$.\\
+The Pearson test statistic for the $K$ category of responses $X_{K}$  can be expressed in terms of variation among the $K$ proportions by \\
+
+$\mbox{\Large$\chi$}^2_{K}=\frac{1}{p(1-p)}\sum\limits_{i}^{K}n_{i}(p_{i}-p)^2$.\\
+
+The chi-squared statistic  can be decomposed into two  chi-squared statistic to test for the lack of  goodness of fit of the model and the existence of a linear test \cite{Agresti2013}.\\
+
+$\mbox{\Large$\chi$}_{K}^{2}=Z^2+X_{L}^2$\\
+where $X^2_{K}=\frac{1}{p(1-p)}\sum\limits_{i}^{K}n_{i}(p_{i}-\hat{p})^2$ has asymptotic chi-squared distribution with $K-2$ degrees of freedom. It test's the goodness of fit of the model.\\
+
+
+\begin{equation}
+Z^2=\frac{b^2}{p(1-p)}\sum\limits_{i}^{K}n_{i}(w_{i}-\bar{w})^2=\left[ \frac{\sum\limits_{i}^{K}(w_{i}-\bar{w})x_{1i}}{\sqrt{p(1-p)}\sum\limits_{i}^{K}n_{i}(w_{i}-\bar{w})}\right]^2.
+\end{equation}
+$Z^2$ has an asymptotic chi-square distribution with one degree of freedom and is used to test $H_{0}:\beta=0$ for the linear trend in the proportions.
+
+
+
+\subsection{Cochran-Mantel-Haenszel Test for $S\times2\times 2$ Tables}
+The Cochran-Mantel-Haenszel Test is non-model based approach to testing conditional independence. Data can be stratified to control for possible confounding variables. The Cochran-Mantel-Haenszel test provides a measure of association which is a  summary of the weighted average of the risk or odds ratio across the different strata. The null hypothesis tests homogeneity of association between treatment and response groups  across the $S$ strata. The test provides  a summary estimate of the exposure effect stratified by multiple studies. The odds ratio obtained from each of the stratified subgroups represents exposure effect in the group when the overall joint effect of the stratification variable  has been held constant. The overall odds estimate across all the strata can be combined to form  a summary estimate adjusted for effects of those variables used in the stratification. The Mantel-Haenszel test statistic $OR_{MH}(Odds Ratio)$ or $RR_{MH}(Risk Ratio)$ can be considered as  weighted averages of odds ratios of each stratum in the data provided $b_{i}$ and $c_{i}$ are greater than 0, for $b_{i}$ , $c_{i}$, $a_{i}$, $d_{i}$  as in the table below\\
+For subgroups $i=1,\cdots,S$. The stratum $i$ is given below\\
+
+%$\frac{a_{i}d_{i}}{n_{i}}$
+
+
+
+%\begin{center}
+%		\caption{Results}
+%\begin{tabular}{ l l l }
+%\hline
+%Cases & Control& &Total \\ \hline\hline
+%&\\
+%Exposure &   &&\\
+%&   & &\\
+%Yes&  $a_{i}$&$b_{i}$ &\\\hline
+%&\\
+%No &$c_{i}$ &$d_{i}$&\\
+%Total &$n_{1i}$ &$n_{2i}$&N_{i}\\
+
+
+
+%\FloatBarrier
+\begin{table}[h!]
+	\label{table:results}
+	%\caption{Stratum $i$}
+	\begin{center}
+		\caption{Cochran- Mantel-Haenszel Test for $S\times2\times 2$ Tables}
+		\begin{tabular}{ c c c c }
+			\hline
+			Cases & Outcome &  &Row Total \\\hline
+			&&&\\
+			Exposure & positive  & negative & \\
+			&&&\\
+			Yes & $a_{i}$& $b_{i}$&$m_{1i}$ \\
+			&&&\\
+			No&  $c_{i}$ &  $d_{i}$ &$m_{2i}$\\
+			&&&\\ \hline
+			Column Total& $n_{1i}$&$n_{2i}$&$n_{i}$\\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+\end{table}		
+%\FloatBarrier
+The test statistics are given by:\\
+\begin{equation}
+RR_{MH}=\frac{\sum\limits_{i=1}^{S}\frac{a_{i}(c_{i}+d_{i})}{n_{i}}}{\sum\limits_{i=1}^{S}\frac{c_{i}(a_{i}+b_{i})}{n_{i}}}.
+\end{equation}
+\begin{equation}
+OR_{MH}=\frac{\sum\limits_{i=1}^{S}\frac{a_{i}d_{i}}{n_{i}}}{\sum\limits_{i=1}^{S}\frac{b_{i}c_{i}}{n_{i}}}.
+\end{equation}
+
+\vspace{5mm}
+A major disadvantage of stratified analysis is the inability to control simultaneously for multiple confounding variables. The sampling schemes for cell counts $(a_{i},b_{i},c_{i},d_{i})$ given row and column marginals $(n_{1i},n_{2i},m_{1i},m_{2i})$ is the hypergeometric distribution. The mean and variance are given below\\
+\begin{equation}
+\mu_{i}=E(a_{i})=\frac{m_{1i}n_{1i}}{N_{i}}.
+\end{equation}
+
+\begin{equation}
+Var(a_{i})=\frac{m_{1i}m_{2i}n_{1i}n_{2i}}{N_{i}^{2}(N_{i}-1)}.
+\end{equation}
+
+\vspace{5mm}
+Cell counts from different strata are assumed to be independent. The test statistic for combining information from the $S$ strata is obtained by comparing $a_{i}$ to its expected value.
+
+
+\begin{equation}
+Q=\frac{\left[\sum\limits_{i} (a_{i}-\mu_{i})\right]^{2}}{\sum\limits_{i} \text{Var}{(a_{i}})}\hspace{5mm}\widetilde{\text{asymp}} \hspace{5mm} \mbox{\Large$\chi$}_{(1)}^{2}
+\end{equation}
+\vspace{5mm}
+The test gives similar results to a logit model with sufficiently large strata size $n_{i}$. The set back in a parametric model such as  the logit model is that, the maximum likelihood estimates of log odds ratio may be  over estimated for sparse data \cite{Agresti2013}. Logit models may also fail to converge.
+
+
+\subsection{Generalized Cochran-Mantel-Haenszel Association  Statistic for $s\times g\times K$ Tables}
+Let $N_{ijh}$ ,$i=1,\cdots,g$,$j=1,\cdots K$ be the cell counts in the $hth$ stratum of a $g\times K$ table, where $i$ represents the levels of factor of interest such as treatment and $j$ represents another factor such as levels of response. Conditional on row and column marginals each stratum has $(g-1)\times(K-1)$ non-redundant cell counts \cite{Agresti2013}.
+For each stratum $h$ the vector of cell counts $n_{h}=(n_{11h},\cdots,n_{1(k-1)h},n_{11h},\cdots,n_{1(k-1)h},\cdots,n_{(g-1)1h},\cdots,n_{(g-1)(k-1)h})$ has probability function  (\ref{gcmhasgk}) .
+
+\begin{equation}\label{gcmhasgk}
+\displaystyle\frac{\prod \limits_{i=1}^{g}n_{i.h}!\prod \limits_{j=1}^{K}n_{.jh}!}{n_{..h}!\prod \limits_{i=1}^{g}\prod \limits_{j=1}^{K}n_{ijh}}.
+\end{equation}
+
+Let $\mu_{h}=E(n_{h})$ under $H_{0}:$ no row by column association. Then\\
+\begin{equation}
+\mu_{h}=\frac{n_{h}}{n_{..h}}=\frac{(n_{11h},\cdots,n_{1(k-1)h},n_{11h},\cdots,n_{1(k-1)h},\cdots,n_{(g-1)1h},\cdots,n_{(g-1)(k-1)h})}{n_{..h}}
+\end{equation}
+
+Let $V_{h}$ be the covariance matrix of $n_{h}$ where 
+
+\begin{equation}
+Cov(n_{ijh},n_{i^{\prime}j^{\prime}})=\frac{n_{i.k}(\delta_{ii^{\prime}}n_{..h}-n_{i^{\prime}.h})n_{.jh}(\delta_{jj^{\prime}}n_{..k}-n_{.j^{\prime}h})}{n_{..h}^{2}(n_{..h}-1)}
+\end{equation}
+
+where
+\[ \delta_{ab}=\begin{cases}
+1 & \mbox{if} \hspace{2mm} a=b  \\
+0 & \mbox{otherwise}\\
+\end{cases}
+\]
+
+Let  $G_{h}=n_{h}-E(n)=n_{h}-\mu_{h}$.Now $G=\sum\limits_{h}G_{h}=\sum\limits_{h}(n_{h}-\mu_{h})$ is the aggregation over all $(g-1)(k-1)$ strata. Let the covariance matrix of $V=\sum\limits_{h}V_{h}$. The general association test  statistic for the Cochran-Mantel-Haenszel(CMH) test under the null hypothesis is $Q_{G}=G^{T}VG$. The  distribution of the test statistic approaches $X_{(g-1)(K-1)}^{2}$ as the total sample size ($n=\sum\limits_{h}n_{..h}$) approaches infinity. When the CMH statistic is significant at some level $\alpha$, then there exists some association between the row and column variables in at least one stratum.
+
+\subsection{Generalized Cochran-Mantel-Haenszel Mean Score  Statistic for $S\times g\times K$ Tables}
+Consider a set of $S$ independent $g\times K$ tables where cell counts in the $hth$ stratum is given by $n_{ijh}$,$i=1,\cdots,g-1$ and $j=1,\cdots,K$. Assume the column variable is  ordinal and has assigned scores $w_{1h},,\cdots,w_{Kh}$. The null hypothesis of  no association between row and column variables in any of the $S$ strata is tested against the alternative that there is a difference in the $g$ mean scores on average across the $S$ strata. Define $M_{h}=\sum\limits_{j=1}^{K} w_{jh}(n_{h}-E(n_{h})$, the vector of differences between the observed and expected mean scores under the null hypothesis. Let $M=\sum\limits_{h=1}^{S}M_{h}$ which has expectation zero and covariance matrix $V_{M}=\sum\limits_{h=1}^{S}V_{h}$.Then $Q_{M}=M^{\prime}V_{M}^{-1}M$,is the CMH mean score statistic which is approximately $X_{(g-1)}^{2}$ if  the null hypothesis is true. The statistic is used only when the column variable is ordinal or when the variable is  an interval column variable. Special cases of the CMH mean statistic arise when $S=1$ and $g=2$, $Q_{M}$ is the Wilcoxon-Mann-Whitney statistic. If $S=1$ and $r>2$, $Q_{M}$ is the Kruskal-Wallis statistic. If $S>1$ and $n_{hi.}=1$ for $i=0,\cdots,g$ and $h=1,\cdots,S$, then the $Q_{M}$ is the Friedman's chi-square statistic.
+
+\subsection{Generalized Cochran- Mantel-Haenszel Correlation Statistic for $s\times g\times K$ Tables}
+Consider a set of $S$ independent $g\times K$ tables with ordinal row and column variables. Let the scores assigned to the row and column be $u_{1h},,\cdots,u_{gh}$ and $w_{1h},,\cdots,w_{Kh}$ respectively. The null hypothesis that there is no association between row and column variables in any of the $S$ strata is tested against the alternative that there is consistent positive or negative association between the rows and column scores across all stratum. Define  $C_{h}=\sum\limits_{i}^{}\sum\limits_{j}^{}u_{ih}w_{jh}(n_{h}-E(n_{h}) $ as the vector of difference between the observed and expected association scores in the $hth$ stratum under the null hypothesis. Let $C=\sum\limits_{h}C_{h}$, then $C$ has expectation zero and variance denoted by $V_{C}$. The CMH correlation statistic $Q_{C}=C^{\prime}V_{C}C$ has asymptotic distribution as $\mbox{\Large$\chi$}_{1}^{2}$ for sufficiently large total sample size $(n_{...}=\sum\limits_{h}n_{..h})$. The Pearson correlation coefficient $\rho$ between row and column scores is a special case of of CMH correlation statistic $Q_{c}=(n_{...}-1)\rho^{2}$ where $S=1$.
+
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------
+\chapter{Exact Conditional Test for Exchangeable Binary Responses}
+%\section{Overview of Nonparametric Models for Categorical Data}
+\section{Formulation of Exact Test}
+% \newpage
+A finite sequence of random variables $(X_{1},\cdots,X_{k})$ is exchangeable if  for any $k$
+% and any vector$(x_{1},\cdots,x_{k})$, the probability measure $P$  is such %that
+\begin{equation*}
+P(X_{\pi(1)}=x_{1},\cdots,X_{\pi(k)}=x_{k})=P(X_{1}=x_{1},\cdots,X_{k}=x_{k})
+\end{equation*}
+%$P(X_{\pi(1)}=x_{1},\cdots,X_{\pi(k)}=x_{k})=P(X_{1}=x_{1},\cdots,X_{k}=x_{k})$
+for any permutation $\pi_{(1)}\cdots\pi_{(n)}$ of indices $1,\cdots k$. 
+Let $(X_{1},\cdots,X_n)$ be  exchangeable random variables with $\lambda_{0,n}=1$ and $\lambda_{k,n}=P\{X_{1},\cdots,X_{k}=1\}$, then\\
+
+%\cleardoublepage
+%\linespread{1}
+
+\begin{equation*}
+P\{X_1=x_1,\cdots,X_n=x_n\}=\sum\limits_{k=0}^{n-r}(-1)^k\binom{n-r}{k}\lambda_{r+k,n}
+\end{equation*}
+%$P\{X_1=x_1,\cdots,X_n=x_n\}=\sum\limits_{k=0}^{n-r}(-1)^k\binom{n-r}{k}\lambda_{r+k,n}$\\
+where\\
+$r=\sum\limits_{i=1}^{n}x_{i}$  
+
+%\begin{equation*}
+%\text{where}
+%r=\sum\limits_{i=1}^{n}x_{i}
+%\end{equation*}
+%$r=\sum\limits_{i=1}^{n}x_{i}$
+
+In this thesis we consider an experiment involving $g$ treatment groups and exchangeable binary responses.
+%Now consider an experiment with $g$ treatment groups and\\
+For the $ith$ treatment group, let $(X_{ij1},\cdots,X_{ijn_{ij}})$ be the set of binary data from the $jth$ cluster of the
+$ith$ treatment group, where $j=1,\cdots,m^{(i)}$,$i=1,\cdots,g$, and let\\
+
+\begin{equation*}
+P_{r_{ij},n_{ij}}^{(i)}
+=\sum\limits_{k=0}^{n_{ij}-r_{ij}}(-1)^k
+\binom{n_{ij}-r_{ij}}{k}\lambda_{r_{ij}+k,n_{ij}}
+\end{equation*} %$P_{r_{ij},n_{ij}}^{(i)}=P\{X_{ij1}=x_{ij1},\cdots,X_{ijn_{ij}}=x_{ijn_{ij}}\}
+%=\sum\limits_{k=0}^{n_{ij}-r_{ij}}(-1)^k
+%\binom{n_{ij}-r_{ij}}{k}\lambda_{r_{ij}+k,n_{ij}}$\\
+
+\begin{equation*}
+\text{where}  \sum\limits_{k=1}^{n_{ij}}x_{ijk}=r_{ij}
+\end{equation*}
+%$\mtext{for} \sum\limits_{k=1}^{n_{ij}}x_{ijk}=r_{ij}$\\
+
+If  $A_{r,n}^{(i)}$  represents the number of clusters of size $n$ with $r$ responses in the $ith$ treatment group
+%\begin{equation*}
+%\{X_{ijk},k=1,\cdots,n_{ij},j=1,\cdots,m^{(i)},i=1,\cdots,g\}
+%\end{equation*}
+%$\{X_{ijk},k=1,\cdots,n_{ij},j=1,\cdots,m^{(i)},i=1,\cdots,g\}$
+ 
+ \begin{equation*}
+ P\{X_{ij1}=x_{ij1},\cdots,X_{ijn_{ij}}=x_{ijn_{ij}}, \hspace{5mm} j=1,\cdots,m^{(i)},\hspace{5mm} i=1,\cdots,g\}=
+ \end{equation*}
+%$P\{X_{ij1}=x_{ij1},\cdots,X_{ijn_{ij}}=x_{ijn_{ij}}, \hspace{5mm} j=1,\cdots,m^{(i)},\hspace{5mm} i=1,\cdots,g\}$\\
+\begin{equation}\label{l3}
+\prod \limits_{i=1}^{g}\prod \limits_{n=1}^{K}\prod \limits_{r=0}^{n} \left[  \LARGE {P_{r,n}^{(i)}}\right]^{A_{r,n}^{(i)}}
+\end{equation}
+%$\prod \limits_{i=1}^{g}\prod \limits_{n=1}^{K}\prod \limits_{r=0}^{n} \left[  \LARGE {P_{r,n}^{(i)}}\right]^{A_{r,n}^{(i)}}$\\
+where $K$ denotes the maximum possible cluster size in the experiment  \\
+%For fixed cluster sizes, the data can be seen as coming from multinomial populations. Each fixed cluster size represents a stratum and within each stratum, the problem reduces to comparing $g$ multinomial populations.\\
+It is clear from  (\ref{l3}) and the factorization theorem that  $A_{r,n}^{(i)}$'s form a set of joint sufficient statistic for $P_{r,n}^{(i)}$'s. Thus we can summarize the dataset as given in Table \ref{table:ign} with each fixed cluster size.\\
+%\newpage
+%\FloatBarrier
+\begin{table}[h!]
+	\begin{center}
+		\caption{Summary of Data}
+		\begin{tabular}{c c|c c c c c c}
+			\hline
+			Treatment&Response  &  &Cluster size  & &&& \\
+			[0.5ex]
+			\hline
+			& & 1& 2 &3&$\cdots$&K&Row Total \\
+			[0.5ex]
+			\hline
+			&&&&&&&\\
+			Control&0&$ A_{0,1}^{(1)}$& $A_{0,2}^{(1)}$ &$A_{0,3}^{(1)}$& $\cdots$ &0&$n_{0}^{1}$ \\
+			%\hline
+			&&&&&&&\\
+			&1 &0 & $ A_{1,2}^{(1)}$ & $ A_{1,3}^{(1)}$  & $\cdots$  &$A_{1,K}^{(1)}$& $n_{1}^{1}$ \\
+			%\hline
+			&&&&&&&\\
+			&2 &$ 0$ & 0 & $ A_{2,3}^{(1)}$  & $\cdots$  &$A_{2,K}^{(1)}$&$n_{2}^{1}$ \\
+			%\hline
+			&&&&&&&\\
+			&$\vdots$ & $\vdots$ & $\vdots$  & $\vdots$  & $\vdots$  & $\vdots$&  \\
+			%\hline
+			&&&&&&&\\
+			
+			&n & $ 0$  & $0$  &$ 0$  & $\cdots$  & $ A_{n,K}^{(1)}$&$n_{n}^{1}$\\ [1ex]
+			%\hline
+			&&&&&&&\\
+			Column Total	& & $m_{1}^{(1)}$ & $m_{2}^{(1)}$ &$m_{3}^{(1)}$& $\cdots$  & $m_{K}^{(1)}$&$m^{(1)}$ \\ [1ex]
+			\hline
+			Treatment 1&0&$ A_{0,1}^{(2)}$& $A_{0,2}^{(2)}$ &$A_{0,3}^{(2)}$& $\cdots$ &$A_{0,K}^{(2)}$&$n_{0}^{2}$\\
+			%\hline
+			&&&&&&&\\
+			&1 &$ A_{1,1}^{(2)}$ & $ A_{1,2}^{(2)}$ & $ A_{1,3}^{(2)}$  & $\cdots$  &$A_{1,K}^{(1)}$&$n_{1}^{2}$ \\
+			%\hline
+			&&&&&&&\\
+			&2 &$ 0$ & $ A_{2,2}^{2)}$ & $ A_{2,3}^{(2)}$  & $\cdots$  &$A_{K,3}^{(2)}$&$n_{2}^{2}$ \\
+			%\hline
+			&&&&&&&\\
+			&$\vdots$ & $\vdots$ & $\vdots$  & $\vdots$  & $\vdots$  & $\vdots$&$\vdots$   \\
+			%\hline
+			
+			&&&&&&&\\
+			&n & $ 0$  & $ 0$  &$ 0$  & $\cdots$  & $ A_{n,K}^{(1)}$&$n_{n}^{2}$  \\ [1ex]
+			&&&&&&&\\
+			Column Total	& & $m_{1}^{(1)}$ & $m_{2}^{(1)}$ &$m_{3}^{(1)}$& $\cdots$  & $m_{K}^{(1)}$& $m^{(2)}$\\ [1ex]
+			\hline
+			&&&&&&&\\
+			&&&&&&&\\
+			\vdots&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\\
+			&&&&&&&\\
+			\hline
+			Treatment		g&0&$ A_{0,1}^{(g)}$& $A_{0,2}^{(g)}$ &$A_{0,3}^{(g)}$& $\cdots$ &$A_{0,K}^{(g)}$&$n_{0}^{g}$ \\
+			&&&&&&&\\
+					&1&$ A_{1,1}^{(g)}$& $A_{1,2}^{(g)}$ &$A_{1,3}^{(g)}$& $\cdots$ &$A_{1,K}^{(g)}$&$n_{1}^{g}$ \\
+			&&&&&&&\\
+			
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\\
+			&n & $ 0$  & $ 0$  &$ 0$  & $\cdots$  & $ A_{n,K}^{(g)}$&$n_{n}^{g}$  \\ [1ex]
+			&&&&&&&\\
+			Column Total	& & $m_{1}^{(g)}$ & $m_{2}^{(g)}$ &$m_{3}^{(g)}$& $\cdots$  & $m_{K}^{(g)}$&$m^{(g)}$ \\ [1ex]
+			
+			\hline
+		\end{tabular}
+		%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+		\label{table:ign}
+	\end{center}
+\end{table}
+%\FloatBarrier
+%Where $A_{r,n}^{(i)}=0$,whenever $r>n$.
+%Note
+where
+\begin{equation*}
+\sum\limits_{n=1}^{K}A_{r,n}^{i}=n^{i}_{r} \hspace{5mm} \text{and}\hspace{5mm} \sum\limits_{r=0}^{n}A_{r,n}^{i}=m^{i}_{n}
+\end{equation*}
+
+\begin{equation*}
+\sum\limits_{n=1}^{K}A_{r,n}^{i}=n^{i}_{r} \hspace{5mm} \text{and}\hspace{5mm} \sum\limits_{r=0}^{n}A_{r,n}^{i}=m^{i}_{n}
+\end{equation*} 
+%$\sum\limits_{n=1}^{K}A_{r,n}^{i}=n^{i}_{r}$ and $\sum\limits_{r=0}^{n}A_{r,n}^{i}=m^{i}_{n}$\\
+
+
+\begin{equation*}
+\text{Now for each fixed } n ,n=1,\cdots,K,\{A_{r,n}^{(i)},r=0,\cdots,n,i=0,\cdots,g\}
+ \sim 
+\end{equation*}
+
+\begin{equation*}
+\text{Multinomial}\left(m^{(i)}_{n},P_{0,n}^{(i)},\binom{n}{1}P_{1,n}^{(i)},
+\cdots,\binom{n}{n-1}P_{n-1,n}^{(i)}\cdots,P_{n,n}^{(i)} \right)
+\end{equation*}
+
+%\begin{equation*}
+% \hspace{5mm} \text{and}\hspace{5mm} \{A_{r,n}^{(i)},r=0,\cdots,k\}
+%\end{equation*}
+ 
+%\begin{equation*}
+%\text{form a set of sufficient 
+%	statistics for }\left(P_{0,n}^{(i)},
+%\cdots,P_{n,n}^{(i)} \right)
+%\end{equation*}
+
+
+Now consider testing the  hypotheses:
+$H_{0}$   :  No treatment effect \hspace{2mm}  vs \hspace{2mm}  $H_{a}$  :\hspace{2mm}There is a treatment effect and
+let T be the test statistic for testing these hypothesis and suppose that we reject $H_{0}\hspace{5mm} \text{if} \hspace{5mm}T \in C,\text{where} \hspace{2mm}C\hspace{2mm} \text{is the critical region.}$. Then under $H_{0}$,  $P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K$ and  $A_{r,n}=\sum\limits_{i=1}^{g}A_{r,n}^{(i)}$, where $\{A_{r,n},r=0,1,\cdots,n\}$ form a set of joint complete sufficient statistics for  $\left( P_{0,n},\cdots,P_{n,n} \right)$.
+%\begin{equation*}
+%H_{0}\hspace{5mm} \text{if} \hspace{5mm}T \in C,\text{where} \hspace{2mm}C\hspace{2mm} \text{is the critical region.}
+%\end{equation*} 
+
+%\begin{equation*}
+%\text{Under } H_{0},\hspace{5mm}\text{let}\hspace{5mm} P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K
+%\end{equation*}
+
+%$H_{0}$,let $P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K$\\
+%and let  
+%\begin{equation*}
+%\hspace{5mm}  A_{r,n}=\sum\limits_{i=1}^{g}A_{r,n}^{(i)}
+%\end{equation*}
+
+%Then $\{A_{r,n},r=0,1,\cdots,n\}$ form a set of joint complete sufficient statistics for 
+%\begin{equation*}
+%\left( P_{0,n},\cdots,P_{n,n} \right)  \hspace{5mm} \text{under} \hspace{5mm} H_{0}
+%\end{equation*}
+
+Thus  the  null hypothesis of of no treatment effect reduces to $H_{0}:P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K$.
+%\begin{equation*}
+%H_{0}:P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K
+%\end{equation*}
+%$H_{0}:P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K$\\
+
+%%$$i$,
+%$\{A_{r,n}^{(i)},r=0,\cdots,n\} \sim Multinomial\left(m^{(i)}_{n},P_{0,n}^{(i)},\binom{n}{1}P_{1,n}^{(i)},\cdots,\binom{n}{r}P_{r,n}^{(i)}\cdots,P_{n,n}^{(i)} \right)$\\
+%The moment generating function MGF of the multinomial distribution
+%
+%\begin{equation*}
+%=\left(\sum\limits_{r=0}^{n}P_{r,n}^{(i)}e^{t_{r,n}}\right)^{m^{(i)}_{n}} \hspace{5mm} n=1,\cdots,k
+%\end{equation*}
+%% =$\left(\sum\limits_{r=0}^{n}P_{r,n}^{(i)}e^{t_{r,n}}\right)^{m^{(i)}_{n}} \hspace{5mm} n=1,\cdots,k$\\
+%\begin{equation*}
+%\text{Let} \hspace{5mm}\sum\limits_{i=1}^{g}m^{(i)}_{n}=M_{n} \hspace{5mm}\text{then}
+%\end{equation*}
+%%Let $\sum\limits_{i=1}^{g}m^{(i)}_{n}=M_{n}$ then\\
+%The moment generating Function MGF of
+%
+%\begin{equation*}
+%\left\{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}|H_{0},r=0,\cdots,n,i=1,\cdots,g,n=1,\cdots,k\right\}
+%\end{equation*}
+
+% $\left\{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}|H_{0},r=0,\cdots,n,i=1,\cdots,g,n=1,\cdots,k\right\}$\\
+
+%\begin{equation*}
+%\text{is}\hspace{5mm}\displaystyle\prod\limits_{i=1}^{g}\left(\sum\limits_{r=0}^{n}P_{r,n}^{(i)}e^{t_{r,n}}\right)^{m^{(i)}_{n}}\hspace{5mm} n=1,\cdots,k
+%\end{equation*}
+
+%$\displaystyle\prod\limits_{i=1}^{g}\left(\sum\limits_{r=0}^{n}P_{r,n}^{(i)}e^{t_{r,n}}\right)^{m^{(i)}_{n}}\hspace{5mm} n=1,\cdots,k$
+%\begin{equation*}
+%=\left(\sum\limits_{r=0}^{n}P_{r,n}^{}e^{t_{r,n}}\right)^{\sum\limits_{i=1}^{g}m^{(i)}_{n}}\hspace{5mm} =\left(\sum\limits_{r=0}^{n}P_{r,n}^{}e^{t_{r,n}}\right)^{M_{n}}\hspace{5mm} n=1,\cdots,K
+%\end{equation*}
+
+%$=\left(\sum\limits_{r=0}^{n}P_{r,n}^{}e^{t_{r,n}}\right)^{\sum\limits_{i=1}^{g}m^{(i)}_{n}}\hspace{5mm} n=1,\cdots,k$\\
+%$=\left(\sum\limits_{r=0}^{n}P_{r,n}^{}e^{t_{r,n}}\right)^{M_{n}}\hspace{5mm} n=1,\cdots,K$\\
+Under $H_{0}$, $\left\{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}|H_{0},r=0,\cdots,n,i=1,\cdots,g,n=1,\cdots,K\right\} $ has a $\text{ Multinomial} \left(M_{n},P_{0,n},\binom{n}{1}P_{1,n},P_{n,n}\cdots,\binom{n}{r}P_{r,n}\cdots P_{n,n} \right)$, and
+%\begin{equation*}
+%\left\{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}|H_{0},r=0,\cdots,n,i=1,\cdots,g,n=1,\cdots,K\right\} 
+%\end{equation*}
+
+%$\left\{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}|H_{0},r=0,\cdots,n,i=1,\cdots,g,n=1,\cdots,K\right\} \sim$\\
+
+%\begin{equation*}
+%\text{ Multinomial} \left(M_{n},P_{0,n},\binom{n}{1}P_{1,n},P_{n,n}\cdots,\binom{n}{r}P_{r,n}\cdots P_{n,n} \right)
+%\end{equation*}
+
+% Multinomial$\left(M_{n},P_{0,n},\binom{n}{1}P_{1,n},P_{n,n}\cdots,\binom{n}{r}P_{r,n}\cdots P_{n,n} \right)$\\
+
+%Let $\sum\limits_{i=1}^{g}m^{(i)}_{n}=M_{n}$
+%$H_{0}:P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,g \hspace{5mm}r=0,\cdots,n \hspace{5mm} n=1,\cdots,K$\\
+\begin{equation*}
+P\left(A_{0,n}^{(i)}=a_{0,n}^{(i)},\cdots,A_{n,n}^{(i)}=a_{n,n}^{(i)}|H_{0},A_{0,n}=a_{0,n},\cdots,A_{n,n}=a_{n,n},n=1,\cdots,K,i=0,\cdots,g\right)=
+\end{equation*}
+%$P\left(A_{0,n}^{(i)}=a_{0,n}^{(i)},\cdots,A_{n,n}^{(i)}=a_{n,n}^{(i)}|H_{0},A_{0,n}=a_{0,n},\cdots,A_{n,n}=a_{n,n},n=1,\cdots,K,i=0,\cdots,g\right)=$\\
+%$\frac{P\left(A_{k}^{(i)},A_{r,n}=a_{r,n},i=1,\cdots,g\right)}{P\left(A_{r,n}=a_{r,n}\right)}=\frac{P\left(A_%{k}^{(i)}=a_{k}^{(i)},i=1,\cdots,g\right)}{P(A_{r,n}=a_{r,r})}}$\\
+\begin{equation*}
+\frac{P\left(A_{0,n}^{(i)}=a_{0,n}^{(i)},\cdots,A_{K,K}^{(i)}=a_{K,K}^{(i)},A_{0,n}=a_{0,n},\cdots,A_{K,K}=a_{K,K},n=1,\cdots,K,i=0,\cdots,g\right)}{P\left(A_{0,n}=a_{0,n},\cdots,A_{K,K}=a_{K,K},n=1,\cdots,K\right)}
+\end{equation*}
+%$\frac{P\left(A_{0,n}^{(i)}=a_{0,n}^{(i)},\cdots,A_{K,K}^{(i)}=a_{K,K}^{(i)},A_{0,n}=a_{0,n},\cdots,A_{K,K}=a_{K,K},n=1,\cdots,K,i=0,\cdots,g\right)}{P\left(A_{0,n}=a_{0,n},\cdots,A_{K,K}=a_{K,K},n=1,\cdots,K\right)}$\\
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%writing piecewise functions%%%%%%%%%%%%%%
+
+\[ =\begin{cases}
+\frac{\displaystyle\prod \limits_{i=1}^{g}\prod \limits_{n=1}^{K}\left(\displaystyle P\left(A_{0,n}^{(i)}=a_{0,n}^{(i)},\cdots,A_{n,n}^{(i)}=a_{n,n}^{(i)},A_{0,n}=a_{0,n},\cdots,A_{n,n}=a_{n,n}\right)\right)}{\displaystyle\prod \limits_{n=1}^{K}P\left(A_{0,n}=a_{0,n},\cdots,A_{n,n}=a_{n,n}\right)} &\mbox{if }  \sum \limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n}  \\
+0 & \mbox{if } \sum \limits_{i=1}^{g}A_{r,n}^{(i)} \neq a_{r,n} \\ \\
+\end{cases}
+\]
+
+
+\[ =\begin{cases}
+\frac{\displaystyle \prod\limits_{i=1}^{g}\prod\limits_{n=1}^{K}\displaystyle \binom {m^{(i)}_{n}}{a^{(i)}_{0,n},\cdots,a^{(i)}_{n,n}}\displaystyle\prod\limits_{r=0}^{K}P_{r,n}^{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}}}{\displaystyle\prod\limits_{n=1}^{K}\displaystyle \binom {M_{n}}{a_{0,n},\cdots,a_{n,n}}\displaystyle\prod\limits_{r=0}^{K}P_{r,n}^{\sum\limits_{i=1}^{g}A_{r,n}^{(i)}}}&\mbox{if }  \sum \limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n},r=0,\cdots,n  \\
+0 & \mbox{if } \sum \limits_{i=1}^{g}A_{r,n}^{(i)} \neq a_{r,n} \\ \\
+\end{cases}
+\]
+
+
+%\begin{equation}
+\[ =\begin{cases}\label{dfft}
+\frac{\displaystyle \prod\limits_{i=1}^{g}\prod\limits_{n=1}^{K}\displaystyle \binom {m^{(i)}_{n}}{a^{(i)}_{0,n},\cdots,a^{(i)}_{n,n}}}{\displaystyle\prod\limits_{n=1}^{K}\displaystyle \binom {M_{n}}{a_{0,n},\cdots,a_{n,n}}}&\mbox{if }  \sum \limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n},r=0,\cdots,n  \\
+0 & \mbox{if } \sum \limits_{i=1}^{g}A_{r,n}^{(i)} \neq a_{r,n} \\ \\
+\end{cases}
+\]
+%\end{equation}
+\section{Reference Set  and P-value}
+Define a reference set $\Gamma$ as the set of all possible contingency tables  with fixed marginal column  and row sums as the observed table sums for treatment groups $i=1,\cdots,g$, cluster sizes 
+$n=1,\cdots,K$, with  responses $r=0,\cdots,n$, that is 
+\begin{equation*}
+\Gamma=\displaystyle \left \{Y:Y \hspace{1mm}{is}\hspace{1mm} n\times K ;\sum\limits_{n=1}^{K}A_{r,n}^{i}=n^{i}_{r},\sum\limits_{r=0}^{n}A_{r,n}^{i}=m^{i}_{n} \right \}
+\end{equation*}
+
+%$\Gamma=\displaystyle \left \{y:y \hspace{1mm}{is}\hspace{1mm} n\times K ;\sum\limits_{n=1}^{K}A_{r,n}^{i}=n^{i}_{r},\sum\limits_{r=0}^{n}A_{r,n}^{i}=m^{i}_{n} \right \}$\\
+
+
+
+%%\section{P-value}
+%Suppose $T$ is a test statistic such that  we reject $H_{0}$,if $T>t_{obs}$\\
+%\vspace{5mm}
+%\begin{itemize}
+	
+	%\item
+	Then for an observed value $t$ of a test statistic $T$, the  $P-value$ of a test which rejects $H_{0}$, for large value of $T$ is given by
+	 P-value=$p(T>t_{obs}|H_{0})=\displaystyle \sum \limits_{T>t_{obs}} \left[\frac{\displaystyle \prod\limits_{i=1}^{g}\prod\limits_{n=1}^{K}\displaystyle \binom {m^{(i)}_{n}}{a^{(i)}_{0,n},\cdots,a^{(i)}_{n,n}}}{\displaystyle\prod\limits_{n=1}^{K}\displaystyle \binom {M_{n}}{a_{0,n},\cdots,a_{n,n}}} \right]$\\
+	
+	
+%\end{itemize}
+
+
+
+\section{Monte Carlo Method Using Likelihood Function} 
+Monte Carlo methods,  provide  powerful tools to compute unbiased estimates of the  exact $P-value$  for small data sets ,  sparse ,unbalanced  tables, non normal  data and when  the data that does not to conform to any particular parametric distribution.
+% and whenever asymptotic approximations are in doubt. The Monte Carlo method is especially useful in cases where data is too large to compute exact p-values. The p-value obtained in a Monte Carlo simulation is an unbiased  estimate of the exact p-value.
+  For any observed table, a large number of   tables with the same column and marginal sums are randomly  sampled from the reference set to obtain a set of $P-values$. The enumeration of all possible tables in a reference set can be computationally expensive for  large tables. The accuracy of the  Monte Carlo estimate of the exact $P-value$  increases as  the number of  tables sampled from the reference set increases.%\cite{smyth}
+
+The procedure for Monte-Carlo computation may be summarized as follows
+\begin{itemize}
+	
+	\item Let the  critical region of the reference set be defined as:
+	
+	\begin{equation*}
+	\Gamma^{*}=\displaystyle \left \{Y:Y \in \Gamma \hspace{1mm}\text{and}\hspace{1mm} P_{Y}\geq P_{X} \right \}
+	\end{equation*}
+%	$\Gamma^{*}=\displaystyle \left \{Y:Y \in \Gamma \hspace{1mm}{and}\hspace{1mm} P(Y)\geq P(X) \right \}$\\
+	and $P_{X}$ is the  probability  of the observed table and $P_{Y}$ is the probability of the sampled table $Y$. The probability of each table $P\left(Y\right)$ is given by,\\
+	
+	\[P\left(Y\right) =\begin{cases}
+	\frac{\displaystyle \prod\limits_{i=1}^{g}\prod\limits_{n=1}^{K}\displaystyle \binom {m^{(i)}_{n}}{a^{(i)}_{0,n},\cdots,a^{(i)}_{n,n}}}{\displaystyle\prod\limits_{n=1}^{K}\displaystyle \binom {M_{n}}{a_{0,n},\cdots,a_{n,n}}}&\mbox{if }  \sum \limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n},r=0,\cdots,n  \\
+	0 & \mbox{if } \sum \limits_{i=1}^{g}A_{r,n}^{(i)} \neq a_{r,n} \\ \\
+	\end{cases}
+	\]
+	$n=1,\cdots,K,i=1,\cdots,g$
+%	\item
+
+	
+	
+	%\item 
+%	The probability of each table $P\left(Y\right)$ is given by :\\
+%	
+%	\[ =\begin{cases}
+%	\frac{\displaystyle \prod\limits_{i=1}^{g}\prod\limits_{n=1}^{K}\displaystyle \binom {m^{(i)}_{n}}{a^{(i)}_{0,n},\cdots,a^{(i)}_{n,n}}}{\displaystyle\prod\limits_{n=1}^{K}\displaystyle \binom {M_{n}}{a_{0,n},\cdots,a_{n,n}}}&\mbox{if }  \sum \limits_{i=1}^{g}A_{r,n}^{(i)}=a_{r,n},r=0,\cdots,n  \\
+%	0 & \mbox{if } \sum \limits_{i=1}^{g}A_{r,n}^{(i)} \neq a_{r,n} \\ \\
+%	\end{cases}
+%	\]
+%	$n=1,\cdots,K,i=1,\cdots,g$
+	\item
+	  A  Monte Carlo estimate of the $P-value$ is obtained by sampling $N$ tables from the reference set $\Gamma$. Each of the $N$ tables sampled from the reference set $\Gamma$ is ordered by the modified Freeman-Tukey statistic,
+	
+	\begin{equation}\label{tukey}
+	D_{Y}=\sum\limits_{n=1}^{K}\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}\left(\sqrt{a_{ij}}+\sqrt{a_{ij}+1}-\sqrt{4\left(\frac{m_{n}^{i}n_{r}^{i}}{N}\right)+1}  \right)^{2} 
+	\end{equation}
+	 to detect those tables that are at least as extreme as the observed table $X$.
+	\item For each table $Y_{i}\in \Gamma $ that is sampled,define $W_{i}$ as:
+	
+	\[ W_{i}=\begin{cases}
+	1 & D_{Y_{i}}\geq D_{X}  \\
+	0 & \text{otherwise} \\
+	\end{cases}
+	\]
+	
+\end{itemize}
+
+%\subsection{Monte Carlo P-Value}
+
+The Monte-Carlo $P-value$ is then given by
+%\begin{equation*}
+%ee
+%\end{equation*}
+\begin{equation*}
+\hat{P}-value=\frac{1}{N}\sum\limits_{i=1}^{N}W_{i}
+\end{equation*}
+%$\hat{p}=\frac{1}{N}\sum\limits_{i=1}^{N}W_{i}$\\
+Since variable $W_{i}$ is a Bernoulli random variable. The asymptotic standard error of the Monte Carlo estimate of the $P-value$ is given by:
+\begin{equation*}
+\text{s.e.}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{N-1}}
+\end{equation*}
+%$s.e.(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{N-1}}$\\
+and  the asymptotic $100(1-\alpha)\%$ confidence intervals is given by:
+\begin{equation*}
+\hat{p}\pm z_{\frac{\alpha}{2}}s.e.(\hat{p})
+\end{equation*}
+%$\hat{p}\pm z_{\frac{\alpha}{2}}s.e.(\hat{p})$\\
+
+Although $\hat{P}$ is an unbiased estimate of the exact $P-value$, simply replacing the exact $P-value$ with $\hat{P}$ fails to control correctly  for type I error rate\cite{smythp} . $\hat{P}$ underestimates the $P-value$ if the null hypothesis is true when the number of $W_{i}$ is very small relative to $N$, and it can result in obtaining a $P-value$ of zero if the observed statistic is greater than all the permuted test statistics. For this reason an adjusted Monte Carlo $P-value$ estimate  was suggested  \cite{smyth} as
+is:
+\begin{equation}
+\hat{p}=\frac{1}{(N+1)}\left(\sum\limits_{i=1}^{N}W_{i}+1\right)
+\end{equation}
+%$\hat{p}=\frac{1}{(N+1)}\left(\sum\limits_{i=1}^{N}W_{i}+1\right)$\\
+The  Curtis adjusted $P-value$  has expectation, $\frac{NP+1}{N+1}$ , and  is biased and overestimates the $P-value$ by  $\frac{1-P}{N+1}$.\\
+The discreteness in small sample distributions can be adjusted by using the mid-$p-value$ approach suggested by 
+Lancaster \cite{lancaster}. The mid P-value  behaves much more like the P-value of a test statistic with a continuous distribution. For a test statistic $T$ with observed value $t_{obs}$ and one-sided  alternate hypothesis $H_{a}$. The mid P-value is given by  :
+\begin{equation*}
+\text{mid} \hspace{5mm}P-value=\frac{1}{2}P(T=t_{obs})+P(T>t_{obs})
+\end{equation*}
+%mid $P$-value$=\frac{1}{2}P(T=t_{obs})+P(T>t_{obs})$\\
+This adjustment causes the mid $P-value$ to be less than the ordinary P-value by about half of the observed result, but it is less conservative compared to the ordinary $P-value$ of an exact test \cite{Agresti2013}.\\
+
+\section{An Algorithm for Generating Tables}
+The tables from the reference set  are generated by the Algorithm AS 159 Patefield (1981). Each table with the same row and column marginal sums is generated under the  null hypothesis  assumption of no association between the rows and columns  categories. The conditional probability distribution of each entry $A_{r,n}$ and its expected value in a table given the previous entries in the rows and columns is found. The probability distribution of $A_{r,n}$ is accumulated starting with the $A_{r,n}$  equal to the nearest integer of it's expected value.
+The c.p.u. times required for this algorithm unlike the algorithm by Boyett(1979), depends more  on the dimension of the table rather than the sample size.  Patefield's algorithm performs considerably better than Boyett's  Algorithm AS 144  for large dimension tables.
+
+\section{Simulation Study I}
+A simulation study was conducted to determine the operating characteristics of the conditional exact test. The $P-values$ of  a homogeneity test between two groups (control and treatment)  were computed using various sample sizes by varying the difference in success probabilities between the two groups.
+%The two treatment groups were obtained by varying the the probability $p(X_{ij}=1)=p_{j}$.
+The marginal probability for the control group   $p_{1}$ was held constant at 0.1 and the probability of the treatment group was varied from $p_{2}=0.1,\cdots,0.9$. The sample sizes for  both the control and treatment groups were equal and varied  from $50,100$ and $200$. \\
+
+The method proposed by Lunn and Davies \cite{lunn} was used to generate correlated binary random variables with exchangeable correlation structure  $\rho_{j}$ within the $jth$ cluster. Although this method is very  simple to implement, it seems to be faster than  other existing algorithms for generating clustered binary data.\\
+
+To give a brief description of the algorithm, let $X_{ijk}$  be  the $kth$ binary  random variable in the $jth$ cluster of the $ith$ treatment group  for $i=1,2$, $k=1,\cdots,n_{ij}$ ,$j=1,\cdots,N_{i}$. Thus $N_{1}$ and $N_{2}$ are the number of clusters in Control and Treatment group respectively. The cluster sizes $n_{ij}$ were chosen to follow a random Poisson distribution with mean $\lambda=5$ and $\lambda=10$. $X_{ijk}$'s and were generated as follows:\\
+Let $Y_{ijk}$ and $Z_{ij}$ be independent binary random variables with $p_{i}=P(Y_{ijk} = Z_{ij}=1)$. Further let $U_{ijk}$ be a binary random variable with $P(U_{ijk}=1)=\theta_{i}$ independent of $Y_{ijk}$ and $Z_{ij}$. Generate $X_{ijk}=(1-U_{ijk})Y_{ijk}+U_{ijk}Z_{ij}$. Then $E(X_{ijk})=(1-\theta_{i})p_{i}+\theta_{i}p_{i}=p_{i}$ and $var(X_{ijk})=E(X_{ijk})^{2}-(E(X_{ijk})^{})^{2}=p_{j}(1-p_{j})$. Further cov$(X_{ijk},X_{ijl})=E(X_{ijk},X_{ijl})-p_{i}^{2}=\theta^{2}{_{i}} p_{i}(1-p_{i})$ for $k\neq l$ and cov$(X_{ijk},X_{ijl})=0$ for $j\neq l$ so that $\rho_{i}=\theta_{i}^{2}$.\\
+
+The results from the simulation are displayed in Table \ref{sim1}. The exact conditional approach detects a significant change in treatments as the marginal probabilities of the two treatment groups begin to change. The level of significance increases as the  difference in probabilities of the two groups increases. Generally, it was also observed that an increase in sample size is more likely to detect significance. The $p-values$ appear to increase as the intra cluster correlation is varied from $0.3$ to $0.9$. This demonstrates that there is some intra cluster effect. The results of the simulation study also show that the size of the clusters did not have any significant effect on the $p-values$. Increasing the mean cluster size from 5 to 10, the results remained generally the same.
+%No apparent  significant effect was observed by increasing the correlation in the clusters from 0.3 to 0.6.The p-values obtained at both levels were relatively unchanged.The results of the simulation study also show that ,the size of the clusters did not have any significant effect on the p-values.Increasing the mean cluster size from 5 to 10,the results remained generally the same. \\
+
+
+%\FloatBarrier
+
+%\begin{center}
+%	\tiny
+%	\begin{longtable}[h!]{|l|l|l| l|}
+%		\caption[]{Simulation Study I Results} \label{sim1} \\
+%		
+%		\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+%		\endfirsthead
+%		
+%		
+%		\multicolumn{4}{c}%
+%		{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+%		\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} &
+%		\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} &
+%		\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+%		\endhead
+%		
+%		\hline \multicolumn{3}{|r|}{{Continued on next page}}& \\ \hline
+%		\endfoot
+%		
+%		\hline \hline
+%		\endlastfoot
+%		
+%		$ p_{1}=p_{2}=0.1 $ &  & &  \\
+%		$ \rho_{1}=\rho_{2}=0.3 $ &0.5036603 & 0.4883057 &0.4906973 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2 $  &  &  &\\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.2881089  &0.1443886 &0.03172927 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3 $ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.07149251 &0.005467532 &0.001004995 \\
+%		$\lambda=5$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5 $ &&&\\
+%		$ \rho_{1}=\rho_{2}=0.3 $&0.001715285&0.000999001&0.000999001\\
+%		$\lambda=5$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7 $ &&&\\
+%		$ \rho_{1}=\rho_{2}=0.3 $ &0.000999001  & 0.000999001 &0.000999001\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ &  &  &\\
+%		$ \rho_{1}=\rho_{2}=0.3 $  & 0.000999001  & 0.000999001 & 0.000999001\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.5102378  &0.503006 & 0.4948531\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+%		$ \rho_{1}=\rho_{2}=0.6 $  & 0.3466993 &0.238026 &0.1015674 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3$&  & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.1478362  &0.03147852 &0.001747253 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5$ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.00674026  &0.001015984 & 0.000999001 \\
+%		$\lambda=5$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7$ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.001010989  &0.000999001  &0.000999001\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.000999001  &0.000999001   &0.000999001 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=p_{2}=0.1 $ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $ &0.5095644 & 0.509015 &0.4906503 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2 $  &  & &\\
+%		$ \rho_{1}=\rho_{2}=0.9 $  & 0.4020539 & 0.3217502 &0.1935874 \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3 $ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $  &0.2189271  & 0.09046254 & 0.01030569\\
+%		$\lambda=5$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5 $ &&&\\
+%		$ \rho_{1}=\rho_{2}=0.9 $ &0.001564436  &0.001564436  &0.000999001\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7$ &  &  &\\
+%		$ \rho_{1}=\rho_{2}=0.9 $  & 0.001114885  &0.000999001  &0.000999001 \\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ &  &  &\\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.000999001  &0.000999001  &0.000999001\\
+%		$\lambda=5$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.5124665  &0.4985754 &0.5069441 \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.2722398  &0.1042607 &0.01398202 \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		%		$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+%		%		$ \rho_{1}=\rho_{2}=0.3 $  &0.04498302  &0.004171828 & \\
+%		%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3$ &  && \\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.05241459  &0.002683317  &0.000999001  \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &0.001330669  &0.000999001  & 0.000999001 \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7$ &0.001 &0.000999001 &0.000999001 \\
+%		$ \rho_{1}=\rho_{2}=0.3 $  &   &  &\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.3 $ & 0.000999001  & 0.000999001  &0.000999001 \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.1$ &0.4909351  &0.4971698 &0.4943417 \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &  &  & \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+%		$ \rho_{1}=\rho_{2}=0.6 $  &  0.3182138 & 0.2037013 &0.06839161 \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.1065634  &0.01919381 & 0.001151848\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  &0.004274725  &0.001  &0.000999001  \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $  & 0.001004995  & 0.000999001 &0.000999001 \\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.6 $ & 0.000999001  &0.000999001   &0.000999001 \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $  & 0.4761019 &0.4751439 &0.5038921\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+%		$ \rho_{1}=\rho_{2}=0.9 $  &0.4080639  & 0.3138551 & 0.1967662\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $  &0.2180729  & 0.09042458 & 0.09042458\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+%		$ \rho_{1}=\rho_{2}=0.9 $  & 0.02597003  &0.001347652  &0.000999001  \\
+%		$\lambda=10$ &  & & \\ \hline
+%		$ p_{1}=0.1,p_{2}=0.7$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $  & 0.001376623  &0.000999001  &0.000999001\\
+%		$\lambda=10$ &  &  &\\ \hline
+%		$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+%		$ \rho_{1}=\rho_{2}=0.9 $ &0.000999001  &0.000999001   &0.000999001 \\
+%		$\lambda=10$ &  & & \\ \hline
+%		
+%	\end{longtable}
+%\end{center}		
+%%\FloatBarrier
+\begin{landscape}
+	\begin{center}
+		
+		\begin{longtable}[h!]{|l|l|l| l|}
+			\caption[]{Simulation Study I Results} \label{sim1} \\
+			
+			\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+			\endfirsthead
+			
+			
+			\multicolumn{4}{c}%
+			{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+			\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} &
+			\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} &
+			\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+			\endhead
+			
+			\hline \multicolumn{3}{|r|}{{Continued on next page}}& \\ \hline
+			\endfoot
+			
+			\hline \hline
+			\endlastfoot
+			
+			$ p_{1}=p_{2}=0.1 $ &  & &  \\
+			$ \rho_{1}=\rho_{2}=0.3 $ &0.5036603 & 0.4883057 &0.4906973 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2 $  &  &  &\\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.2881089  &0.1443886 &0.03172927 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3 $ & & & \\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.07149251 &0.005467532 &0.001004995 \\
+			$\lambda=5$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.5 $ &&&\\
+			$ \rho_{1}=\rho_{2}=0.3 $&0.001715285&0.000999001&0.000999001\\
+			$\lambda=5$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.7 $ &&&\\
+			$ \rho_{1}=\rho_{2}=0.3 $ &0.000999001  & 0.000999001 &0.000999001\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ &  &  &\\
+			$ \rho_{1}=\rho_{2}=0.3 $  & 0.000999001  & 0.000999001 & 0.000999001\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.5102378  &0.503006 & 0.4948531\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+			$ \rho_{1}=\rho_{2}=0.6 $  & 0.3466993 &0.238026 &0.1015674 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3$&  & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.1478362  &0.03147852 &0.001747253 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.5$ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.00674026  &0.001015984 & 0.000999001 \\
+			$\lambda=5$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.7$ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.001010989  &0.000999001  &0.000999001\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.000999001  &0.000999001   &0.000999001 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=p_{2}=0.1 $ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $ &0.5095644 & 0.509015 &0.4906503 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2 $  &  & &\\
+			$ \rho_{1}=\rho_{2}=0.9 $  & 0.4020539 & 0.3217502 &0.1935874 \\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3 $ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $  &0.2189271  & 0.09046254 & 0.01030569\\
+			$\lambda=5$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.5 $ &&&\\
+			$ \rho_{1}=\rho_{2}=0.9 $ &0.001564436  &0.001564436  &0.000999001\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.7$ &  &  &\\
+			$ \rho_{1}=\rho_{2}=0.9 $  & 0.001114885  &0.000999001  &0.000999001 \\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ &  &  &\\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.000999001  &0.000999001  &0.000999001\\
+			$\lambda=5$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.5124665  &0.4985754 &0.5069441 \\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.2722398  &0.1042607 &0.01398202 \\
+			$\lambda=10$ &  &  &\\ \hline
+			%		$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+			%		$ \rho_{1}=\rho_{2}=0.3 $  &0.04498302  &0.004171828 & \\
+			%		$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3$ &  && \\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.05241459  &0.002683317  &0.000999001  \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+			$ \rho_{1}=\rho_{2}=0.3 $  &0.001330669  &0.000999001  & 0.000999001 \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.7$ &0.001 &0.000999001 &0.000999001 \\
+			$ \rho_{1}=\rho_{2}=0.3 $  &   &  &\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.3 $ & 0.000999001  & 0.000999001  &0.000999001 \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.1$ &0.4909351  &0.4971698 &0.4943417 \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &  &  & \\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+			$ \rho_{1}=\rho_{2}=0.6 $  &  0.3182138 & 0.2037013 &0.06839161 \\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.1065634  &0.01919381 & 0.001151848\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+			$ \rho_{1}=\rho_{2}=0.6 $  &0.004274725  &0.001  &0.000999001  \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.7$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $  & 0.001004995  & 0.000999001 &0.000999001 \\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.6 $ & 0.000999001  &0.000999001   &0.000999001 \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.1$ &  & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $  & 0.4761019 &0.4751439 &0.5038921\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+			$ \rho_{1}=\rho_{2}=0.9 $  &0.4080639  & 0.3138551 & 0.1967662\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.3$&   & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $  &0.2180729  & 0.09042458 & 0.09042458\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.5$ &  && \\
+			$ \rho_{1}=\rho_{2}=0.9 $  & 0.02597003  &0.001347652  &0.000999001  \\
+			$\lambda=10$ &  & & \\ \hline
+			$ p_{1}=0.1,p_{2}=0.7$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $  & 0.001376623  &0.000999001  &0.000999001\\
+			$\lambda=10$ &  &  &\\ \hline
+			$ p_{1}=0.1,p_{2}=0.9$ & & & \\
+			$ \rho_{1}=\rho_{2}=0.9 $ &0.000999001  &0.000999001   &0.000999001 \\
+			$\lambda=10$ &  & & \\ \hline
+			
+		\end{longtable}
+	\end{center}
+\end{landscape}
+\newpage
+\section{Simulation Study II}
+
+%\subsection{{DeFinetti's Representation Theorem}}	
+%\begin{definition}
+%	A finite sequence of random variables $(X_{1},X_{2}\cdots,X_{k})$ is exchangeable if  for any $n=1,2,\cdots$ and any vector
+%	$(x_{1},\cdots,x_{n})$, the probability measure $P$  is such that\\
+%	$P(X_{\pi(1)}=x_{1},\cdots,X_{\pi(k)}=x_{k})=P(X_{1}=x_{1},\cdots,X_{k}=x_{})$\\
+%	for any permutation $\pi_{(1)}\cdots\pi_{(n)}$ of indices  $1,\cdots k$.
+%	If a  sequence $(X_{1},X_{2}\cdots,X_{n})$ is independent and identically distributed then they are  exchangeable but the converse is not true. An infinite sequence $(X_{1},X_{2},\cdots,)$  is infinitely exchangeable iff any finite subset of the sequence is finitely exchangeable.
+%\end{definition}
+%For this simulation we generate a large sequence of  binary random variables which could be considered as coming from a finite subset of an infinite sequence. In this context de Finetti Theorem apply.
+	
+\begin{theorem}[de Finetti]
+	An infinite sequence of  binary  random variables  $(X_{1},X_{2},\cdots,)$    is exchangeable if and only if  there exists a probability distribution  function $F$ on $[0,1]$ such that for all $n$ \cite{Diaconis1}
+	
+	
+	
+	
+	
+	\begin{equation}\label{df1a}
+	P(X_{1}=x_{1},X_{2}=x_{2},\cdots,X_{n}=x_{n})=\displaystyle \int_{0}^{1}\theta^{s_{n}}(1-\theta)^{n-s_{n}}d\text{F}(\theta),
+	\end{equation}
+%	where $F(t)=\lim\limits_{n\rightarrow \infty}P\left[\frac{S_{n}}{n} \leq t \right]$ ,
+
+%	\\$\lim\limits_{n\rightarrow \infty}$ $\theta \stackrel{\text{def}}{=}\frac{S_{n}}{n}  $ ,$\frac{S_{n}}{n}\stackrel{\text{def}}{\rightarrow} \theta$
+	
+	
+%	\begin{equation}\label{df1}
+%	P(X_{1}=x_{1},X_{2}=x_{2},\cdots,X_{n}=x_{n})=\displaystyle \int_{0}^{1}\theta^{s_{n}}(1-\theta)^{n-s_{n}}dF(\theta) \hspace{3mm} \text{where} \sum\limits_{i=1}^{n}X_{i}=S_{n}
+%	\end{equation}
+	\begin{equation}\label{df2}
+	P\left(\sum\limits_{i=1}^{n}X_{i}=s_{n}\right)=\displaystyle \binom{n}{s_{n}}\int_{0}^{1}\theta^{s_{n}}(1-\theta)^{n-s_{n}}dF(\theta)
+	\end{equation}
+	\text{	where}, $\sum\limits_{i=1}^{n}X_{i}=s_{n}$
+	
+\end{theorem}
+
+
+de Finetti's theorem assumes that any finite set under consideration is a subset of an infinite sequence. This assumption is not necessarily true in many practical applications. The Beta-Binomial may be derived from De Finetti's theorem  when  the mixing distribution $F$ is a  beta distribution. The intra-litter correlation is restricted to be  positive in a Beta-Binomial model \cite{bg}. Diaconis \cite{Diaconis1}, showed how the De Finetti theorem fails in a finite sequence scenario and also obtained  finite sequence representation of de Finetti's theorem.
+
+
+
+
+%\subsection{The p-power and q-power Models }
+\subsection{{The p-power and q-power Models}}
+In the interest of formulating parametric models,  Kuk \cite{kuk2004} introduced    p-power  for exchangeable binary random variables. Kuk \cite{kuk2004} showed that the  power family model is a  completely monotone function. This constraint is needed in order that the forward differences of all  marginal response probabilities is positive for a valid probability model \cite{bg}.
+Define
+\begin{equation}\label{e1}
+\lambda_{r+k}=P(X_{1}=\cdots=X_{r+k}=1)=p^{(r+k)^{\gamma}} ,\hspace{5mm}0\leq p,\gamma \leq 1.
+\end{equation}
+Thus,
+\begin{equation}\label{e2}
+P(R=r)=\displaystyle \binom{n}{r}\sum\limits_{k=0}^{n-r}(-1)^{k}\binom{n-r}{k}p^{(r+k)^{\gamma}}\hspace{1mm},\text{where}\hspace{1mm}\sum\limits_{k=1}^{n}X_{k}=R.
+\end{equation}
+
+%Let $X^{\prime}=1-X$ then $p^{\prime}=P(X_{1}^{\prime}=1)=P(X_{1}=0)=1-p=q$
+Kuk also gave the q-power model as
+\begin{equation}\label{e3}
+\lambda_{k}^{\prime}=P(X_{1}^{\prime}=\cdots=X_{k}^{\prime}=1)=P(X_{1}=0=\cdots=X_{k}=0)=q^{k^{\gamma}} \hspace{5mm}
+\end{equation}
+where
+
+\begin{equation} \label{e4q}
+P(R=r)=P(R^{\prime}=n-r)=\displaystyle \binom{n}{r}\sum\limits_{k=0}^{n-r}(-1)^{k}\binom{r}{k}q^{(n-r+k)^{\gamma}}
+\end{equation}
+
+
+%\begin{equation}\label{cdf}
+%P(R\leq r)=\sum\limits_{r_{i}\leq r}P(R=r_{i})
+%\end{equation}
+Using this ,we can show that the intra cluster correlation is given as
+\begin{equation}\label{e5}
+\rho=\frac{q^{2^{\gamma}}-q^{2}}{q(1-q)},\hspace{2mm}\text{where}\hspace{2mm} 0<q<1
+\end{equation}
+
+where $\gamma$ is the measure of positive intra-cluster correlation. $\gamma=1$ represents the case of independent observations and   $\gamma=0$ specifies complete intra-cluster  dependence. $\gamma > 1$ results in negative intra-cluster correlation $(\rho<0)$. $0<\gamma <1$ indicates positive intra cluster correlation. 
+
+A reparametrization gives
+%The measure of positive intra-cluster correlation $\gamma$ is given by
+\begin{equation}\label{e6}
+\gamma=\displaystyle \frac{\log \left[\frac{\log \left( q^{2}+\rho q(1-q)\right)}{\log(q)}\right]}{\log(2)}
+\end{equation}
+
+
+The p-power distribution given by   (\ref{e2}) under-estimates the  probability of at least one positive response $P(R\geq1)$ by assigning high probability mass at zero\cite{kuk2004}. This leads to overestimation of a safe dose in a litter-based approach to quantitative risk assessment \cite{kuk2004}. The q-power distribution given by  (\ref{e4q}) does not have this problem. Kuk \cite{kuk2004} showed that the  probability distribution  functions of the q-power distribution  in cases where  the  response probability or intra-cluster correlation is small  closely follows bell  shape in comparison to  their p-power counterparts.\cite{kuk2004}. The  q-power model in (\ref{e4q}) does not model positive intra-litter correlation only. In most practical applications that involve clustered binary data, intra-litter correlation  is positive. It can be shown that %$\frac{-1}{n}\leq \rho \leq 1$ for clusters of the same size and 
+ $\frac{-1}{n_{max}}\leq \rho \leq 1$, where $n_{max}$ is the maximum cluster size \cite{icc}. If $\sum\limits_{r=0}^{n}P(R\geq r)=1$ the q-power model (\ref{e4q}) defines a valid distribution  even when  $\gamma > 1$ as long as $P(R\geq r)\geq 0$. For $r=0,\cdots,n$, this leads to negative intra-cluster correlation  defined by Equation \ref{e5}. A value of $\gamma >1$ results in negative intra-cluster correlation. Thus when these simple conditions are  satisfied, the q-power distribution can be  adapted to model data with negative intra-litter correlation.
+The q-power distribution is  convenient in dose response modeling when the  probability that at least one cluster variable is   affected in contrast to the p-power distribution, since
+\begin{equation}\label{e7}
+P(R\geq 1)=1-P(R=0)=1-P(X_{1}=\cdots,X_{n}=0)=1-q^{n^{\gamma}}
+\end{equation}
+The corresponding p-power family is given by
+\begin{equation}\label{e8}
+P(R\geq 1)=1-P(R=0)=1-\displaystyle \binom{n}{r}\sum\limits_{k=0}^{n-r}(-1)^{k}\binom{n}{k}p^{k^{\gamma}}
+\end{equation}
+
+\vspace{5mm}
+
+%\subsection{Simulation Study 2}
+A second simulation study was conducted to determine the characteristics of the conditional exact tests. The $P-values$ of  a homogeneity test between a control and a treatment groups  were computed at  various sample sizes by varying the difference in success probabilities between the two groups.
+%The two treatment groups were obtained by varying the the probability $p(X_{ij}=1)=p_{j}$.
+The marginal probability for the control group   $p_{1}$ was held constant at 0.1 and the probability of the treatment group was varied from $p_{2}=0.1,\cdots,0.9$. The number of clusters  for  both the control and treatment groups were made equal and varied at $50,100$ and $200$. $\lambda$ is the mean of the Poisson distribution used to generate random cluster sizes. For each set of parameters, the simulation was repeated a thousand times and the mean p-value recorded. \\
+\subsection{Inverse Transform Method}
+The Inverse   Transform  method was used  to generate correlated binary random variables with intra-litter correlation   $\rho$. To generate  a random variable R with  probability distribution given by (\ref{e4q}), we follow these two steps: \\
+\subsubsection{Steps}
+\begin{enumerate}
+	\item Generate probabilities $p_{0}=P(R\leq 0)$, $p_{1}=P(R\leq 1)$,  $p_{2}=P(R\leq 2)$,\hspace{5mm}$\cdots$
+	
+	\item Generate $U\sim u(0,1)$ then set $ R=k$ if $p_{k-1}<U<p_{k}$.
+\end{enumerate}
+%	 The $q$-power family of distributions provides a convenient way to model correlated binary data.Some existing approaches such as  the beta-binomial and folded logistic functions have the tendency to overestimate safe dose levels by high probability to zero.\cite{kuk2004}.
+
+The results from the simulation are summarized in Table \ref{sim2}. The exact conditional approach detects a significant change between control and  	treatment group  as the marginal probabilities of the two treatment groups begin to change. The p-values decrease as the  difference in marginal  probabilities between  the control and treatment group increases. Generally, the increase in sample size  has  an effect on significance. Larger sample sizes were  more likely to detect significance for a fixed set of parameters as expected, while for a fixed set of parameters, increasing intra-cluster correlation resulted in  increasing p-values. This suggests that intra-cluster correlation has an  effect on the significance of the test. Larger sample sizes are needed to detect significant differences as intra-litter correlations increase.
+
+%\newpage
+
+%\FloatBarrier
+\begin{landscape}
+\begin{center}
+	%\tiny
+	\begin{longtable}{|l|l|l| l|}
+		\caption[]{Simulation Study  II Results} \label{sim2} \\
+		
+		\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} & \multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+		\endfirsthead
+		
+		
+		\multicolumn{4}{c}%
+		{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+		\hline \multicolumn{1}{|c|}{\textbf{Simulation Parameters}} &
+		\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=50$} &
+		\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=100$}&\multicolumn{1}{c|}{\textbf{P- Value},$N_{1}=N_{2}=200$} \\ \hline 
+		\endhead
+		
+		\hline \multicolumn{3}{|r|}{{Continued on next page}}& \\ \hline
+		\endfoot
+		
+		\hline \hline
+		\endlastfoot
+		
+		$ p_{1}=p_{2}=0.1 $ & &   & \\
+		$ \rho_{1}=\rho_{2}=0.3 $ & 0.5075455 &0.5068741 &0.4948332 \\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2 $  &  &  & \\
+		$ \rho_{1}=\rho_{2}=0.3 $  &0.3366064  & 0.2118432&0.07347453 \\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3 $ &  & &   \\
+		$ \rho_{1}=\rho_{2}=0.3 $  &0.1192218  &0.01818382 &0.001256743 \\
+		$\lambda=5$ &  & & \\ \hline
+		$ p_{1}=0.1,p_{2}=0.5 $ & & & \\
+		$ \rho_{1}=\rho_{2}=0.3 $&0.00458042&0.001003996&0.000999001\\
+		$\lambda=5$ &  & & \\ \hline
+		$ p_{1}=0.1,p_{2}=0.7 $ & & & \\
+		$ \rho_{1}=\rho_{2}=0.3 $ &0.001010989  &0.000999001  &0.000999001\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$ &  &   &\\
+		$ \rho_{1}=\rho_{2}=0.3 $  & 0.000999001 & 0.000999001 &0.000999001\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.1$ &  & &  \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.4972358  &0.5091479 &0.5035944\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2$ &  &   &  \\ 
+		$ \rho_{1}=\rho_{2}=0.6 $  & 0.3752328  &0.2706613 & 0.156002\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3$&   &  & \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.176035  &0.06263437 &0.00662038 \\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.5$ &0.01225175   &0.001110889 & 0.000999001 \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &  & & \\
+		$\lambda=5$ &  & & \\ \hline
+		$ p_{1}=0.1,p_{2}=0.7$ &   & &  \\
+		$ \rho_{1}=\rho_{2}=0.6 $  & 0.001063936 &0.000999001  &0.000999001\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$ &   &  &  \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.000999001  & 0.000999001 &0.000999001\\
+		$\lambda=5$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.1$& 0.5154116&0.5028581& 0.5005315\\
+		$ \rho_{1}=\rho_{2}=0.9 $ && &\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.3893546&  0.3132098&0.1918781\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ & 0.222013&0.08045654& 0.01461738\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.5$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &  0.02365135&0.001455544& 0.000999001\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.7$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.001165834& 0.000999001&0.000999001\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ & 0.000999001&0.000999001&0.000999001\\
+		$\lambda=5$&&&\\ \hline
+		$ p_{1}=p_{2}=0.1 $ &0.4975125  &0.5038791  &0.5048911  \\
+		$ \rho_{1}=\rho_{2}=0.3 $ & &  & \\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2 $  &   &  & \\
+		$ \rho_{1}=\rho_{2}=0.3 $  &0.3001578  &0.1708402 & 0.04642657 \\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3 $ &   &  &  \\
+		$ \rho_{1}=\rho_{2}=0.3 $  & 0.08166134 & 0.01356244& 0.001064935\\
+		$\lambda=10$ &  & & \\ \hline
+		$ p_{1}=0.1,p_{2}=0.5 $ & & & \\
+		$ \rho_{1}=\rho_{2}=0.3 $ & 0.003024975  &0.000999001  & 0.000999001\\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.7$ &  &  &\\
+		$ \rho_{1}=\rho_{2}=0.3 $  &0.001018981  & 0.000999001  &0.000999001\\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$ & 0.000999001 & 0.000999001  & 0.000999001\\
+		$ \rho_{1}=\rho_{2}=0.3 $  &  &  &\\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.1$ &0.5004855   & 0.4963666  &0.5109191 \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &  & & \\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2$ &  &  & \\ 
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.3816813  &0.2802967 &0.1594915 \\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3$&  &  &  \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.1927493  &0.06670829 &0.00782018 \\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.5$ &   & & \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &0.01223177  &0.001152847 & 0.000999001 \\
+		$\lambda=10$ &  & & \\ \hline
+		$ p_{1}=0.1,p_{2}=0.7$ &0.001191808  & 0.000999001 &0.000999001 \\
+		$ \rho_{1}=\rho_{2}=0.6 $  &  &  &\\
+		$\lambda=10$ &  &  &\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$ &   & &  \\
+		$ \rho_{1}=\rho_{2}=0.6 $ &0.000999001  &0.000999001  &0.000999001\\
+		$\lambda=10$ &  & & \\ \hline
+		%$ p_{1}=0.1,p_{2}=0.1$&&&\\
+		%$ \rho_{1}=\rho_{2}=0.9 $ &&&\\
+		%$\lambda=5$&&&\\ \hline
+		%$ p_{1}=0.1,p_{2}=0.1$&&&\\
+		%$ \rho_{1}=\rho_{2}=0.9 $ &&&\\
+		%$\lambda=5$&&&\\ \hline
+		
+		$ p_{1}=0.1,p_{2}=0.1$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.50203 & 0.5016913&0.5188941\\
+		$\lambda=10$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.2$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.4172587 & 0.3215764& 0.2148541\\
+		$\lambda=10$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.3$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.2392268 &0.1025734& 0.01953247\\
+		$\lambda=10$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.5$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.03052048 &0.001665335&0.000999001\\
+		$\lambda=10$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.7$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ &0.001525475 & 0.000999001& 0.000999001\\
+		$\lambda=10$&&&\\ \hline
+		$ p_{1}=0.1,p_{2}=0.9$&&&\\
+		$ \rho_{1}=\rho_{2}=0.9 $ & 0.000999001&0.000999001&0.000999001\\
+		$\lambda=10$&&&\\ \hline
+	\end{longtable}
+\end{center}
+\end{landscape}
+%\FloatBarrier
+
+The  Lunn and Davis  approach to generating correlated binary data results in p-values that are in general slightly  less than that of  the Inverse Transform of the q-power distribution for any fixed set of parameters. The two simulation methods share all  other similar characteristics with each other.
+
+\newpage
+\section{Application }
+The exact test procedure was applied to the analysis of a developmental toxicity study of ethylene glycol diethyl ether (EDGE). The data was obtained in an experiment
+%The testing was procedure was applied to the Edge Toxicology Laboratory data  available in the R statistical programming language.
+%The data was obtained from a developmental toxicity experiment
+ in which pregnant New Zealand white rabbits were exposed to the compound EGDE. The effect of ethylene glycol diethyl ether on their  fetal development  was then studied. In the study, four groups of pregnant does were randomly assigned to dose levels $0, 25, 50$, and $100$ milligrams per kilogram body weight of EGDE. For each litter and at each dose level, the adverse response used is the combined number of fetal malformation and fetal death.
+The data are presented in  Table 8. The frequency distribution  of live fetuses with malformations are grouped into cluster sizes ranging from 2 to 15. The data appears to be relatively sparse with no indication that dose level has impact on cluster size. From the table, for each fixed cluster size, frequency of malformations  appears to increase with increasing dose level. Figure \ref{Fig:p1} shows the probability of at least one, two, three and four responses across the various dose groups. In general, these probabilities increase with increasing dose demonstrating  the existence of a trend. Figure \ref{Fig:p2} shows a strip chart plot of the responses. It is observed that dose group 100 has the highest proportion fetuses with malformations. Lower dose groups 0, 25 and 50 have relatively lower proportion of fetuses with malformations. Figure \ref{Fig:p3} shows that the marginal proportion of fetuses affected also increase with increasing dose.
+
+\newpage
+%\begin{landscape}
+\begin{center}
+	\tiny
+	
+	\begin{longtable}[h!]{c c c c c c c c c c c c c c c c}
+		\caption{Data from Ethylene glycol ether(EDGE) Laboratory experiment: A Frequency Table Representation}\\
+		\hline		
+		\multicolumn{1}{r}{}
+		&  \multicolumn{1}{c}{No. malformed}
+		& \multicolumn{1}{c}{No. of live fetuses} \\
+		
+		\cline{3-15}
+		Dose	Level    & $i$ & 2&3&4&5&6&7&8&9&10&11&12&13&14&15 \\
+		\hline
+		0& 0&2 &&&1&1&2&3&1&3&1&1&& &     \\
+		& 1        & &1&&1&1&&1&&&&&1& &      \\
+		& 2    &&&&&&&&&&&&&&      \\
+		&3     &  &1&&&&&&&&&&& &    \\
+		& 4     &  &&&1&&&&2&&&&&&\\
+		& 5     &  &&&&&&&&1&&&& &     \\
+		& 6     &  &&&&&&&&&&1&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 7     &  &&&&&1&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 8     &  &&&&&&1&&&&&&      \\
+		% &      &  &&&&&&&&&&&&   &   \\
+		%& 9     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 10     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 11     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 12     &  &&&&&&&&&&&&      \\
+		&      &  &&&&&&&&&&&&   &   \\
+		25& 0     &  &1&1&4&2&1&2&2&1&&1&& &     \\
+		& 1     &  &&&&1&1&&1&2&1&&&  &    \\
+		& 2     &  &&&&&&&&&&2&1&   &   \\
+		& 3     &  &&&&&&&1&2&&&1&  &    \\
+		& 4     &  &&&&1&&&&1&&&&   &   \\
+		& 5     &  &&&&&&&&&&&&  &    \\
+		& 6     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 7     &  &&&&&1&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 8     &  &&&&&&1&&&&&&      \\
+		% &      &  &&&&&&&&&&&&   &   \\
+		% & 9     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 10     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		% & 11     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		% & 12     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 6     &  &&&&&&&&&&&&      \\
+		&      &  &&&&&&&&&&&&  &    \\
+		50  & 0     &2  &1&&1&&1&1&1&1&&&&  &    \\
+		& 1     &  &&&1&&&&&1&1&&&  &    \\
+		& 2&  &&1&&1&1&1&1&1&1&&&   &   \\
+		& 3     &  &&&&&&1&&&1&&&  &1    \\
+		& 4     &  &&&&&&&&&&&&  1&    \\
+		& 5     &  &&&&&&&&&&&&  &    \\
+		& 6     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 7     &  &&&&&&&&&&1&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 8     &  &&&&&&1&&&&&1&      \\
+		% &      &  &&&&&&&&&&&&   &   \\
+		%& 9     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 10     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		% & 11     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 12     &  &&&&&&&&&&&&      \\
+		&      &  &&&&&&&&&&&&   &   \\
+		100 & 0     &1  &2&&&&&&&1&&&& &     \\
+		& 1     & 1 &&&&&&&&&&&&  &    \\
+		& 2&  &&&&&&&&&&&&  &    \\
+		& 3     &  &&&1&1&&&&1&&&&   &   \\
+		& 4     &  &&1&&1&&&1&&&&&  &    \\
+		& 5     &  &&&1&1&&3&1&&&&&      \\
+		& 6     &  &&&&&1&2&&1&1&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 7     &  &&&&&1&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 8     &  &&&&&&1&&&&&&      \\
+		% &      &  &&&&&&&&&&&&   &   \\
+		& 9     &  &&&&&&&2&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 10     &  &&&&&&&1&1&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		%& 11     &  &&&&&&&&&&&&      \\
+		%&      &  &&&&&&&&&&&&   &   \\
+		& 12     &  &&&&&&&&&2&1&&      \\
+		&      &  &&&&&&&&&&&&   &   \\
+		% & 6     &  &&&&&&&&&&&&      \\
+		
+		\hline
+		%\end{tabular}
+		
+	\end{longtable}
+	\label{tab:edge}
+	%\label{theedge}
+\end{center}
+%\end{landscape}
+%	\bigskip
+%Should be a caption
+
+%\end{minipage}
+
+%\newpage	
+\vspace{5mm}
+\subsection{Summary Statistics for Edge Data}
+%\FloatBarrier
+
+\begin{table}[h!]
+	\caption{Summary Statistics for EDGE Data}
+	%\label{table:results}
+	\begin{center}
+		%\caption{Summary Statistics for EDGE Data}
+		
+		\begin{tabular}{llllll}
+			%\begin{tabular}{lllllr}
+			\hline\hline
+			
+			\multicolumn{6}{c}{Dose Level} \\
+			&&&&&\\
+			\cline{2-5}\cline{2-6}
+			&&&&&\\
+			& 0 & 25&50&100 &Total\\
+			&&&&&\\
+			\hline
+			Clusters &21   & 23 &25 & 25&94\\
+			&&&&&\\
+			%\hline
+			Mean Cluster Size& 7.79 & 8.28& 8.31 & 7.71&8.02\\
+			&&&&&\\
+			%\hline
+			Sample Size & 218& 265 & 216 &239 &938\\
+			&&&&&\\
+			Malformations & 40 & 47 & 54 & 171 &312\\
+			&&&&&\\
+			%\hline
+			Response Rate $(\%)$ & 18.35 & 17.74 & 25 &71.55  &33.26\\
+			&&&&&\\
+			%Armadillo & frozen & 8.99&5& &\\
+			Probability of  at least& 0.46 & 0.53 & 0.69 & 0.87 & 0.64\\
+			one fetus affected&&&&&\\
+			\hline
+		\end{tabular}
+		\label{table:summary}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+
+\newpage
+%\subsection{}	
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[height=15cm,width=15cm]{edge1.png}\
+	\end{center}
+	\vspace{-0.3in}
+	\caption{Marginal Response Probability Plot for EDGE Data }
+	\label{Fig:p1}
+\end{figure}	
+
+%\subsection{title}	
+\newpage
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[height=14cm,width=14cm]{stripedge.png}\
+	\end{center}
+	\vspace{-0.3in}
+	\caption{ Strip chart Representation for EDGE Data}
+	\label{Fig:p2}
+\end{figure}	
+
+%\subsection{title}	
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[height=15cm,width=15cm]{fitedge.png}\
+	\end{center}
+	\vspace{-0.3in}
+	\caption{ Fit of Marginal Probability for Edge Data }
+	\label{Fig:p3}
+\end{figure}
+
+
+
+
+
+\newpage
+\subsection{Treatment Test of Heterogeneity}
+%\newpage
+%$H_{0}$:No treatment effect vs\\
+%\newpage
+To test the hypothesis of no adverse effect of EDGE against possible adverse effect. We test the null hypothesis 
+$H_{0}:P^{(i)}_{r,n}=P_{r,n},i=1,\cdots,4 \hspace{5mm}r=0,\cdots,12 \hspace{5mm} n=2,\cdots,15$ \hspace{5mm}  versus the alternate
+
+$H_{a}$:At least one $P^{(i)}_{r,n} \neq P^{(i+1)}_{r,n}$  \hspace{5mm} \\
+%\FloatBarrier
+
+%\FloatBarrier
+
+%\vspace{7mm}
+In Table 10, we summarize the results
+of this test  across all four treatment groups. The results indicate a significant difference in response rates between the four dose groups$(p-value=0.02894971)$. The estimates are based on  $10,000$ random samples from the reference set. The distribution of the test statistic $D_{Y}$ displayed by Figure \textbf{\ref{fig:gull}} shows, the test statistic appears to be unimodal and skewed to the left.\\
+\begin{table}[h!]
+	\label{table:homo}
+	\begin{center}
+		\caption{Exact Conditional Test}
+		\begin{tabular}{ l l l l}
+			\hline
+			Treatment Groups &Mid P-value &\hspace{5mm} P-value& \hspace{5mm}99\% Confidence Interval \\ \hline\hline
+			&\\
+			%Control,High & 0.6833 &\hspace{5mm} 0.6878312&\hspace{5mm}(0.6758986 0.6997638) \\\hline
+			&\\
+			0,25,50,100 & 0.028945 &\hspace{5mm}  0.02894971 &\hspace{5mm}(0.02758443, 0.03031499)\\
+			&\\
+			\hline
+		\end{tabular}
+		%\label{table:resulth}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+\vspace{7mm}
+
+%\FloatBarrier
+\begin{table}[h!]
+	\label{table:rao}
+	\begin{center}
+		\caption{Comparison with Other Test}
+		\begin{tabular}{ l l l l}
+			\hline
+			Treatment Groups &Exact Conditional &\hspace{5mm} Rao-Scott Homogeneity Test(Asymptotic)&  \\ \hline\hline
+			&\\
+			%Control,High & 0.6833 &\hspace{5mm} 0.6878312&\hspace{5mm}(0.6758986 0.6997638) \\\hline
+			&\\
+			0,25,50,100 & 0.028945 &\hspace{5mm} $<0.001$ &\\
+			&\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}	
+
+
+\begin{figure}[h!]
+	\label{p4}
+	\begin{center}
+		\includegraphics*[height=5in]{gfch.png}\
+	\end{center}
+	\vspace{-0.3in}
+	\caption{10000 Simulated Tables of  Eq $\ref{tukey}$ for Edge data}
+	\label{fig:gull}
+\end{figure}
+
+
+
+%\pagenumbering{gobble}
+
+%\pagenumbering{arabic}
+%\setcounter{page}{8}
+
+
+%\setcounter{page}{45}
+%-------------------------------------------------------------------------------------------------------------------------
+\chapter{Exact Stratified Linear Rank Test}
+%\section{Overview of Nonparametric Models for Categorical Data}
+
+\section{Stratified Representation of Data}
+
+Stratification of clustered data allows analysis to be made on data with the same cluster sizes. When cluster sizes are fixed, each row in a stratum of the $g$ treatment groups can be viewed as $g$ independent  multinomial distributions with $K$ categories. Each observation $A_{r,j}^{i}$ represents the number of clusters with $r$ responses $r=0,\cdots,K$ and stratum/cluster size $j$, $j=1,\cdot,K$ in the $ith$ treatment group, $i=1,\cdots,g$.\\
+The stratum scores $w_{i,j}$ ,$i=0,1,\cdots,K$ and $j=1,\cdots,K$ are monotone  non-decreasing  weights assigned   $\left(w_{0,j} \leq w_{1,j} \leq \cdots \leq w_{K,j} \right)$ to the $jth$ stratum with $r$ responses. The weights $w_{i,j}$ are  assigned to the ranked column  in each stratum.
+%A special case where there is only one stratum,i.e. $j=1$ is regular $r \times c$ contigency table.\\
+Let $(u_{0i},u_{1i},u_{2i}\cdots,u_{gi})$  be monotone  non-decreasing weights that is $(u_{0i} \leq u_{1i} \leq u_{2i} \leq \cdots \leq u_{gi})$. The weights $u_{ij}$,$i=1,\cdots g$ and $j=1,\cdots,K$ are weights  assigned to  the ranked row sum  in each stratum. The stratified representation is shown in Table 12.
+
+
+
+
+\newpage
+%\FloatBarrier % holds table in position
+%\begin{landscape}
+	
+\begin{table}[h!]
+	\label{table:stratified1}
+
+	\tiny
+	\begin{center}
+		\caption{Stratified Representation of Clustered Data}
+		\begin{tabular}{c c|c c c c c c c}
+		%	\begin{tabular}{c c|c c c c c c c}
+			\hline
+			Cluster size		&Treatment &   &  & &&Response&& \\
+			[0.5ex]
+			\hline
+			& & 0& 1 &2&$\cdots$&n&Row  Total&Row Weights \\
+			[0.5ex]
+			\hline
+			&&&&&&&&\\
+			&&&&Stratum 1&&&&\\
+			1&0&$ A_{0,1}^{(1)}$& $A_{1,1}^{(1)}$ &$0$& $\cdots$ &$1$&$m_{1}^{1}$ &$u_{11}$\\
+			%\hline
+			&&&&&&&&\\
+			&2 &$ A_{0,1}^{(2)}$ & $ A_{1,1}^{(2)}$ & 0 & $\cdots$  &$0$& $m_{1}^{2}$ &$u_{21}$\\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			& g &$ A_{0,1}^{(g)}$ & $ A_{1,1}^{(g)}$ & $ A_{2,1}^{(g)}$  & $\cdots$  &$ A_{r,1}^{(g)}$&$ m^{g}_{1}$ &$u_{g1}$\\
+			&&&&&&&\\
+			Column Total	& & $n_{0,1}$ & $n_{1,1}$ &$n_{2,1}$& $\cdots$  & $n_{r,1}$&$N_{1}$ &\\ [1ex]
+			Column Weights	& & $w_{01}$ & $w_{11}$ &$w_{21}$& $\cdots$  & $w_{r1}$& &\\ [1ex]
+			
+			%\hline
+			&&&&&&&&\\
+			&&&&Stratum 2&&&&\\
+			&&&&&&&&\\
+			2&$ 1$ & $ A_{0,2}^{(1)}$ & $ A_{1,2}^{(1)}$ & $ A_{2,2}^{(1)}$  & $\cdots$  &$0$&$m_{2}^{1}$ &$u_{12}$\\
+			&2 &$ A_{0,2}^{(2)}$ & $ A_{1,2}^{(2)}$ & $ A_{2,2}^{(2)}$  & $\cdots$  &$0$&$m_{2}^{2}$&$u_{22}$ \\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			& g &$ A_{0,2}^{(g)}$ & $ A_{1,2}^{(g)}$ & $ A_{2,2}^{(g)}$  & $\cdots$  &$ A_{r,2}^{(g)}$&$m_{2}^{g}$&$u_{g2}$ \\
+			&&&&&&&&\\
+			Column Total	& & $n_{0,2}$ & $n_{1,2}$ &$n_{2,2}$& $\cdots$  & $n_{r,2}$&$N_{2}$ &\\ [1ex]
+			Column Weights	& & $w_{02}$ & $w_{12}$ &$w_{22}$& $\cdots$  & $w_{r2}$& &\\ [1ex]
+			
+			&&&&&&&&\\
+			&&&&Stratum 3&&&&\\
+			&&&&&&&&\\
+			3&$ 1$ & $ A_{0,3}^{(1)}$ & $ A_{1,3}^{(1)}$ & $ A_{2,3}^{(1)}$  & $\cdots$  &$0$&$m_{3}^{1}$&$u_{13}$ \\
+			&2 &$ A_{0,3}^{(2)}$ & $ A_{1,3}^{(2)}$ & $ A_{2,3}^{(2)}$  & $\cdots$  &$0$&$m_{3}^{1}$& $u_{23}$\\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			& g &$ A_{0,3}^{(g)}$ & $ A_{1,3}^{(g)}$ & $ A_{2,3}^{(g)}$  & $\cdots$  &$ A_{r,3}^{(g)}$ &$m_{3}^{g}$&$u_{g3}$ \\
+			&&&&&&&&\\
+			Column Total	& & $n_{0,3}$ & $n_{1,3}$ &$n_{2,3}$& $\cdots$  & $n_{r,3}$&$N_{3}$& \\ [1ex]
+			Column Weights	& & $w_{03}$ & $w_{13}$ &$w_{23}$& $\cdots$  & $w_{r3}$&& \\ [1ex]
+			
+			%\hline
+			&&&&&&&&\\
+			%ColumnTotal	& & $m_{1}^{(0)}$ & $m_{2}^{(0)}$ &$m_{3}^{(0)}$& $\cdots$  & $m_{K}^{(0)}$& \\ [1ex]
+			%	\hline
+			%Treatment 1&0&$ A_{0,1}^{(1)}$& $A_{0,2}^{(1)}$ &$A_{0,3}^{(1)}$& $\cdots$ &$A_{0,K}^{(1)}$&$n_{0}^{1}$\\
+			%\hline
+			&&&&&&&&\\
+			%&1 &$ A_{1,1}^{(1)}$ & $ A_{1,2}^{(1)}$ & $ A_{1,3}^{(1)}$  & $\cdots$  &$A_{1,K}^{(1)}$&$n_{1}^{1}$ \\
+			%\hline
+			&&&&&&&&\\
+			%	&2 &$ 0$ & $ A_{2,2}^{(1)}$ & $ A_{2,3}^{(1)}$  & $\cdots$  &$A_{2,K}^{(1)}$&$n_{2}^{1}$ \\
+			%\hline
+			&&&&&&&&\\
+			&$\vdots$ & $\vdots$ & $\vdots$  & $\vdots$  & $\vdots$  & $\vdots$&$\vdots$&\vdots   \\
+			%\hline
+			
+			&&&&&&&&\\
+			%	&K & $ 0$  & $ 0$  &$ 0$  & $\cdots$  & $ A_{K,K}^{(1)}$&$n_{K}^{1}$  \\ [1ex]
+			&&&&&&&&\\
+			%ColumnTotal	& & $m_{1}^{(1)}$ & $m_{2}^{(1)}$ &$m_{3}^{(1)}$& $\cdots$  & $m_{K}^{(1)}$& \\ [1ex]
+			%	\hline
+			&&&&&&&&\\
+			&&&&&&&&\\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			&&&&&&&&\\
+			%	\hline
+			
+			&&&&&&&&\\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			&&&&Stratum K&&&&\\
+			&&&&&&&&\\
+			K&$ 1$ & $ A_{0,K}^{(1)}$ & $ A_{1,K}^{(1)}$ & $ A_{2,K}^{(1)}$  & $\cdots$  &$A_{K,K}^{(1)}$&$m_{K}^{1}$ &$u_{1K}$\\
+			&2 &$ A_{0,K}^{(2)}$ & $ A_{1,K}^{(2)}$ & $ A_{2,K}^{(2)}$  & $\cdots$  &$A_{K,K}^{(2)}$&$m_{K}^{2}$&$u_{2K}$ \\
+			&\vdots\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots\\
+			& g &$ A_{0K}^{(g)}$ & $ A_{1K}^{(g)}$ & $ A_{2K}^{(g)}$  & $\cdots$  &$A_{rK}^{(g)}$&$m_{K}^{g}$&$u_{gK}$ \\
+			&&&&&&&&\\
+			Column Total	& & $n_{0,K}$ & $n_{1,K}$ &$n_{2,K}$& $\cdots$  & $n_{r,K}$&$N_{K}$& \\ [1ex]
+			Column Weights	& & $w_{0,K}$ & $w_{1,K}$ &$w_{2,K}$& $\cdots$  & $w_{r,K}$&& \\ [1ex]
+			
+			\hline
+		\end{tabular}
+		%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+		
+	\end{center}
+\end{table}
+%\end{landscape}
+Where $A_{r,j}^{(i)}=0$, whenever $r>j$.
+%\FloatBarrier
+
+\newpage
+\section{Reference Set}
+Denote the reference set  for each stratum  $j$ as the set of all possible contingency tables with fixed marginal column  and row sums as the observed table sums for treatment groups $i=1,\cdots,g$, cluster sizes 
+$j=1,\cdots,K$, where $K$ is the maximum cluster size in the experiment with  responses $r=0,\cdots,n$. The reference set in the $jth$ stratum is:\\
+
+$\gamma_{j}=\displaystyle \left \{y_{j}:y_{j} \hspace{1mm}{is}\hspace{1mm} g\times K   \textrm{contingency table};\sum\limits_{r=0}^{n}A_{r,j}^{i}=m^{i}_{r},\sum\limits_{i=1}^{g}A_{r,j}^{i}=n_{r,j} \right \}$\\
+%Thus  the reference set of each stratum is $\gamma_{j}$, a $g \times K$ dimensional array.
+The reference set across all the strata can  therefore be represented by the Cartesian product of all reference sets from each of the $j$ strata .\\
+$\Gamma=\gamma_{1}\times\gamma_{2}\cdots\times\gamma_{K}=\{Y:y_{j}\in \gamma_{j},j=1,\cdots,K\}$\\
+Thus $Y$ is made of $\gamma_{j}$ stratums, $j=1,\cdots,K$. Each $Y$ can be seen as $K\times (g \times K)$ dimensional array.
+
+\section{Exact Linear Trend Test}
+
+The  $g$ rows of each stratum represent increasing doses of a drug and the $K$ distinctly ordered  columns represent the progressively increasing  responses. We wish to investigate whether response increases with increasing dose. We consider a general linear rank statistic $T$, which detects departure from the null hypothesis of no dose effect. $T$    is  the sum of  linear rank statistics across the  $K$ strata. The asymptotic distribution of the standardized test statistic $T^{*}$ is the standard normal distribution with mean and standard deviation of 0 and 1 respectively. The square of the standard test statistic is also asymptotically distributed as a chi-square with one degree of freedom. Suppose each response falls into one of the $K$  categories of a multinomial distribution, Let $\Pi^{i}_{j}=(\pi_{j0}^{i},\pi_{j1}^{i},\cdots,\pi_{jK}^{i} )$  be the multinomial probabilities along each row in  stratum  $j$ for dose group $i$. The null hypothesis for  stratum $j$  can be written as\\
+%$\underline{abc}$
+$\displaystyle H^{j}_{0}:\Pi_{j}^{1} =\Pi_{j}^{2}= \cdots =\Pi_{j}^{g}$\\
+and the hypothesis of trend as
+$H^{j}_{a}: \Upsilon_{j}^{1} \leq \Upsilon_{j}^{2}\leq \cdots \leq \Upsilon_{j}^{g} $
+\hspace{3mm} with at least one strict inequality\\
+%The hypothesis for the  all the $K$ stratum  is \\
+%$H_{0}:H^{1}_{0}=H^{2}_{0}=\cdots=H^{K}_{0}$\\
+%The alternate hypothesis is at least one false 
+%$H_{a}:H^{1}_{a} \leq H^{2}_{a} \leq \cdots \leq H^{K}_{a}$ with at least one strict inequality\\
+where for each fixed stratum $j$ ,$j=1,\cdots,K$ ,$\Upsilon_{j}^{i}=\sum\limits_{r=0}^{n}\pi_{jr}^{i}$.\\
+The  linear trend test statistic is given by:
+
+\begin{equation}\label{ltt1}
+T=\sum\limits_{j=1}^{K}T_{j}=\sum\limits_{k=1}^{K}\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ij}w_{rj}A_{r,j}^{(i)}
+\end{equation}
+
+where $w_{r,j}$ is the weight assigned to the $rth$ response within the   $jth$  stratum and $u_{ij}$ is the weight assigned to the $ith$ treatment group in the $jth$ stratum. There exist  several possible choices of weights, with each  choice resulting  in a different test. The weights can be chosen to make the test cluster size invariant or cluster size specific. For cluster size invariant scores, define $n_{j}=\sum\limits_{k=1}^{K}n_{j,k}$, thus the sum of response is used in weight computation  in each response group.  
+\begin{theorem}
+	
+
+Under the null hypothesis of no row by column interaction, for the    $jth$ stratum $j=1,\cdots,K$, the test statistic  is  $T_{j}$ as given in  (\ref{ltt1})  has mean and variance as:\\
+
+$E(T_{j})=\displaystyle\frac{\left(\sum \limits_{i=1}^{g}u_{ij}m_{j}^{i}\right)\left(\sum\limits_{r=0}^{n}w_{rj}n_{jj}\right)}{N_{j}}$\\
+
+$Var(T_{j})=\displaystyle\frac{\left[ \sum \limits_{i=1}^{g}u_{ij}^{2}m_{j}^{i}-\frac{\left(\sum\limits_{i=1}^{g}u_{ij}m_{j}^{i} \right)^{2}}{N_{j}} \right]\left[ \sum \limits_{r=0}^{n}w_{rj}^{2}n_{rj}-\frac{\left(\sum\limits_{r=0}^{K}w_{rj}n_{rj} \right)^{2}}{N_{j}} \right]}{ N_{j}-1}$\\
+\end{theorem}
+
+\begin{proof}:
+	We give the proof $2\times 2$ case. The $g\times K$ case  follows as a natural extension. 
+%	\FloatBarrier
+	\begin{table}[h!]
+		\begin{center}
+			\caption{Stratified  Exact Linear Trend  Test for $2 \times 2$ Tables}
+			\begin{tabular}{|c c|c| c| c|c| }
+				\hline
+				&Treatment &Response   &  &  &\\ 
+				
+				& & 0& 1 &Row Total&Row Weights \\ \hline
+				
+				\hline
+				&&&&&\\
+				
+				&0&$ A_{0,k}^{0}$& $A_{1,k}^{0}$ &$m_{k}^{0}$&$u_{k}^{0}$ \\\hline
+				&1&$ A_{0,k}^{1}$& $A_{1,k}^{1}$ &$m_{k}^{1}$&$u_{k}^{1}$ \\ \hline
+				
+				&Column Total & $n_{0,k}$ & $n_{1,k}$ & $N_{k}$& \\\hline
+				&Column Weights & $w_{0,k}$ & $w_{1,k}$ & & \\\hline
+				
+				
+			\end{tabular}
+			%\caption{Estimates of $\lambda$ under assumption of Marginal Compatibility}
+			\label{table:1}
+		\end{center}
+	\end{table}
+%	\FloatBarrier
+	
+	If each is treatment is  fixed,the the number of $0$  responses in treatment group $0$, $A_{0,k}^{0}$ and the number of $0$  responses in treatment group $1$, $A_{0,k}^{1}$
+	are independently distributed as Binomial distributions $B(m_{k}^{0},\pi_{00})$ and $B(m_{k}^{1},\pi_{10})$ respectively.\\
+	 $\pi_{00}$ and $\pi_{10}$  are probability of $0$ response in treatment groups $0$ and $1$ respectively.\\
+	Let $A^{k}_{0}= A_{0,k}^{0}+A_{0,k}^{1}$ and $A^{k}_{1}= A_{1,k}^{0}+A_{1,k}^{1}$,then under the null hypothesis that $\pi_{00}=\pi_{01}=\pi_{10}=\pi_{11}=\pi$
+and   $A^{k}_{0} \sim B(N_{k},\pi)$ and  $A^{k}_{1} \sim B(N_{k},\pi)$.
+	The distribution of each $A_{r,k}^{i}$ stated in terms of $A_{0,k}^{0}$\\
+	
+	
+	\begin{equation*}
+	P(A_{0,k}^{0}=a_{0,k}^{0},A_{1,k}^{0}=a_{1,k}^{0},A_{0,k}^{1}=a_{0,k}^{1},A_{1,k}^{1}=a_{1,k}^{1}|H_{0},A_{0}^{k}=a_{0}^{k},A_{1}^{k}=a_{1}^{k})
+	\end{equation*}
+%	$P(A_{0,k}^{0}=a_{0,k}^{0},A_{1,k}^{0}=a_{1,k}^{0},A_{0,k}^{1}=a_{0,k}^{1},A_{1,k}^{1}=a_{1,k}^{1}|H_{0},A_{0}^{k}=a_{0}^{k},A_{1}^{k}=a_{1}^{k})$\\
+%
+\begin{equation*}
+=\frac{P(A_{0,k}^{0}=a_{0,k}^{0},A_{1,k}^{0}=a_{1,k}^{0},A_{0,k}^{1}=a_{0,k}^{1},A_{1,k}^{1}=a_{1,k}^{1}|H_{0})}{P(A_{0}^{k}=a_{0}^{k},A_{1}^{k}=a_{1}^{k})} 
+\end{equation*}	
+%	$	=\frac{P(A_{0,k}^{0}=a_{0,k}^{0},A_{1,k}^{0}=a_{1,k}^{0},A_{0,k}^{1}=a_{0,k}^{1},A_{1,k}^{1}=a_{1,k}^{1}|H_{0})}{P(A_{0}^{k}=a_{0}^{k},A_{1}^{k}=a_{1}^{k})}   $\\
+	
+	
+	
+%	$=\frac{\displaystyle \binom{m_{k}^{0}}{a_{0,k}^{0}}\pi^{a_{0,k}^{0}}\pi^{m_{k}^{0}-a_{0,k}^{0}}\displaystyle \binom{m_{k}^{1}}{a_{1,k}^{0}}\pi^{a_{0,k}^{1}}\pi^{m_{k}^{1}-a_{0,k}^{1}}}{\displaystyle \binom{N_{k}}{a_{0}^{k}}\pi^{a_{0}^{k}}(\pi)^{N_{k}-a_{0}^{k}}}$\\
+\begin{equation*}
+=\frac{\displaystyle \binom{m_{k}^{0}}{a_{0,k}^{0}}\pi^{a_{0,k}^{0}}\pi^{m_{k}^{0}-a_{0,k}^{0}}\displaystyle \binom{m_{k}^{1}}{a_{0,k}^{1}}\pi^{a_{0,k}^{1}}\pi^{m_{k}^{1}-a_{0,k}^{1}}}{\displaystyle \binom{N_{k}}{a_{0}^{k}}\pi^{a_{0}^{k}}(\pi)^{N_{k}-a_{0}^{k}}}
+\end{equation*}	
+
+
+
+\begin{equation*}
+=\frac{\displaystyle\binom{m_{k}^{0}}{a_{0,k}^{0}}\displaystyle\binom{m_{k}^{1}}{a_{0,k}^{1}}}{\displaystyle\binom{N_{k}}{a_{0}^{k}}}=\frac{\displaystyle\binom{m_{k}^{0}}{a_{0,k}^{0}}\displaystyle\binom{N_{k}-m_{k}^{0}}{n_{0,k}-a^{0}_{0,k}}}{\displaystyle\binom{N_{k}}{a_{0}^{k}}}
+\end{equation*}		
+	\vspace{6mm}
+	
+	%	$=\frac{\displaystyle \binom{m_{k}^{0}}{a_{0,k}^{0} }\displaystyle \binom{m_{k}^{1}}{a_{0,k}^{1}}}{\displaystyle \binom{N_{k}}{a_{0}^{k}  }}$\\
+	%	$=\frac{\displaystyle \binom{m_{k}^{0}}{a_{0,k}^{0} a_{1,k}^{0}}\displaystyle \binom{m_{k}^{1}}{a_{0,k}^{1} \hspace{2mm}a_{1,k}^{1}}}{\displaystyle \binom{N_{k}}{a_{0}^{k} \hspace{2mm} a_{1}^{k}}}$\\
+	
+
+That is $A_{r,k}^{(i)} \sim $ Hypergeometric$\left(a_{0}^{k},m_{k}^{(0)},m_{k}^{(1)}\right)$. Hence  $E(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{ok}}{N_{k}}$ and $	\text{Var}(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{0k}m_{k}^{1}n_{1k}}{N_{k}^{2}(N_{k}-1)}$. 	Let $\pi_{00}=P(0\hspace{3mm} \textrm{responses in dose group}\hspace{3mm}0)$ and  $\pi_{01}=P(0\hspace{3mm} \textrm{responses in dose group}\hspace{3mm}1)$.
+%\begin{equation*}
+%E(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{ok}}{N_{k}}
+%\end{equation*}
+%%	$E(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{ok}}{N_{k}}$\\
+%	\begin{equation*}
+%	\text{Var}(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{0k}m_{k}^{1}n_{1k}}{N_{k}^{2}(N_{k}-1)}
+%	\end{equation*}
+%	$Var(A_{0,k}^{0})=\displaystyle\frac{m_{k}^{0}n_{0k}m_{k}^{1}n_{1k}}{N_{k}^{2}(N_{k}-1)}$\\
+	
+%	Let $\pi_{00}=P(0\hspace{3mm} \textrm{respnses in dose group}\hspace{3mm}0)$ and  $\pi_{01}=P(0\hspace{3mm} \textrm{respnses in dose group}\hspace{3mm}1)$
+	
+	Under the null hypothesis that $\pi_{00}=\pi_{10}=\pi$ the conditional distribution of any Table $i$, with counts $A_{r,k}^{i}$ given row and column marginals has a hypergeometric distribution with mean and variance given below:\\
+	\begin{equation*}
+	E(A_{r,k}^{i})=\frac{m_{k}^{i}n_{rk}}{N_{k}}
+	\end{equation*}
+	%$E(A_{r,k}^{i})=\frac{m_{k}^{i}n_{rk}}{N_{k}}$\\
+	\vspace{4mm}
+%	$Var(A_{r,k}^{i})=\displaystyle \frac{m_{k}^{i}(N_{k}-m_{k}^{i})n_{rk}(N_{k}-n_{rk})}{N^{2}_{k}(N_{k}-1)}$\\
+		\begin{equation*}
+	\text{Var}(A_{r,k}^{i})=\displaystyle \frac{m_{k}^{i}(N_{k}-m_{k}^{i})n_{rk}(N_{k}-n_{rk})}{N^{2}_{k}(N_{k}-1)}
+		\end{equation*}
+	\vspace{4mm}
+		\begin{equation*}
+		T_{k}=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}A_{r,k}^{(i)}
+		\end{equation*}
+%	$T_{k}=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}A_{r,k}^{(i)}$\\
+	\vspace{4mm}
+		\begin{equation*}
+		E(T_{k})=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}E(A_{r,k}^{(i)})
+		\end{equation*}
+%	$E(T_{k})=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}E(A_{r,k}^{(i)})$\\
+	\vspace{4mm}
+	\begin{equation*}
+	E(T_{k})=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}\frac{m_{k}^{i}n_{rk}}{N_{k}}
+	\end{equation*}
+%	$E(T_{k})=\displaystyle\sum\limits_{i=1}^{g}\sum\limits_{r=0}^{n}u_{ik}w_{rk}\frac{m_{k}^{i}n_{rk}}{N_{k}}$\\
+	\vspace{4mm}
+	\begin{equation*}
+	E(T_{k})=\displaystyle\frac{1}{N_{k}}\sum\limits_{i=1}^{g}\left(u_{ik}m_{k}^{i}\right)\sum\limits_{r=0}^{n}\left(w_{rk}n_{rk} \right)
+	\end{equation*}
+%	$E(T_{k})=\displaystyle\frac{1}{N_{k}}\sum\limits_{i=1}^{g}\left(u_{ik}m_{k}^{i}\right)\sum\limits_{r=0}^{n}\left(w_{rk}n_{rk} \right)$\\
+	\vspace{4mm}
+	\begin{equation*}
+	\text{Var}(A_{r,k}^{i})=\displaystyle \frac{m_{k}^{i}(N_{k}-m_{k}^{i})n_{rk}(N_{k}-n_{rk})}{N^{2}_{k}(N_{k}-1)}=\frac{m_{k}^{i}n_{rk}}{N_{k}-1}\left(\frac{N_{k}-m_{k}^{i}}{N_{k}}\right)\left(\frac{N_{k}-n_{rk}}{N_{k}}\right)
+	\end{equation*}
+%	$Var(A_{r,k}^{i})=\displaystyle \frac{m_{k}^{i}(N_{k}-m_{k}^{i})n_{rk}(N_{k}-n_{rk})}{N^{2}_{k}(N_{k})-1}=\frac{m_{k}^{i}n_{rk}}{N_{k}-1}\left(\frac{N_{k}-m_{k}^{i}}{N_{k}}\right)\left(\frac{N_{k}-n_{rk}}{N_{k}}\right)$\\
+	\vspace{4mm}
+	\begin{equation*}
+=	\displaystyle\frac{m_{k}^{i}n_{rk}}{N_{k}-1}\left(1-\frac{m_{k}^{i}}{N_{k}}\right)\left(1-\frac{n_{rk}}{N_{k}}\right)
+	\end{equation*}
+%	$\displaystyle\frac{m_{k}^{i}n_{rk}}{N_{k}-1}\left(1-\frac{m_{k}^{i}}{N_{k}}\right)\left(1-\frac{n_{rk}}{N_{k}}\right)$\\
+	\vspace{4mm}
+	\begin{equation*}
+=	\displaystyle\frac{1}{N_{k}-1}\left(m_{k}^{i}-\frac{(m_{k}^{i})^2}{N_{k}}\right)\left(n_{rk}-\frac{n_{rk}^2}{N_{k}}\right)
+	\end{equation*}
+%	$\displaystyle\frac{1}{N_{k}-1}\left(m_{k}^{i}-\frac{(m_{k}^{i})^2}{N_{k}}\right)\left(n_{rk}-\frac{n_{rk}^2}{N_{k}}\right)$\\
+	\vspace{4mm}
+	Under the null hypothesis of no row by column interaction:\\
+	\vspace{4mm}
+	\begin{equation*}
+\text{Var}(T_{k})=\displaystyle\sum\limits_{i=0}^{g}\sum\limits_{r=0}^{K}u_{ik}^2w_{rk}^2Var(A_{r,k}^{(i)})
+	\end{equation*}
+%	$Var(T_{k})=\displaystyle\sum\limits_{i=0}^{g}\sum\limits_{r=0}^{K}u_{ik}^2w_{rk}^2Var(A_{r,k}^{(i)})$\\
+	\vspace{4mm}
+	\begin{equation*}
+	\text{Var}(T_{k})=\displaystyle\sum\limits_{i=0}^{g}\sum\limits_{r=0}^{K}u_{ik}^2w_{rk}^2\frac{1}{N_{k}-1}\left(m_{k}^{i}-\frac{(m_{k}^{i})^2}{N_{k}}\right)\left(n_{rk}-\frac{n_{rk}^2}{N_{k}}\right)
+	\end{equation*}
+%	$Var(T_{k})=\displaystyle\sum\limits_{i=0}^{g}\sum\limits_{r=0}^{K}u_{ik}^2w_{rk}^2\frac{1}{N_{k}-1}\left(m_{k}^{i}-\frac{(m_{k}^{i})^2}{N_{k}}\right)\left(n_{rk}-\frac{n_{rk}^2}{N_{k}}\right)$\\
+
+	\vspace{4mm}
+	\begin{equation*}
+	=\displaystyle\frac{1}{N_{k}-1}\left(\sum\limits_{i=0}^{g}u_{ik}^2m_{k}^{i}-\frac{\sum\limits_{i=0}^{g}u_{ik}^2(m_{k}^{i})^2}{N_{k}}\right)\left(\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}-\frac{\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}^2}{N_{k}}\right)
+	\end{equation*}
+%	$=\displaystyle\frac{1}{N_{k}-1}\left(\sum\limits_{i=0}^{g}u_{ik}^2m_{k}^{i}-\frac{\sum\limits_{i=0}^{g}u_{ik}^2(m_{k}^{i})^2}{N_{k}}\right)\left(\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}-\frac{\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}^2}{N_{k}}\right)$\\
+	\vspace{4mm}
+	\begin{equation*}
+	=\displaystyle\frac{1}{N_{k}-1}\left(\sum\limits_{i=0}^{g}u_{ik}^2m_{k}^{i}-\frac{\left(\sum\limits_{i=0}^{g}u_{ik}m_{k}^{i}\right)^2}{N_{k}}\right)\left(\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}-\frac{\left(\sum\limits_{r=0}^{K}w_{rk}n_{rk}\right)^2}{N_{k}}\right)
+	\end{equation*}
+%	$=\displaystyle\frac{1}{N_{k}-1}\left(\sum\limits_{i=0}^{g}u_{ik}^2m_{k}^{i}-\frac{\left(\sum\limits_{i=0}^{g}u_{ik}m_{k}^{i}\right)^2}{N_{k}}\right)\left(\sum\limits_{r=0}^{K}w_{rk}^2n_{rk}-\frac{\left(\sum\limits_{r=0}^{K}w_{rk}n_{rk}\right)^2}{N_{k}}\right)$\\
+\end{proof}
+
+
+\begin{equation*}
+T_{k}^{*}=\displaystyle\frac{T_{k}-E(T_{k})}{\sqrt{Var(T_{k})}}\hspace{3mm} \widetilde{asymp.} \hspace{3mm}N(0,1) 
+\end{equation*}
+%$T_{k}^{*}=\displaystyle\frac{T_{k}-E(T_{k})}{\sqrt{Var(T_{k})}}\hspace{3mm} \widetilde{asymptotically} \hspace{3mm}N(0,1)  $\\
+
+\vspace{5mm}
+
+The standardized linear trend statistic $T_{k}^{*}$ of each stratum $k$, is thus asymptotically standard normal distribution with mean $0$ and variance $=1$. Hence, the  square of the standardized linear trend statistic $T_{k}^{*}$ is asymptotic chi-squared distribution with one degree of freedom. 
+
+
+\begin{theorem}
+	The asymptotic distribution of the statistic  across $k$ strata  can be summarized by the $M^2$ statistic.\\
+
+\begin{equation}
+M^2=\displaystyle\frac{\left[\sum\limits_{j=1}^{k}( T_{k}^{}-E(T_{k}))\right]^2   }{\sum\limits_{j=1}^{k}var(T_{k}^{})}\sim \mbox{\Large$\chi$}^{2}_{(1)}
+\end{equation}
+\end{theorem}
+\begin{proof}:\\
+	Let $T$ be the sum of $K$ independent random variables with a from each of $K$ strata\\
+	\begin{equation*}
+	T=\sum\limits_{k=1}^{K} T_{k}
+	\end{equation*}
+%	$T=\sum\limits_{k=1}^{K} T_{k}$\\
+	Then $E(T)$ is the sum of expectations of $K$ independent random variables with hypergeometric distribution.\\
+	\begin{equation*}
+	E(T)=\displaystyle \sum\limits_{k=1}^{K}E(T_{k})
+	\end{equation*}
+	%$E(T)=\displaystyle \sum\limits_{k=1}^{K}E(T_{k})$\\
+	
+	
+	
+	\begin{equation*}
+	\text{Var}(T)=\displaystyle \sum\limits_{k=1}^{K}Var(T_{k})
+	\end{equation*}
+%	$Var(T)=\displaystyle \sum\limits_{k=1}^{K}Var(T_{k})$\\
+	
+	
+	Then 
+%	$\displaystyle\frac{\left(T-E(T)\right)^{2}}{Var(T)} \hspace{3mm} \widetilde{asymptotically} \hspace{3mm} X^{2}_{(1)}$
+	\begin{equation*}
+	\displaystyle\frac{\left(T-E(T)\right)^{2}}{Var(T)} \hspace{3mm} \widetilde{\text{asymp.}} \hspace{3mm} \mbox{\Large$\chi$}^{2}_{(1)}
+	\end{equation*}
+\end{proof}
+
+For $g \times K$ tables without column ordering but  with ordering of the rows, the nonparametric  Kruskal Wallis test  and generalized one way ANOVA provide the uniformly most powerful invariant, or UMP unbiased  against the null hypothesis of no column and row association. When the number of rows $g=2$, the Kruskal Wallis reduces to the Wilcoxon rank sum test. Both test are asymptotically chi-squared with $g-1$ degrees of freedom.\\
+The Linear by Linear and Jonckheere-Terpstra test has the highest power for doubly ordered $g \times K$ contingency tables. These test do well in detecting existence of a  progressive trend in the alternate hypothesis. The flexibility in arbitrarily selecting scores, makes the linear by Linear test very powerful. A special case in which the original observations are used in place of the  weights $u_{ij}$ and $w_{rj}$ results in a significance test for  Pearson's correlation coefficient. However, if the weights are replaced by the mid-rank scores of the the observed data, Spearman correlation coefficient between the ordered responses and  ordered treatment groups is obtained $\cite{mehta1}$. 
+A  special case of the linear Trend statistic  where there are only 2 dose groups  and  $K$ strata is the simple linear rank statistic: \\
+
+$T_{j}=\sum\limits_{r=0}^{n}w_{r,j}A_{r,j}^{(1)}$
+
+%$\frac{m_{i}n_{j}}{N}$
+This test statistic $T_{j}^{}$ is also equal to  the Spearman correlation between treatment levels $0,1,\cdots,g$ and the Responses $0,1,\cdots,K$ in stratum $k$ multiplied by $\sqrt{N_{k}-1}$. $(\cite{Agresti2013};\cite{stochastic})$. When the observed data are used as weights, then the linear rank test is a significance test of the Pearson correlation coefficient. However, if the ranks of the data are used then the result is a  significance test of the Spearman correlation coefficient $\cite{mehta1}$.\\
+Some of the commonly used linear rank weights are listed below:
+\begin{itemize}
+	\item Wilcoxon Scores: The Wilcoxon scores are the ranks of the underlying responses. Mid-ranks are used in the  case of tied observations.\\
+	$w_{r,k}=n_{0,k}+n_{1,k}+\cdots+n_{j-1,k}+\frac{(n_{j,k}+1)}{2}  $\\
+	
+	$u_{ik}=m^{0}_{k}+m^{1}_{k}+\cdots+ m^{j-1}_{k}+\frac{m^{j}_{k}+1}{2}  $\\
+	
+	%$w_{0j}=\frac{n_{0,j}+1}{2},\sum\limits_{l=0}^{t-1}n_{l,j}+\frac{n_{t,j}+1}{2}$  %for   $j=1,\cdots,K$,$t=1,\cdots,K$\\
+	
+	In the  special  case where we have only two  treatment groups, using the Wilcoxon scores reduces  to the rank sum and  the Wilcoxon-Mann-Whitney test statistic $\cite{stochastic}$.
+	%These scores can be generalized to the Gehan-Wilcoxon scores for censored data $\cite{mehta1992}$\\
+	\item Normal Scores: The normal scores are  defined as the percentile of the standard normal distribution.\\
+	$w_{rk}=\frac{1}{n_{r,k}}\left(\sum\limits_{j=v_{r-1,k}+1}^{v_{r,k}} \Phi^{-1}\left(\frac{j}{N_{i}+1}  \right)  \right)$\\
+	
+	$u_{ik}=\frac{1}{m_{k}^{i}}\left(\sum\limits_{l=w_{i-1,k}+1}^{w_{i,k}} \Phi^{-1}\left(\frac{l}{N_{i}+1}  \right)  \right)$\\
+	
+	
+	where $v_{j,k}=n_{1,k}+n_{2,k}+\cdots + n_{j,k} $,\\
+	$w_{j,k}=m_{k}^{0}+m_{k}^{1}+\cdots + m_{k}^{g} $ and $\Phi^{-1}(\alpha)$  is the $100 \alpha th$ percentile of the standard normal distribution.\\
+	
+	
+	
+	
+	
+	
+	\item Logrank Scores: The logrank scores are the same as  the scores for Savage (exponential scores) when they is no censoring \cite{mehta1992}. They are used for survival data.\\
+	$w_{rk}=\frac{1}{n_{r,k}}\left(\sum\limits_{t=v_{r-1,k}+1}^{v_{r,k}}\sum\limits_{l=1}^{t} \left(\frac{1}{N_{i}-l+1}  \right)   \right)-1$\\
+	$u_{ik}=\frac{1}{m_{k}^{i}}\left(\sum\limits_{t=w_{i-1,k}+1}^{w_{i,k}}\sum\limits_{l=1}^{i} \left(\frac{1}{N_{i}-l+1}  \right)   \right)-1$\\
+	
+	where $v_{r,k}=n_{0,k}+n_{1,k}+\cdots + n_{r,k} $\\
+	$w_{i,k}=m_{k}^{0}+m_{k}^{1}+\cdots + m_{k}^{g}$\\
+	%\item Trend:A The Cohran-Armitage trend test is obtanined by assigning equally %spaced scores $w_{j,k}=j-1$ ; when there are two treatment groups.
+	
+	%\item Permutation Scores:
+	%	Numerous nonparametric  test can be constructed by choosing different combination %of weights.A special case is to use the original observations as weights.\\
+	\item Equally Spaced Scores:\\
+	$w_{rk}=(1,\cdots,K)$\\
+	$u_{ik}=(1,\cdots,g)$\\
+	The Cohran-Armitage trend test is a special case of  equally spaced scores $w_{j,k}=j-1$ and $u_{i,k}=i-1$ ; when there are only two treatment groups $\cite{mehta1992}$.
+	
+	%	\item Anderson-Darling Scores:These scores are defined for a two treatment group %with $K$ categories $\cite{stochastic}$.\\
+	
+	%$w_{j+1}-w_{j}=\frac{1}{\sqrt{\hat{F}(j)(1-\hat{F}(j))} }  $ ,for $j=1,\cdots,K$\\
+	%	where $\hat{F}(j)=\frac{[n_{1}\hat{F_{1}}(j)+n_{2}\hat{F_{2}}(j)] }{2}  $\\
+	%The $\hat{F}_{i}(j)$ is the empirical cummulative distribution function of the %$ith$  treatment group,$i=0,1$ given the $jth$ response,$j=0,1,\cdots,K$\\
+	%\sqrt{\hat{F{(j)}(1-\hat{F{(j)})}}
+\end{itemize}
+
+
+
+
+\section{Exact Two-sided P-value Computation}
+Let $P_{Y}$ be the exact probability distribution of each table $Y$ in the reference set $\Gamma$. The distribution of the test statistic can be found empirically  by limiting the sample space of each table $Y$ to the reference set $ \Gamma$ and randomly permuting the probability distribution $P_{Y}$ a large number of times. Define the discrepancy measure $\mathcal{D}$ as a real valued function $\mathcal{D}:\Gamma \rightarrow \mathcal{R}$ mapping $g \times K$ tables in $\Gamma$ onto the real number line $\mathcal{R}$. An exact test is formed by ordering the tables in $\Gamma$ according to some test statistic or  discrepancy measure $D_{Y}$ . The discrepancy measure quantifies the extent of deviation of a table $Y \in \Gamma$ from the null hypothesis of no row by column interaction. Various choices of $\mathcal{D}$ include the Linear Rank, Pearson, Chi-Square, Fisher's Exact and  Likelihood Ratio test statistics. 
+The p-value is found as the sum of all null probabilities of all  tables $Y$ in $\Gamma$ which are at least as extreme as the observed table $X$ with respect to $\mathcal{D}$ .\\
+%The p-value  is found as:\\
+p-value $=\sum\limits_{D_{X}\geq D_{X}}P_{Y}=P_{r}[D_{Y}\geq D_{X}] $\\
+Classical nonparametric methods rely on the large sample/asymptotic distribution of $\mathcal{D}$ such as chi-squared distribution to estimate the p-value. With the increased computational power and efficient enumerating algorithms now available, the exact distribution of $\mathcal{D}$ can be found and the p-value subsequently computed.
+An adjustment for correcting the discreteness that arises in small samples distributions is to make inferences based on the $\textit{mid p-value}$ (Lancaster 1961). This adjustment reduces the ordinary p-value by half the probability of the observed result. The mid p-value is found as:\\
+mid P-value $=\frac{1}{2}P_{r}[D_{Y}= D_{X}]+P_{r}[D_{Y}> D_{X}]$
+
+
+Classical non-parametric methods rely on the asymptotic distribution of $D$ to approximate the p-value. This approximation can be considerably different from the exact distribution when presented with unbalanced or sparse data or data with a  small sample size. Mehta \textit{et al} (1998)  suggest that the main advantage of the exact p-value over its asymptotic approximation is that it is guaranteed to bound the type I error rate of the hypothesis testing procedure to any desired level \cite{mehta1}.
+
+
+%Suppose $T$ is a test statistic such that  we reject $H_{0}$,if $T>t$\\
+
+%$Pr(T>t_{obs}|\Gamma)=\sum\limits_{T\geq t_{obs},T^{*}\in \Gamma}Pr(T=t_{obs})$
+
+%\FloatBarrier
+\begin{table}[h!]
+	\label{table:results}
+	\begin{center}
+		\caption{Size of Reference Sets (Mehta, Patel, Senchaudhuri, 1992)}
+		\begin{tabular}{ l l l}
+			\hline
+			Sample Size(N) & \hspace{25mm}Tables in Reference Set $\Gamma$&  \\ \hline\hline
+			&\\
+			20 & \hspace{25mm} 1.8 $\times 10^{5}$& \\
+			30 & \hspace{25mm} 1.5 $\times 10^{8}$ &\\
+			40 & \hspace{25mm} 1.4 $\times 10^{11}$ &\\
+			50 & \hspace{25mm} 1.3 $\times 10^{14}$ &\\
+			100 & \hspace{25mm} 1.0 $\times 10^{29}$ &\\
+			\hline
+		\end{tabular}
+		\label{table:ref}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+
+Explicit enumeration of all the tables in the reference set $\Gamma$ would be computationally expensive and infeasible for relatively large tables. An example of the size of reference sets for different $N$ values is given in Table \ref{table:ref}. Mehta, Patel, and Tsiatis (1984) developed a network algorithm that implicitly enumerates all tables in the reference set by connecting  a series of networks and nodes. Some of these tables in the reference sets are also rather sparse and not likely   to yield accurate p-values. This is the motivation for the Monte Carlo approach. For all practical purposes, the Monte Carlo exact  p-value is equivalent to the exact p-value obtained by enumeration of all tables in the reference set. The expected value of the Monte Carlo p-value is equal to that in which all tables are enumerated.
+
+
+
+\section{Application using  Edge Data}
+The procedure was implemented using the Edge Toxicology Laboratory data  available in the R statistical programming language;
+ the data was obtained from a developmental toxicity experiment in which pregnant New Zealand white rabbits  exposed to ethylene glycol diethyl ether (EGDE). The effect of ethylene glycol diethyl ether on their  fetal development  were then studied. In the study, four groups of pregnant does were randomly assigned to dose levels $0, 25, 50$, and $100$ milligrams per kilogram body weight of EGDE. For each litter and at each dose level, the adverse response used is the combined number of fetal malformation and fetal death.
+The data are presented in  Table 8. The frequency distribution  of live fetuses with malformations are grouped into cluster sizes ranging from 2 to 15. The data appears to be relatively sparse with no indication that dose level has impact on cluster size. From the table, for each fixed cluster size, frequency of malformations  appears to increase with increasing dose level.
+
+
+
+\subsection{Results}
+
+In Tables \ref{tab:results} and \ref{tab:r} we summarize the results
+of the tests of homogeneity of  response rates across all four treatment groups with the linear rank statistic as the  discrepancy measure $\mathcal{D}$. The results for all four dose groups is displayed in Table \ref{tab:results} and individual comparison between dose group $0$  and the remaining dose groups is displayed in Table  \ref{tab:r}, where SO is the stochastic ordering test \cite{aniko}, RS is the Rao-Scott linear trend test \cite{raoscott} and GEE is the Generalized Estimating Equation \cite{gee}. The results indicate significant difference in response rates when all four dose groups are considered together. There is significant difference   between dose group $100$  and the control group when  pairwise  hypothesis are considered. There is  no significant difference between dose groups $(0,25)$ and $(0,50)$. The estimates are based on  $10,000$ random samples from  the reference set $\Gamma$. The distribution of the test statistic displayed  shows, the test statistic appears to be approximately normally distributed  with some discreteness at the peak of the histogram of the sample. Each of the two sets of weights used (midranks and equal spacing) lead to significant outcomes at 0.05 level. The asymptotic approximate distribution of the test statistic using Wilcoxon weights and Equally spaced weights  also resulted in   significant p-values. The Pearson Chi-Squared family of test statistics are inapplicable because of the level of sparsity in the data. Many of the expected cell frequencies are zero. \\
+
+
+$H^{j}_{0}:\Pi_{j}^{0} =\Pi_{j}^{1}= \cdots =\Pi_{j}^{g}$\\
+$H^{j}_{a}: \Upsilon_{j}^{0} \leq \Upsilon_{j}^{1}\leq \cdots \leq \Upsilon_{j}^{g} $
+\hspace{3mm} with at least one strict inequality\\
+
+%\FloatBarrier
+\begin{table}[h!]
+	%\label{table:results}
+	\begin{center}
+		\caption{EDGE Data, Dose groups (0, 25, 50, 100)}
+		\begin{tabular}{ l l l l}
+			\hline\hline
+			Weights & \hspace{0mm} P value& \hspace{0mm}Mid P-value&\hspace{0mm}Asymptotic  \\ 
+			&\\
+			& \hspace{0mm} Exact& \hspace{0mm}Exact&\hspace{0mm} P-value \\ \hline\hline
+			&\\
+			Equal spacing& \hspace{5mm}$9.99 \times 10^{-6}$ &\hspace{5mm}$5.0 \times 10^{-6}$&\hspace{5mm}$1.97 \times 10^{-8}$\\ 
+			& \hspace{5mm}&\hspace{5mm}\\ \hline
+			&\\
+			Midranks& \hspace{5mm}$9.99 \times 10^{-6}$  &\hspace{5mm}$5.0 \times 10^{-6}$&\hspace{5mm}$9.6 \times 10^{-8}$\\
+			&\\ 
+			&\\ \hline \hline
+			
+			\hline
+		\end{tabular}
+		\label{tab:results}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+
+
+
+%\FloatBarrier
+\begin{table}[h!]
+	%\label{table:r}
+	\begin{center}
+		%\caption{Results}
+		\begin{tabular}{ l l l l l}
+			\hline\hline
+			Dose& SO  &\hspace{5mm}RS&GEE &\hspace{5mm}Exact Linear Trend \\
+			%Dose &SO &\hspace{5mm}RS& GEE& \hspace{5mm}&Exact Linear Trend\\
+			& &\hspace{5mm}& & \hspace{5mm}(Equally Spaced Weights) \\ \hline\hline
+			&\\
+			0,25& 0.116 &\hspace{5mm}0.536&0.610 &\hspace{5mm}0.485 \\\hline
+			&\\
+			0,50&0.014  &\hspace{5mm}0.150& 0.272  &\hspace{5mm}0.259\\
+			&\\
+			0,100 & $<0.001$ &\hspace{5mm}$2 \times 10^{-7}$& $4 \times 10^{-11}$ &\hspace{5mm}$5 \times 10^{-6}$\\
+			%(Likelihood ratio test,George/Kodell 1996) & &\hspace{5mm}  &\hspace{5mm}\\
+			\hline
+		\end{tabular}
+		\caption{First three columns from Aniko Szabo,2010}
+		\label{tab:r}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+
+
+\newpage	
+\subsection{Application using 2,4,5-T Data}
+\vspace{5mm}
+%\begin{flushleft}
+The 2,4,5-T Data was obtained from a study conducted at the National Center for Toxicological Research, Food and Drug Administration \cite{bg}. Several strains of mice were used in a multiplicative teratology experiment. About  100 pregnant mice in each strain were
+daily exposed to ordered dose  levels $0,30,60,45,60,75 $ and $90$ $mg/kg$ of the herbicide 2,4,5-trichlorophenoxyacetic acid  from day 6 to day 14 of gestation. The  number of fetal implantation sites, deaths, resorptions, cleft palate malformations, and fetal weights of the live fetuses were recorded for each pregnant female.  The data from the experiment are summarized in Table \ref{tab:245T}. For each pregnant mouse, $s$ represents the number of implantation sites and $t$, the number of combined endpoints, is the number of reabsorbed embryos or dead fetuses together with the number of fetuses with cleft palate malformation. Table \ref{tab:245T} gives the frequency of each combination of $s$ and $t$.
+
+
+
+
+
+
+\newpage
+
+%\FloatBarrier
+%\begin{landscape}
+\begin{center}
+	\tiny
+	%	\centering
+	\captionof{table}{Frequency Distribution of the Number of Implant(s) and Number of Combined Endpoints(t) Following Exposure to 2,4,5-T (Bowman and George  1995)} 
+	\begin{longtable}[h!]{c c c c c c c c c c c c c c c c c c c c c}
+		\hline
+		%	\caption{Data from Shell Toxicology Laboratory (Paul 1982): A Frequency Table Representation}
+		\multicolumn{3}{c}{Birth Defects}&  &&&{Number of Implants}\\
+		\multicolumn{1}{r}{}
+		&  \multicolumn{1}{c}{}
+		& \multicolumn{1}{c}{No. of live fetuses(s)} \\
+		%\multicolumn{}{c}{Birth Defects} \\
+		\cline{3-21}
+		Dose	    & $t$ & 1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&21 \\
+		\hline
+		0& 0& 1&&1&&1&1&2&1&5&4&6&7&2 &2&&&&&     \\
+		& 1        & &&&&1&&&&2&1&7&6&5  &2&&&1&&     \\
+		& 2    &&&&&&&&&1&1&5&3&     &1&&&1&& \\
+		&3     &  &&&&&&&&&&&&    1&&&1&&& \\
+		& 4     &  &&&&&&&&&&&& &1&&&&&\\
+		
+		
+		&      &  &&&&&&&&&&&&    &&&&&&  \\
+		30& 0     &  &1&1&2&&2&2&1&2&4&8&2&3   &2&1&&&&   \\
+		& 1     &  &&&&&&1&1&2&8&4&5& 5  &2&2&&&&   \\
+		& 2     &  &&&&&&2&2&&1&1&2&1     &2&1&&&& \\
+		& 3     &  &&&&&&&&&&&&    &&&&&&  \\
+		& 4     &  &&&&&&&&&&&1& 1   &&&&&&  \\
+		& 5     &  &&&&&&&&&&&&   &&1&&&&   \\
+		& 6     &  &&&&&&&&&&&&1     &&&&&& \\
+		& 7     &  &&&&&&&&&&&&    &&&&&&  \\
+		& 8     &  &&&&&&&&&&&&     &1&&&&& \\
+		& 15     &  &&&&&&&&&&&&    &&&&&1&  \\
+		&      &  &&&&&&&&&&&&     &&&&&& \\
+		45  & 0     &1  &&1&1&&&1&1&&1&8&3&     &&1&&&& \\
+		& 1       &&&1&&1&&1&1&3&2&4&3      &1&1&1&&&\\
+		& 2&  &&&&1&1&&&1&&5&4&3      &2&1&&&&\\
+		& 3     &  &&&&&&&&&&1&2&  3   &1&1&1&&& \\
+		& 4     &  &&&&&&&&1&&&&     &&&&&& \\
+		& 5     &  &&&&&&&&&1&1&1&3     &1&1&&&& \\
+		& 6     &  &&&&&&&&&1&&2&     &3&1&1&&& \\
+		& 7     &  &&&&&&&&&&&1&     &&&&&& \\
+		& 8     &  &&&&&&&&1&&&&1     &&&&&& \\
+		& 9     &  &&&&&&&&&1&&&      &&&&&&\\
+		& 10     &  &&&&&&&&&&1&&     &&&&&& \\
+		& 11     &  &&&&&&&&&&&1&     &&&&&& \\
+		& 12     &  &&&&&&&&&&&2&    &&&&&&  \\
+		& 13     &  &&&&&&&&&&&&2      &1&&&&&\\
+		& 14     &  &&&&&&&&&&&&     &1&&&&& \\
+		& 18     &  &&&&&&&&&&&&     &&&&&&1 \\
+		&      &  &&&&&&&&&&&&      &&&&&&\\
+		60  & 0     &1  &&&&&&&1&&1&&3&     &&1&&&& \\
+		& 1     &  &&&1&&&&&2&2&4&2&1     &1&&&&& \\
+		& 2&  &&&&&&&1&1&1&&&4     &&1&&&& \\
+		& 3     &  &&2&&&&&1&&&&&3     &1&&&&& \\
+		& 4     &  &&&&1&&&&1&&2&&     &&&1&&& \\
+		& 5     &  &&&&&2&&&&&&2&  1    &&&&&&\\
+		& 6     &  &&&&&1&&&1&&&&     &&1&&&& \\
+		& 7     &  &&&&&&1&&&&&&1     &&&&&& \\
+		& 8     &  &&&&&&&2&1&&&&2     &&&&&& \\
+		& 9     &  &&&&&&&&1&&2&1&     &&&&&& \\
+		& 10     &  &&&&&&&&&5&1&&     &&&&&& \\
+		& 11     &  &&&&&&&&&&2&&1     &&&&&& \\
+		& 12     &  &&&&&&&&&&&3&    &&&&&&  \\
+		& 13     &  &&&&&&&&&&&&2     &&&&&& \\
+		& 14     &  &&&&&&&&&&&&     &2&&&&& \\
+		&      &  &&&&&&&&&&&&     &&&&&& \\
+		75  & 0     &  &&&&&&&&1&&1&&     &&&&&& \\
+		& 1     &  &&&&&&&1&&&&&     &&&&&& \\
+		& 2&  &&&&&&&&&&2&2&     &&&&&& \\
+		& 3     &  &&&&&&&&1&&&&     &&&&&& \\
+		& 4     &  &&&&&&&&&1&&&     &&&&&& \\
+		& 5     &  &&&&2&&&1&1&&&&    &&&&&&  \\
+		& 7     &  &&&&&&&&1&&&&     &1&&&&& \\
+		& 8     &  &&&&&&&&1&1&1&&     &&&&&& \\
+		%& 8     &  &&&&&&&&&&&&     &&&&&& \\
+		& 9     &  &&&&&&&&3&1&&&     &&&&&& \\
+		& 10     &  &&&&&&&&&1&&1&1    &&&&&&  \\
+		& 11     &  &&&&&&&&&&4&2&    &&&&&&  \\
+		& 12     &  &&&&&&&&&&&3&4    &&&&&&  \\
+		& 13     &  &&&&&&&&&&&&3    &&&&&&  \\
+		& 14     &  &&&&&&&&&&&&     &2&&&&& \\
+		& 15     &  &&&&&&&&&&&&     &&1&&&& \\
+		&      &  &&&&&&&&&&&&     &&&&&& \\
+		90  & 0     &1  &&&&&&&&&&&&    &&&&&&  \\
+		& 1     &1  &&&&&&&&&&&&      &&&&&&\\
+		%& 2&  &&&&&&&&&&&&      &&&&&&\\
+		& 3     &  &&&&&&&&&&&&     &&&&&& \\
+		& 4     &  &&&1&&&&&1&&&&    &&&&&&  \\
+		%& 5     &  &&&&&&&&&&&&     &&&&&& \\
+		& 6     &  &&&&&1&&&&&&&     &&&&&& \\
+		& 7     &  &&&&&&1&&&&&&     &&&&&& \\
+		%& 8     &  &&&&&&&&&&&&     &&&&&& \\
+		%& 9     &  &&&&&&&&&&&&    &&&&&&  \\
+		& 10     &  &&&&&&&&&4&2&&1    &&&&&&  \\
+		& 11     &  &&&&&&&&&&2&&    &&&&&&  \\
+		& 12     &  &&&&&&&&&&&6&    &&&&&&  \\
+		& 13     &  &&&&&&&&&&&&2    &&&&&&  \\
+		& 14     &  &&&&&&&&&&&&     &2&&&&& \\
+		
+		\hline
+		\label{tab:245T}
+	\end{longtable}
+\end{center}
+%\FloatBarrier
+%\end{minipage}
+%\FloatBarrier
+%\end{landscape}
+
+%\FloatBarrier
+\begin{table}[h!]
+	\tiny
+	\begin{center}
+		\caption{Results of T-245 Data	}
+		\begin{tabular}{ l l l l}
+			\hline
+			Weights & \hspace{5mm} P value& \hspace{5mm}Mid P-value&\hspace{5mm}Asymptotic  \\ 
+			&\\
+			& \hspace{5mm} Exact(Monte Carlo)& \hspace{5mm}Exact(Monte Carlo)&\hspace{5mm} P-value \\ \hline\hline
+			&\\
+			Midranks & \hspace{5mm}$0.000149985$ &\hspace{5mm} 0.0000999&\hspace{5mm}$<0.000001$\\ 
+			& \hspace{5mm}&\hspace{5mm}\\ \hline
+			&\\
+			Equal spacing & \hspace{5mm}0.000149985  &\hspace{5mm}0.0000999&\hspace{5mm}$<0.000001$\\
+			%& \hspace{5mm}  &\hspace{5mm}\\
+			&\\ 
+			%& \hspace{5mm} &\hspace{5mm} &\hspace{5mm}\\ 
+			
+			
+			&\\ \hline
+			& \hspace{5mm} &\hspace{5mm} &\hspace{5mm}\\ 
+			Exact Conditional Likelihood  & \hspace{5mm}0.000449955 &\hspace{5mm}0.00039996 &\hspace{5mm}------\\ 
+			& \hspace{5mm}  &\hspace{5mm}\\\hline
+			 
+			& \hspace{5mm} &\hspace{5mm} &\hspace{5mm}\\ 
+			
+			\hline
+		\end{tabular}
+		\label{table:245tr}
+	\end{center}
+\end{table}
+%\FloatBarrier
+
+
+
+
+\chapter{Future Research:Adjusting for  Multiplicity in Exact  Tests}
+\section{Introduction}
+Multiple testing occurs in the analysis of data when several hypotheses are tested simultaneously. For example in  genomics, one may be interested in  simultaneously  testing   thousands of  hypotheses  to determine  which genes are  differentially expressed. In clinical trials, one may also  be interested in simultaneously  comparing a control group with different levels of treatment groups. In a single hypothesis test, a  level of significance  $\alpha$, is chosen to control the type-I error rate, otherwise known as a false positive. This  is the probability of incorrectly rejecting the null hypothesis. When multiple hypotheses are  tested simultaneously to make inference on a global hypothesis  of interest, the probability of incorrectly declaring significance when no effect exist, is greatly increased. Specifically, suppose $n$ independent  hypotheses $H_{01},\cdots,H_{0n}$  are tested each at a significance level $\alpha$,  then the probability  of incorrectly rejecting at least one null hypothesis is $1-(1-\alpha)^{n}$. Thus, as $n$ increases, the probability of type-I error increases and tends to one. The probability of making at least one type-I error in a multiple test is called   a familywise error rate  denoted \textit{FWER}.
+%\end{corollary}
+
+
+
+
+\section{Application with EDGE Data}
+In a plan to explore the use of various procedures that adjust $P-values$ in the context of multiple exact test we have done a preliminary analysis of the EDGE data. We simultaneously tested for  trend  between the control group(dose 0) and other dose groups 25, 50 and 100. We  implemented the exact linear trend test procedure described in chapter 4 using the EDGE dataset. Table \ref{tabx:r1t} shows the unadjusted p-values. There is no significant difference between dose groups $(0,25),(0,50)$ and $(25,50)$.  In Table \ref{tab:mult}, the p-values are  adjusted using the  familywise error rate and false discovery rates aproaches for controlling type-I error  described earlier in this chapter. As expected the Bonferroni procedure is the most  conservative among all the procedures. The Familywise Error control procedures are  conservative in comparison to the False Discovery Pocedure. The exact linear trend test detects significant diffrence between dose groups 0 and 100. There is no significant difference between dose groups $(0,25)$ and $(0,50)$ even with multiple adjustment correction. 
+
+
+
+%\FloatBarrier
+\begin{table}[h!]
+	%\label{table:r}
+	\begin{center}
+		%\caption{Results}
+		\begin{tabular}{ l l l }
+			\toprule \toprule
+			Dose& p-value  &\hspace{5mm}Mid p-value  \\
+			
+			& &\hspace{5mm} \\ \toprule
+			&\\
+			0,25& 0.5383462 &\hspace{5mm}0.49135 \\\hline
+			&\\
+			0,50&0.3055694 &\hspace{5mm}0.26335\\ \hline
+			&\\
+			0,100 & $9.999\times 10^{-5}$ &\hspace{5mm}$5 \times 10^{-5}$\\ \hline
+			&\\
+			25,50 & 0.3264674 &\hspace{5mm} 0.27615\\ \hline
+			&\\
+			25,100 & $9.999\times 10^{-5}$ &\hspace{5mm}$5 \times 10^{-5}$\\ \bottomrule
+			&\\
+			%50,100 &$9.999\times 10^{-5}$  &\hspace{5mm}$5 \times 10^{-5}$\\ \bottomrule
+		\end{tabular}
+		\caption{Raw p-values with equally spaced scores}
+		\label{tabx:r1t}
+	\end{center}
+\end{table}	
+%\FloatBarrier
+
+
+
+
+
+
+
+%\FloatBarrier
+\begin{sidewaystable}
+	\caption{Adjusted p-values}
+	\label{tab:mult}
+	\bigskip
+	\centering\small\setlength\tabcolsep{2pt}
+	\hspace*{-1cm}\begin{tabular}{l  c c c c c c c c c      } \toprule \toprule
+		&  &  &  &  & \textbf{Adjusted p-values} &  &  &  &                            \\  \toprule
+		
+		\textbf{Dose } &\textbf{Raw} &\textbf{Holm} &\textbf{Hochberg} &\textbf{Hommel} &\textbf{Bonferroni}&\textbf{$\check{S}$id$\acute{a}$k} &\textbf{Benjamini} &\textbf{Benjamini} &\textbf{q-values}      \\
+		\textbf{ Group} &\textbf{p-values} & &\textbf{} &\textbf{} &\textbf{} &\textbf{} &\textbf{Hochberg (2000)} &\textbf{Yekutieli (2001)} &\textbf{}    \\
+		\bottomrule
+		&&&&&&&&\\
+		\textbf{0,25}  &  0.5383462 & 0.526700 &0.491350  & 0.491350   &1.000000 &0.8683996 & 0.491350 & 0.9008083&0.3275667          \\  \bottomrule
+		&&&&&&&&\\
+		\textbf{0,50 }  & 0.3055694 & 0.526700  &0.491350   &0.491350   &0.790050& 0.6002545  &0.395025  & 0.7242125 &0.2633500          \\ \hline
+		% \textbf{0,75 }  & 34 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & %33 & 33          \\  \bottomrule
+		&&&&&&&&\\
+		\textbf{0,100} & 0.00005 & 0.000015 &0.000015  &0.000015  &0.000015& 0.000015 & 0.000015 & 0.0000275 & 0.0000100           \\ \bottomrule \bottomrule
+	\end{tabular}\hspace*{-1cm}
+\end{sidewaystable}
+%\FloatBarrier
+
+
+\section{Conclusion}
+In this dissertation, we have introduced an exact test for testing for trend using binary and multinomial exchangeable data for developmental toxicity studies. Our procedure generalized the well-known Fisher's Exact test and the version for correlated data introduced by Cocoran \textit{et al} \cite{cocoran}. We implemented an exact conditional test for exchangeable clustered binary data analogous to a generalized Fisher's exact test. We eliminate the nuisance parameters( in this case  the probabilities of response) by conditioning on joint sufficient statistics. Conditional tests are known to be conservative, a test of Homogeneity of responses across different treatment groups using the EDGE data of the exact test implemented here compared  with the Rao-Scott Homogeneity (asymptotic) test validates this belief. We also implemented an exact linear rank test for correlated binary data. We have conducted two simulation studies to demonstrate the performance of the exact conditional test. The results from the two simulation studies are very close to each other. The simulation study generating random values from the q-power model has slightly larger p-values than that of the Lunn and Davis approach for any set of fixed parameters. We have also shown that an exact linear trend test can be simultaneously performed  to test multiple hypotheses and the p-values accordingly adjusted to control for multiplicity errors. Our future work will be to develop an exact conditional stochastic trend test to capture trends which are  not necessarily linear like the one   developed in this dissertation. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\chapter{References}
+%\addcontentsline{toc}{chapter}{References}
+\begin{thebibliography}{99}
+
+\bibitem{Agresti2013}
+Agresti, A. (2013). \emph{Categorical Data Analysis}, Wiley $\&$ Sons, New York.
+\bibitem{Agresti2001}
+Agresti, A. (2001). \emph{Exact inference for categorical data: recent advances and continuing controversies}. Statistics in Medicine, 20:2709–2722.
+\bibitem{Agresti1992}
+Agresti, A. (1992). \emph{A Survey of Exact Inference for Contingency Tables}. Statistical Science. Vol. 7, No. 1., pp. 131-153.
+\bibitem{armitage}
+Armitage, P. (1955). \emph{Tests for linear trends in proportions and frequencies}. Biometrics, vol. 11, 375–386.
+
+\bibitem{stochastic}
+Baso, D., Pesarin, F., Salmaso, L. and Solari, A. (2009). \emph{Permutation Test for Stochastic Ordering and ANOVA, Theory and Applications with R  }. Lecture Notes in Statistics, Springer, 194.
+
+
+
+\bibitem{BY2001}
+Benjamini, Y. and  Yekutieli, D. (2001).\emph{ The Control of the False Discovery Rate in Multiple Testing under Dependency}. The Annals of Statistics, Vol. 29, No. 4 , pp. 1165-1188.
+
+\bibitem{stochastic1}
+Bernard, R. (1989). \emph{Multivariate Methods for Clustered Binary Data with More Than One Level of Nesting}. Journal of the American Statistical Association. Vol. 84, No. 406,  pp. 373- 380.
+
+\bibitem{djbest}
+Best, J. D. (1999). \emph{Test of Fit and Other Nonparametric Data Analysis}.  Doctor of Philosophy Thesis. University of Wollongong Thesis Collection.
+
+\bibitem{best}
+Best, J. D., Rayner, W. C. J. and Thas, O. (2006) ,\emph{ Nonparametric Analysis of Blocked Ordered Categories Data: Some Examples Revisited}. Journal of Applied Mathematics and Decision Sciences. Vol. 2006, Article ID 31089,  1–9.
+
+
+\bibitem{bg}
+Bowman, D. and  George, E. O. (1995). \emph{A Saturated Model for Analyzing Exchangeable Binary Data}. Journal of the American Statistical Association, Vol. 91, No. 436, pp. 1602-1610.
+\bibitem{userbook}
+Bretz, F., Hothorn, T. and Westfall, P. (2011). \emph{Multiple Comparisons using  R}. Taylor and Francis.
+
+
+\bibitem{cocoran}
+Cocoran, C., Ryan, L., Senchaudhuri, P. , Mehta, C., Patel, N. and  Molenberghs, G. (2001). \emph{An Exact Trend Test for Correlated Binary Data}. Biometrics 57, 941-948.
+
+\bibitem{smyth}
+Curtis, D. (2002). \emph{Letters to the Editor}. The American Society of Human Genetics, Am. J. Hum. Genet. 71:439–441.
+
+\bibitem{spss}
+Davis, S. C. (2002). \emph{Statistical Methods For The  Analysis of Repeated Measurements}, Springer Text in Statistics.
+
+\bibitem{Diaconis1}
+Diaconis, P.  (1977). \emph{Finite Forms of de Finetti Theorem on Exchangeability}. Synthese, 36: 271. doi:10.1007/BF00486116
+
+
+
+
+\bibitem{ek}
+George, E. O. and  Kodell, L. R. (1995). \emph{Tests of Independence, Treatment Heterogeneity, and Dose-Related Trend With Exchangeable
+	Binary Data}. Journal of the American Statistical Association, Vol. 90, No. 431, pp. 871-879.
+
+\bibitem{icc}
+Eldridge, M. S., Ukoumunne, C. O., Carlin, B. J. (2009).  \emph{The Intra-Cluster Correlation Coefficient in Cluster Randomized Trials: A Review	of Definitions}. International Statistical Review, 77, 3, 378–394.
+
+\bibitem{Fisher}
+Fisher, R. A. (1925). \emph{Statistical Methods for Research Workers}, Oliver and Boyed, Edinburg.
+\bibitem{FreemanHalton}
+Freeman, G. H. and  Halton, J.H. (1951). \emph{Note on an Exact Treatment of Contingency Tables : Goodness of Fit and other Significance Problems}. Biometrika, 38:141-149.
+
+\bibitem{npsi}
+Gibbons, D. J. and  Chakraborti, S. (2003). \emph{Nonparametric Statistical Inference}. Fourth Edition, Revised and Expanded.
+
+\bibitem{hochberg}
+Hochberg, Y. (1988). \emph{A Sharper Bonferroni Procedure for Multiple Test of Significance}. Biometrika. Vol. 75, No. 4 (Dec., 1988), pp. 800-802.
+
+
+\bibitem{holm}
+Holm, S. (1979). \emph{A Simple Sequentially Rejective Multiple Test Procedure}. Scandinavian Journal of Statistics, Vol. 6,, pp. 65-70.
+
+\bibitem{hommel}
+Hommel, G. (1988). \emph{A Stagewise Rejective Multiple Test Procedure Based on a Modified Bonferroni Test}. Bimetrika, Vol. 75, pp. 383-386.
+
+
+\bibitem{sidakwork}
+Jan, S. , Ji$\check{r}\acute{i}$, V. and Ivan, S.  (2000) ,\emph{On the Life and Work of Zbyn$\acute{e}$k $\check{S}$id$\check{a}$k (1933-1999)}. Applications of Mathematics. Vol. 45, No. 5, 321--336.
+\bibitem{kruskalwallis}
+Kruskal, H. W. and Wallis, A. W. (1952). \emph{Use of Ranks in One-Criterion Variance Analysis}. Journal of the American Statistical Association. Vol. 47, pp. 583-621.
+
+
+\bibitem{kuk2004}
+Kuk, Y. C. A. (2004). \emph{A Litter-Based Approach to Risk Assessment in Developmental Toxicity Studies via a Power Family of Completely Monotone Functions}. Journal of the Royal Statistical Society. Series C (Applied Statistics). Vol. 53, pp. 369-386.
+
+
+\bibitem{lancaster}
+Lancaster, H. 0. (1961).  \emph{Significance Tests in Discrete Distributions}.  Journal of the American Statistical Association, Vol. 56, No. 294, pp. 223-234
+
+
+\bibitem{storey5}
+Leek, T. J. and  Storey, D. J. (2008).  \emph{A General Framework for Multiple Testing Dependence}. Proceedings of the National Academy of Sciences of the United States of America. Vol. 105, pp. 18718-18723.
+
+\bibitem{lunn}
+Lunn D. A. and  Davies, J. S. (1998).  \emph{A Note on Generating Correlated Binary Variables }. Biometrika , Vol. 85, No. 2 , pp. 487-490.
+
+
+\bibitem{Luta}
+Luta, G., Koch, G., Cascio, W., and Smith, W. (1996). \emph{Categorical
+	data analysis strategies for a cardiovascular study
+	with small sample size and clustered binary responses}.  ASA Proceedings of the Section on Statistical Education,18-27.
+
+
+\bibitem{mantel80}
+Mantel, N. (1980). \emph{Assessing Laboratory Evidence for Neoplastic Activity}. International Biometric Society. Vol. 36, pp. 381-399.
+
+
+
+
+
+
+\bibitem{mehta1}
+Mehta, R. C. (1994),\emph{The Exact Analysis of Contingency Tables in Medical Research}. American Statistical Association. Vol. 1, pp. 21-40
+\bibitem{Mehta1983}
+Mehta, R. C. and  Patel, R. N. (1983). \emph{A Network Algorithm for Performing Fisher's Exact Test in R $\times$ C Tables with Given Row
+	and Column Totals}. Journal of the American Statistical Association. Vol. 78, pp. 427-434.
+
+\bibitem{mehta1992}
+Mehta, R. C., Patel, N. and  Senchaudhuri, P. (1992). \emph{Exact Stratified Linear Rank Tests for Ordered Categorical and Binary Data}. American Statistical Association. Vol. 1, No. 1 (1992), pp. 21-40.
+
+\bibitem{spss}
+Mehta, R. C., Patel, N. (2011). \emph{IBM SPSS Exact Test}.
+
+\bibitem{patefield}
+Patefield, M. W. (1981). \emph{Algorithm AS 159: An Efficient Method of Generating Random R $\times$ C Contingency Tables}. Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 30, No. 1 , pp. 91-97.
+
+
+\bibitem{prentice}
+Prentice, R. L. and Zhao, L. P. (1991).\emph{ Estimating equations for parameters in means and covariances of multivariate discrete and continuous responses}. Biometrics,Vol. 47, No. 3 , pp. 825-839. 
+
+
+
+\bibitem{raoscott}
+Rao, K. N. J. and Scott, J. A. (1992). \emph{A Simple Method for the Analysis of Clustered Binary Data}. International Biometric Society. Vol. 48, No. 2 , pp. 577-585.
+
+\bibitem{Rosner}
+Rosner, B., Willet,W. C., Spigelman, D.(1989). \emph{Correction of logistic regression relative risk estimates and confidence intervals for systematic within-person measurement error}. Statistics in Medicine. Vol. 8, pp. 1051-1061.
+
+\bibitem{userbook}
+Robert, P. C. and Casella, G. (2010). \emph{Introducing Monte Carlo Methods with R}. Springer, New York.
+
+
+
+\bibitem{molenberghs}
+Ryan, M. L. and  Molenberghs, G. (1999). \emph{An Exponential Family Model for Clustered Multivariate  Binary Data}.  Environmetrics 10,279-300.
+
+
+
+\bibitem{smythp}
+Smyth, K. G. and Phipson, B. (2010). \emph{Permutation P-values Should Never Be Zero:Calculating Exact P-values When Permutations Are Randomly Drawn}. Statistical Applications in Genetics and Molecular Biology. 9, No. 1, Article 39.
+
+\bibitem{Stefanescu}
+ Stefanescu, C., Turnbull, W.,B. (2003).  \emph{Likelihood Inference for Exchangeable Binary Data with Varying Cluster Sizes}. Biometrics. Vol. 59, 1, pp. 18-24
+
+\bibitem{storey2}
+Storey, D. J. (2003).  \emph{The Positive False Discovery Rate: A Bayesian Interpretation and the q-Value}. The Annals of Statistics. Vol. 31, No. 6, pp. 2013-2035
+
+
+
+
+\bibitem{polish}
+Sulewski, P., Motyka, R. (2015). \emph{ Power Analysis of Independence Testing For Contingency Tables}.  Scientific Journal of Polish Naval Academy. DOI: 10.5604/0860889X.1161260.
+
+\bibitem{aniko}
+Szabo, A., George, E. O . (2010). \emph{ On The Use of Stochastic Ordering to Test for Trend with Clustered Binary Data}. Biometrika, vol. 97, pp. 95–108.
+
+\bibitem{Yang}
+Wenjian, Y. (2000). \emph{On Some Exact Statistical Procedures for Analyzing Correlated Binary Data}. Doctor of Philosophy Degree Dissertation. University of Memphis.
+
+
+
+\bibitem{williams}
+Williams, D. A. (1975). \emph{ The Analysis of Binary Responses from Toxicological Experiments Involving Reproduction and Teratogenicity}.  Biometrics.  Vol. 31, No. 4 , pp. 949-952.
+
+
+
+\bibitem{sidak}
+Zbynek, S. (1967). \emph{Rectangular Confidence Regions for the Means of Multivariate Normal Distributions}. Journal of the American Statistical Association.  Vol. 62, pp. 626-633.
+\bibitem{gee}
+Zeger, S. L., Liang, Y. K. and  Albert, S. P. (1988). \emph{Models for Longitudinal Data: A Generalized Estimating Equation Approach}. Biometrics. Vol. 44, pp. 1049-1060.
+
+\bibitem{kuk}
+Zhen, P.,  Kuk, Y. C. A. (2007). \emph{Test of Marginal Compatibility and Smoothing Methods for Exchangeable Binary Data with Unequal Cluster Sizes}.  Biometrics. Vol. 63, pp. 218-227.
+
+
+\end{thebibliography}
+
+\begin{appendices}
+\chapter{Computer Programming Codes}
+
+\subsubsection{Stratified Linear Exact Test}
+
+\lstinputlisting{wilcoxon.R}
+
+\lstinputlisting{stratified.R}
+
+\subsubsection{Simulation of Correlated Binary Data}
+
+\lstinputlisting{simulation.R}
+
+\subsubsection{Simulation of Correlated Binary Data by Inverse Transform of the q-power Distribution}
+
+\lstinputlisting{simulation2.R}
+
+\subsubsection{Multiple Testing }
+
+\lstinputlisting{multipletesting.R}
+\end{appendices}
+
+\end{document} 
